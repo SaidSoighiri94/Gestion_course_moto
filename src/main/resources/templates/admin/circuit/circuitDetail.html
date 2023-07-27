@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Details du circuit</title>
+</head>
+<body>
+<h1>Details du circuit</h1>
+<p>Nom du circuit : <span th:text="${circuit.nomCircuit}"></span></p>
+<p>Adresse du circuit : <span th:text="${circuit.adresseCircuit}"></span></p>
+<p>Longueur du circuit : <span th:text="${circuit.longueur}"></span> KM</p>
+<!-- Ajouter d'autres détails du circuit ici si nécessaire -->
+<a href="/admin/listeCircuits">Retour</a>
+</body>
+
+</html>
