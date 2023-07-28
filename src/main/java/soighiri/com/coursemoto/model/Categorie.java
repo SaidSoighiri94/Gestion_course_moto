@@ -1,11 +1,6 @@
 package soighiri.com.coursemoto.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 //@Data
 //@NoArgsConstructor  //Constructeur sans argument
@@ -17,14 +12,15 @@ public class Categorie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCategorie;
     private String nomCategorie;
-    private String DescriptionCat;
+
+    private String descriptionCategorie;
 
     public Categorie() {
     }
 
-    public Categorie(String nomCategorie, String descriptionCat) {
+    public Categorie(String nomCategorie, String descriptionCategorie) {
         this.nomCategorie = nomCategorie;
-        DescriptionCat = descriptionCat;
+        this.descriptionCategorie = descriptionCategorie;
     }
 
     public Long getIdCategorie() {
@@ -43,12 +39,12 @@ public class Categorie {
         this.nomCategorie = nomCategorie;
     }
 
-    public String getDescriptionCat() {
-        return DescriptionCat;
+    public String getDescriptionCategorie() {
+        return descriptionCategorie;
     }
 
-    public void setDescriptionCat(String descriptionCat) {
-        DescriptionCat = descriptionCat;
+    public void setDescriptionCategorie(String descriptionCategorie) {
+        this.descriptionCategorie = descriptionCategorie;
     }
 
     @Override
@@ -60,14 +56,14 @@ public class Categorie {
 
         if (!idCategorie.equals(categorie.idCategorie)) return false;
         if (!nomCategorie.equals(categorie.nomCategorie)) return false;
-        return DescriptionCat.equals(categorie.DescriptionCat);
+        return descriptionCategorie.equals(categorie.descriptionCategorie);
     }
 
     @Override
     public int hashCode() {
         int result = idCategorie.hashCode();
         result = 31 * result + nomCategorie.hashCode();
-        result = 31 * result + DescriptionCat.hashCode();
+        result = 31 * result + descriptionCategorie.hashCode();
         return result;
     }
 }

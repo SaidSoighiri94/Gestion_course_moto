@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Gestion de course moto</title>
+    <!-- Insertion du webjars bootstrap-->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" />
+</head>
+<body>
+<h2>Formulaire de modification d'une categorie </h2>
+<form method ="post" th:object="${categorietDto}" th:action="@{/admin/categorie/edit}">
+    <input type="hidden" th:field="*{idCategorie}" readonly/>
+    <label for="nomCategorie">Nom de la categorie:</label>
+    <div th:if="${#fields.hasErrors('nomCategorie')}"
+         th:errors="*{nomCategorie}" class="alert alert-danger"></div>
+    <input type="text" name="nomCategorie" id="nomCategorie" th:field="*{nomCategorie}" />
+    <label for="descriptionCategorie">Description:</label>
+    <input type="text" name="descriptionCategorie" id="descriptionCategorie" th:field="*{descriptionCategorie}" required/>
+    <input type="submit" value="Enregistrer">
+</form>
+<button> <a href="/admin/listeCategories">Annuler</a></button>
+</body>
+</html>

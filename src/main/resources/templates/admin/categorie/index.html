@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de course moto</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container mt-4">
+
+    <h1>Liste des circuits</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom de la categorie</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="categorie : ${lesCategories}">
+            <td th:text="${categorie.idCategorie}"></td>
+            <td th:text="${categorie.nomCategorie}"></td>
+            <!--Ajout des boutons-->
+            <td>
+                <a th:href="@{/admin/categorie/detail/__${categorie.idCategorie}__}" class="btn btn-primary btn-sm">Détails</a>
+                <a th:href="@{/admin/categorie/edit/__${categorie.idCategorie}__}" class="btn btn-secondary btn-sm">Modifier</a>
+                <a th:href="@{/admin/categorie/delete/__${categorie.idCategorie}__}" class="btn btn-danger btn-sm">Supprimer</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

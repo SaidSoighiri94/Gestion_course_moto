@@ -10,38 +10,58 @@ import java.util.List;
 @Service
 public class CategorieServiceImpl implements CategorieService{
     private CategorieRepository categorieRepository;
-
+    @Autowired
     public CategorieServiceImpl(CategorieRepository categorieRepository) {
         this.categorieRepository = categorieRepository;
     }
 
     @Override
     public Categorie saveCategorieFromCategorieDto(CategorieDto categorieDto) {
-        return null;
+        Categorie categorie = convertDtoToEntity(categorieDto);
+        return categorieRepository.save(categorie);
     }
 
     @Override
     public Categorie updateCategorieFromCategorieDto(CategorieDto categorieDto) {
-        return null;
+        Categorie categorie = convertDtoToEntity(categorieDto);
+        return categorieRepository.save(categorie);
     }
 
     @Override
     public void deleteCategorie(Long idCategorie) {
+        categorieRepository.deleteById(idCategorie);
 
     }
 
     @Override
     public Categorie getCategorieById(Long idCategorie) {
-        return null;
+        return categorieRepository.findById(idCategorie).orElse(null);
     }
 
     @Override
     public List<Categorie> getAllCategories() {
-        return null;
+        return categorieRepository.findAll();
     }
 
     @Override
     public CategorieDto convertEntityToDto(Categorie categorie) {
-        return null;
+        CategorieDto categorieDto = new CategorieDto();
+        if(categorie!=null){
+            categorieDto.setIdCategorie(categorie.getIdCategorie());
+            categorieDto.setNomCategorie(categorie.getNomCategorie());
+            categorieDto.setDescriptionCategorie(categorie.getDescriptionCategorie());
+        }
+        return categorieDto;
     }
+
+    private Categorie convertDtoToEntity(CategorieDto categorieDto) {
+        Categorie categorie = new Categorie();
+        if(categorieDto!=null){
+            categorie.setIdCategorie(categorieDto.getIdCategorie());
+            categorie.setNomCategorie(categorieDto.getNomCategorie());
+            categorie.setDescriptionCategorie(categorieDto.getDescriptionCategorie());
+        }
+        return categorie;
+    }
+
 }

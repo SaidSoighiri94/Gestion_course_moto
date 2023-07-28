@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Gestion de course moto</title>
+    <!-- Insertion du webjars bootstrap-->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" />
+</head>
+<body>
+<h2>Ajouter d'une nouvelle categorie</h2>
+<form method="post" th:object="${categorieDto}" th:action="@{/admin/categorie/create}">
+    <label for="nomCCategorie">Nom du categorie:</label>
+    <input type="text" id="nomCCategorie" name="nomCategorie" th:field="*{nomCategorie}" required />
+    <br/>
+    <label for="descriptionCategorie">Description:</label>
+    <input type="text" id="descriptionCategorie" name="descrptionCategorie" th:field="*{descriptionCategorie}" required />
+    <br/>
+    <input type="submit" value="Ajouter" />
+</form>
+<a href="/admin/listeCategories">Retour</a>
+
+</body>
+</html>

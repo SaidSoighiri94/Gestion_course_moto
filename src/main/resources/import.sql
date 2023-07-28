@@ -10,3 +10,4 @@ INSERT INTO circuit (nom_circuit, adresse_circuit, longueur) VALUES ( 'Ambatomen
 #( 'Ambatomena, Fianarantsoa', 5.4, 'Circuit de CSFX '),
 #( 'Ambatomena, Fianarantsoa', 5.4, 'Circuit de CSFX '),
 INSERT INTO circuit (nom_circuit, adresse_circuit, longueur) VALUES( 'Mdrawadjou Domoni adjou comores', 9, 'Chatau');
+INSERT INTO categorie (nom_categorie, description_categorie) VALUES( 'Categorie Catal', 'Dans cette categorie la puissance de la moto ne dois pas depassé les 90cc, le carbe de doit etre d\'origine avec un echappement catal Z');

@@ -1,7 +1,9 @@
 package soighiri.com.coursemoto.service;
 
 import soighiri.com.coursemoto.dto.CategorieDto;
+import soighiri.com.coursemoto.dto.CircuitDto;
 import soighiri.com.coursemoto.model.Categorie;
+import soighiri.com.coursemoto.model.Circuit;
 
 import java.util.List;
 
@@ -25,4 +27,5 @@ public interface CategorieService {
 
    // Covertir un entity vers un Dto
     CategorieDto convertEntityToDto(Categorie categorie);
+
 }
