@@ -14,10 +14,13 @@
         <div th:if="${#fields.hasErrors('nomCircuit')}"
         th:errors="*{nomCircuit}" class="alert alert-danger"></div>
         <input type="text" name="nomCicruit" id="nomCircuit" th:field="*{nomCircuit}" />
+
         <label for="adresseCircuit">Adresse du circuit:</label>
         <input type="text" name="adresseCircuit" id="adresseCircuit" th:field="*{adresseCircuit}" required/>
+
         <label for="longueur">Longueur du ciruit en KM</label>
         <input type="number" name="longueur" id="longueur"  th:field="*{longueur}" required/>
+
         <input type="submit" value="Enregistrer">
     </form>
     <button> <a href="/admin/listeCircuits">Annuler</a></button>

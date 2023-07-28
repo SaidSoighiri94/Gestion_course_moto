@@ -10,13 +10,16 @@
 <h2>Ajouter Circuit</h2>
 <form method="post" th:object="${circuitDto}" th:action="@{/admin/circuit/create}">
     <label for="nomCircuit">Nom du Circuit:</label>
-    <input type="text" id="nomCircuit" name="nomCircuit" th:field="*{nomCircuit}" required />
+    <div th:if="${#fields.hasErrors('nomCircuit')}"
+         th:errors="*{nomCircuit}" class="alert alert-danger"></div>
+    <input type="text" id="nomCircuit" name="nomCircuit" th:field="*{nomCircuit}" />
+
     <br/>
     <label for="adresseCircuit">Adresse du Circuit:</label>
-    <input type="text" id="adresseCircuit" name="adresseCircuit" th:field="*{adresseCircuit}" required />
+    <input type="text" id="adresseCircuit" name="adresseCircuit" th:field="*{adresseCircuit}"  />
     <br/>
     <label for="longueur">Longueur du Circuit:</label>
-    <input type="number" id="longueur" name="longueur" th:field="*{longueur}" required />
+    <input type="number" id="longueur" name="longueur" th:field="*{longueur}"  />
     <br/>
     <input type="submit" value="Ajouter" />
 </form>

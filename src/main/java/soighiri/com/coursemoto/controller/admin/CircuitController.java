@@ -33,7 +33,10 @@ public class CircuitController {
         return "admin/circuit/creat";
     }
     @PostMapping("/circuit/create")
-    public String store(@ModelAttribute("circuitDto") CircuitDto circuitDto){
+    public String store(@ModelAttribute("circuitDto") @Valid CircuitDto circuitDto,BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return"admin/circuit/creat";
+        }
         circuitService.saveCircuitFromCircuitDto(circuitDto);
         return"redirect:/admin/listeCircuits";
     }
@@ -72,8 +75,8 @@ public class CircuitController {
        //Methode pour la suppression
         @GetMapping(value="circuit/delete/{idCircuit}")
         public String deleteCircuit(@PathVariable Long idCircuit){
-        circuitService.deleteCircuitById(idCircuit);
-        return "redirect:/admin/listeCircuits";
+            circuitService.deleteCircuitById(idCircuit);
+            return "redirect:/admin/listeCircuits";
         }
     }
 

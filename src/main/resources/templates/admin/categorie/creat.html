@@ -9,11 +9,11 @@
 <body>
 <h2>Ajouter d'une nouvelle categorie</h2>
 <form method="post" th:object="${categorieDto}" th:action="@{/admin/categorie/create}">
-    <label for="nomCCategorie">Nom du categorie:</label>
-    <input type="text" id="nomCCategorie" name="nomCategorie" th:field="*{nomCategorie}" required />
+    <label for="nomCategorie">Nom du categorie:</label>
+    <input type="text" id="nomCategorie" name="nomCategorie" th:field="*{nomCategorie}" required />
     <br/>
     <label for="descriptionCategorie">Description:</label>
-    <input type="text" id="descriptionCategorie" name="descrptionCategorie" th:field="*{descriptionCategorie}" required />
+    <textarea id="descriptionCategorie" name="descriptionCategorie" th:field="*{descriptionCategorie}" required></textarea>
     <br/>
     <input type="submit" value="Ajouter" />
 </form>

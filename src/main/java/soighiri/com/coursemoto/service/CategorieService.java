@@ -17,7 +17,7 @@ public interface CategorieService {
 
     //Supprimer une categorie de la base de donnée en fonction de l'Id
 
-    void deleteCategorie(Long idCategorie);
+    void deleteCategorieById(Long idCategorie);
 
     //Récupère un circuit en fonction de son ID
     Categorie getCategorieById(Long idCategorie);

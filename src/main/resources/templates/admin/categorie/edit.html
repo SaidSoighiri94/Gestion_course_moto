@@ -8,16 +8,20 @@
 </head>
 <body>
 <h2>Formulaire de modification d'une categorie </h2>
-<form method ="post" th:object="${categorietDto}" th:action="@{/admin/categorie/edit}">
+<form method ="post" th:object="${categorieDto}" th:action="@{/admin/categorie/edit}">
     <input type="hidden" th:field="*{idCategorie}" readonly/>
     <label for="nomCategorie">Nom de la categorie:</label>
     <div th:if="${#fields.hasErrors('nomCategorie')}"
          th:errors="*{nomCategorie}" class="alert alert-danger"></div>
-    <input type="text" name="nomCategorie" id="nomCategorie" th:field="*{nomCategorie}" />
+    <input type="text" name="nomCategorie" id="nomCategorie" th:field="*{nomCategorie}" required />
+
     <label for="descriptionCategorie">Description:</label>
-    <input type="text" name="descriptionCategorie" id="descriptionCategorie" th:field="*{descriptionCategorie}" required/>
+    <div th:if="${#fields.hasErrors('descriptionCategorie')}"
+         th:errors="*{descriptionCategorie}" class="alert alert-danger"></div>
+    <input type="text" name="descriptionCategorie" id="descriptionCategorie" th:field="*{descriptionCategorie}" required />
+
     <input type="submit" value="Enregistrer">
 </form>
-<button> <a href="/admin/listeCategories">Annuler</a></button>
+ <a href="/admin/listeCategories">Annuler</a>
 </body>
 </html>
