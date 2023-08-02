@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de course moto</title>
+</head>
+<body>
+<h1>Listes de tous les pilotes</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nom </th>
+        <th>Prénom</th>
+        <th>Numéro</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pilote : ${lesPilotes}">
+        <td th:text="${pilote.idPilote}"></td>
+        <td th:text="${pilote.nomPilote}"></td>
+        <td th:text="${pilote.prenomPilote}"></td>
+        <td th:text="${pilote.numeroPilote}"></td>
+
+        <!-- Ajout des liens et des icones Bootstrap-->
+        <td>
+            <a th:href="@{/admin/pilote/detail/__${pilote.idPilote}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i></a>
+
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

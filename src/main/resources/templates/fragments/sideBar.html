@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Inclure le fragment header-css ici -->
+    <div th:replace="fragments/header :: header-css"></div>
+</head>
+
+<body>
+<!-- Inclure le fragment navigation ici -->
+<div th:replace="fragments/header :: navigation"></div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-home"></i> Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-motorcycle"></i> Courses</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-user"></i> Profil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+        </li>
+    </ul>
+</div>
+
+<!-- Contenu principal -->
+<div class="main-content">
+    <h1>Contenu de la page</h1>
+    <p>Le contenu de votre page ici...</p>
+
+    <!-- Formulaire d'ajout de course -->
+    <div class="add-course-form">
+        <h2>Ajouter une course</h2>
+        <form>
+            <div class="form-group">
+                <label for="nomCourse">Nom de la course</label>
+                <input type="text" class="form-control" id="nomCourse" th:placeholder="Entrez le nom de la course">
+            </div>
+            <div class="form-group">
+                <label for="dateCourse">Date de la course</label>
+                <input type="date" class="form-control" id="dateCourse" th:placeholder="Entrez la date de la course">
+            </div>
+            <div class="form-group">
+                <label for="lieuCourse">Lieu de la course</label>
+                <input type="text" class="form-control" id="lieuCourse" th:placeholder="Entrez le lieu de la course">
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Ajouter</button>
+        </form>
+    </div>
+</div>
+
+<!-- Lien vers les scripts Bootstrap (jQuery requis) -->
+<script>
+    // JavaScript pour afficher le sidebar quand on entre à l'intérieur de la page
+    $(document).ready(function() {
+        $('.navbar-toggler').on('click', function() {
+            $('#sidebar').toggleClass('show');
+        });
+    });
+</script>
+</body>
+</html>

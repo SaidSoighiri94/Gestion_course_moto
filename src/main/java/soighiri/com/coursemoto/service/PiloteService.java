@@ -15,6 +15,5 @@ public interface PiloteService {
     void deletePiloteById(Long idPilote);
 
     List<Pilote> getAllPilotes();
-    Pilote converEntityToDto(Pilote pilote);
-
+    PiloteDto convertEntityToDto(Pilote pilote);
 }

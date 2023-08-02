@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:replace="fragments/header :: header-css" />
+</head>
+
+<body>
+
+<!-- Inclusion de la navigationqui se trouve dans le fichier header sous le sous frament navigation -->
+ <div th:replace="~{fragments/header :: navigation}"></div>
+<!-- Le contenu spécifique de la page ici -->
+<h1>Bienvenue sur la page d'accueil</h1>
+<p>Ceci est le contenu spécifique de la page d'accueil.</p>
+<!-- inclure le footer ici -->
+<div th:replace="~{fragments/footer}">
+</div>
+</body>
+</html>

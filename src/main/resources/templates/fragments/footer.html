@@ -6,5 +6,45 @@
 </head>
 <body>
 
+<div th:fragment="footer">
+    <footer>
+        <!--class="container d-flex justify-content-center mt-5 mb-3 text-muted">
+        -->
+        <div class="bg-light mt-5 mb-3">
+            <div class="container ">
+                <div class="row pt-4 pb-3">
+                    <div class="col">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="#" class="text-decoration-none">À propos </a>
+                            </li>
+                            <li class="list-inline-item">
+                                &middot;
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-decoration-none">Vie privée</a>
+                            </li>
+                            <li class="list-inline-item">&middot;</li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-decoration-none">Conditions d'utilisations</a>
+                            </li>
+                            <li class="list-inline-item">&middot;</li>
+                            <li class="list-inline-item">
+                                <p>&copy;  CourseMoto by Mohamed</p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Lien vers les scripts Bootstrap (jQuery requis) via WebJars -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</div>
+
 </body>
 </html>

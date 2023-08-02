@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title> Gestion de course moto</title>
-    <!-- Insertion du webjars bootstrap-->
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" />
+    <div th:replace="~{fragments/header :: header-css}"/>
 </head>
 <body>
+<header>
+    <div th:replace="~{fragments/header :: navigation}"></div>
+</header>
 <!--Navbar-->
 
 <div class="container mt-4">
@@ -23,18 +23,18 @@
         <tr th:each="circuit : ${lesCircuits}">
             <td th:text="${circuit.idCircuit}"></td>
             <td th:text="${circuit.nomCircuit}"></td>
-            <!--Ajout des boutons-->
+            <!--Ajout des boutons avec icônes-->
             <td>
-                <a th:href="@{/admin/circuit/detail/__${circuit.idCircuit}__}" class="btn btn-primary btn-sm">Détails</a>
-                <a th:href="@{/admin/circuit/edit/__${circuit.idCircuit}__}" class="btn btn-secondary btn-sm">Modifier</a>
-                <a th:href="@{/admin/circuit/delete/__${circuit.idCircuit}__}" class="btn btn-danger btn-sm">Supprimer</a>
-
+                <a th:href="@{/admin/circuit/detail/__${circuit.idCircuit}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Détails</a>
+                <a th:href="@{/admin/circuit/edit/__${circuit.idCircuit}__}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Modifier</a>
+                <a th:href="@{/admin/circuit/delete/__${circuit.idCircuit}__}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Supprimer</a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
 
-
+<!-- Lien vers les scripts Bootstrap (jQuery requis) via WebJars -->
+<div th:replace="~{fragments/footer}"></div>
 </body>
 </html>

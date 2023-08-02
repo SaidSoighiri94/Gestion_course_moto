@@ -24,4 +24,5 @@ public interface CircuitService {
 
     // Convertit un objet Circuit en CircuitDto
     CircuitDto convertEntityToDto(Circuit circuit);
+
 }
