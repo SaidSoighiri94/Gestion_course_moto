@@ -27,6 +27,7 @@ public class CircuitController {
         return"admin/circuit/index";
     }
 
+    // Methode permettant de ajouter un nouveau circuit
     @GetMapping("/circuit/create")
     public String create(Model model){
         model.addAttribute("circuitDto", new CircuitDto());
@@ -40,7 +41,8 @@ public class CircuitController {
         circuitService.saveCircuitFromCircuitDto(circuitDto);
         return"redirect:/admin/listeCircuits";
     }
-    //Afficher un circuit par son id
+
+    //Methode permettant d'afficher un circuit par son id
     @GetMapping(value = "/circuit/detail/{idCircuit}")
 
     public String getCicuit(@PathVariable Long idCircuit,Model model) {

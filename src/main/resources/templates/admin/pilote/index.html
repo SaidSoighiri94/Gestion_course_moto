@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Gestion de course moto</title>
+    <div th:replace="~{fragments/header :: header-css}"/>
 </head>
 <body>
+<header th:replace="~{fragments/header :: navigation}"></header>
 <h1>Listes de tous les pilotes</h1>
+<div class="container">
+
 <table class="table">
     <thead>
     <tr>
@@ -24,14 +26,18 @@
 
         <!-- Ajout des liens et des icones Bootstrap-->
         <td>
-            <a th:href="@{/admin/pilote/detail/__${pilote.idPilote}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i></a>
+            <a th:href="@{/admin/pilote/detail/__${pilote.idPilote}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i>Details</a>
+            <a th:href="@{/admin/pilote/edit/__${pilote.idPilote}__}"  class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i>Modifier</a>
+            <a th:href="@{/admin/pilote/Supprimer/__${pilote.idPilote}__}" class="btn btn-danger btn-sm"><i class="fas fa-delete-left
+
+"></i>Supprimer</a>
 
         </td>
 
     </tr>
     </tbody>
 </table>
-
-
+</div>
+<div th:replace="~{fragments/footer :: footer }"></div>
 </body>
 </html>

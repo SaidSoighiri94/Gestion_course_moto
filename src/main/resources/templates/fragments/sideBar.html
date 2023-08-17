@@ -2,15 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Inclure le fragment header-css ici -->
-    <div th:replace="fragments/header :: header-css"></div>
+    <th:block th:replace="fragments/header :: header-css" />
 </head>
 
 <body>
 <!-- Inclure le fragment navigation ici -->
-<div th:replace="fragments/header :: navigation"></div>
+<header th:replace="fragments/header :: navigation"></header>
 
+<aside th:fragment="sidebar">
 <!-- Sidebar -->
-<div class="sidebar" id="sidebar">
+<div  class="sidebar" id="sidebar">
     <ul class="nav flex-column">
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fas fa-home"></i> Accueil</a>
@@ -26,13 +27,15 @@
         </li>
     </ul>
 </div>
+</aside>
 
 <!-- Contenu principal -->
 <div class="main-content">
     <h1>Contenu de la page</h1>
     <p>Le contenu de votre page ici...</p>
 
-    <!-- Formulaire d'ajout de course -->
+    <!--
+     Formulaire d'ajout de course
     <div class="add-course-form">
         <h2>Ajouter une course</h2>
         <form>
@@ -51,9 +54,8 @@
             <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Ajouter</button>
         </form>
     </div>
-</div>
-
-<!-- Lien vers les scripts Bootstrap (jQuery requis) -->
+</div> -->
+<footer th:replace="~{fragments/footer ::footer}">
 <script>
     // JavaScript pour afficher le sidebar quand on entre à l'intérieur de la page
     $(document).ready(function() {
@@ -62,5 +64,6 @@
         });
     });
 </script>
+</footer>
 </body>
 </html>

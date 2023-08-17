@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="~{fragments/header :: header-css}" />
+
 </head>
-<header th:replace="~{fragments/header :: navigation}"></header>
+
 <body>
+<header th:replace="~{fragments/header :: navigation}"></header>
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-4">
@@ -22,6 +23,7 @@
     </div>
     <a href="/admin/listeCircuits" class="mt-3 btn btn-secondary"><i class="fas fa-arrow-left"></i> Retour</a>
 </div>
-</body>
 <div th:replace="~{fragments/footer}" />
+</body>
+
 </html>

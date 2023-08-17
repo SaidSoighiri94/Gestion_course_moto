@@ -42,8 +42,11 @@
     </footer>
 
     <!-- Lien vers les scripts Bootstrap (jQuery requis) via WebJars -->
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.js"
+            th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"
+            crossorigin="anonymous">
+    </script>
+
 </div>
 
 </body>

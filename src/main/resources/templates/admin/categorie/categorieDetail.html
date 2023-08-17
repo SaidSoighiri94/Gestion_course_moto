@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Gestion de courrse moto</title>
+    <th:block th:replace="~{fragments/header :: header-css}" />
 </head>
 <body>
+<header th:replace="~{fragments/header :: navigation}"></header>
 <h1>Details de la categorie</h1>
 <p>ID : <span th:text="${categorie.idCategorie}"></span></p>
 <p>Nom de la categorie  : <span th:text="${categorie.nomCategorie}"></span></p>
 <p>Description de la  categorie : <span th:text="${categorie.descriptionCategorie}"></span></p>
 
 <!-- Ajouter d'autres détails du circuit ici si nécessaire -->
-<a href="/admin/listeCategories">Retour</a>
+<div class="container">
+    <a href="/admin/listeCategories">Retour</a>
+</div>
+<footer th:replace="~{fragments/footer ::footer}"></footer>
 </body>
 
 </html>
