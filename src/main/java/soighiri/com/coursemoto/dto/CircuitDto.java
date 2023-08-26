@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class CircuitDto {
     private Long idCircuit;
     @NotBlank(message = "Nom Circuit requis")
-    @Size(min = 10,  max = 60, message ="Longueur incorrecte")
+    @Size(min = 1,  max = 60, message ="Longueur incorrecte")
     private String nomCircuit;
     private String adresseCircuit;
     private Double longueur;

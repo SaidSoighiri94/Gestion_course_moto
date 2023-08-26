@@ -3,21 +3,23 @@ package soighiri.com.coursemoto.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import soighiri.com.coursemoto.dto.PiloteDto;
+import soighiri.com.coursemoto.model.Categorie;
 import soighiri.com.coursemoto.model.Pilote;
+import soighiri.com.coursemoto.repository.CategorieRepository;
 import soighiri.com.coursemoto.repository.PiloteRepository;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PiloteServiceImpl implements PiloteService {
 
     private final PiloteRepository piloteRepository;
+    private final CategorieRepository categorieRepository;
 
     @Autowired
-    public PiloteServiceImpl(PiloteRepository piloteRepository) {
+    public PiloteServiceImpl(PiloteRepository piloteRepository, CategorieRepository categorieRepository) {
         this.piloteRepository = piloteRepository;
+        this.categorieRepository = categorieRepository;
     }
 
     @Override
@@ -66,5 +68,15 @@ public class PiloteServiceImpl implements PiloteService {
         pilote.setPrenomPilote(piloteDto.getPrenomPilote());
         pilote.setNumeroPilote(piloteDto.getNumeroPilote());
         return pilote;
+    }
+
+    @Override
+    public void addCategorieToPilote(Long idPilote, Long idCategorie) {
+        Pilote pilote = piloteRepository.findById(idPilote).orElse(null);
+        Categorie categorie = categorieRepository.findById(idCategorie).orElse(null);
+        if(pilote != null && categorie !=null) {
+            pilote.getCategories().add(categorie);
+            piloteRepository.save(pilote);
+        }
     }
 }

@@ -7,7 +7,7 @@
 <body>
 
 <!-- Inclusion de la navigation qui se trouve dans le fichier header sous le sous frament navigation -->
- <header th:replace="~{fragments/header :: navigation}"></header>
+ <header th:replace="~{fragments/header :: navigation(activeTab='home') }"></header>
 <div th:replace="~{fragments/sideBar :: sidebar}"></div>
 
 <!-- Le contenu spécifique de la page ici -->

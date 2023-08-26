@@ -27,5 +27,5 @@ public interface CategorieService {
 
    // Covertir un entity vers un Dto
     CategorieDto convertEntityToDto(Categorie categorie);
-
+    void addPiloteToCategorie(long idCategorie, Long idPilote);
 }

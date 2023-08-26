@@ -1,11 +1,11 @@
 package soighiri.com.coursemoto.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 
@@ -20,7 +20,13 @@ public class Pilote {
     private String emailPilote;
     private String  adressePilote;
     private String telPilote;
-
+    @ManyToMany
+    @JoinTable(
+            name  = "pilote_categorie",
+    joinColumns = @JoinColumn(name="id_pilote"),
+    inverseJoinColumns = @JoinColumn(name = "id_categorie")
+    )
+    private Set<Categorie> categories = new LinkedHashSet<>();
     public Pilote() {
     }
 
@@ -96,6 +102,14 @@ public class Pilote {
 
     public void setTelPilote(String telPilote) {
         this.telPilote = telPilote;
+    }
+
+    public Set<Categorie> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Categorie> categories) {
+        this.categories = categories;
     }
 
     @Override

@@ -4,15 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import soighiri.com.coursemoto.dto.CategorieDto;
 import soighiri.com.coursemoto.model.Categorie;
+import soighiri.com.coursemoto.model.Pilote;
 import soighiri.com.coursemoto.repository.CategorieRepository;
+import soighiri.com.coursemoto.repository.PiloteRepository;
 
 import java.util.List;
 @Service
 public class CategorieServiceImpl implements CategorieService{
     private CategorieRepository categorieRepository;
+    private final PiloteRepository piloteRepository;
     @Autowired
-    public CategorieServiceImpl(CategorieRepository categorieRepository) {
+    public CategorieServiceImpl(CategorieRepository categorieRepository, PiloteRepository piloteRepository) {
         this.categorieRepository = categorieRepository;
+        this.piloteRepository = piloteRepository;
     }
 
     @Override
@@ -44,6 +48,12 @@ public class CategorieServiceImpl implements CategorieService{
     }
 
     @Override
+    public void addPiloteToCategorie(long idCategorie, Long idPilote) {
+        Categorie categorie = categorieRepository.findById(idCategorie).orElse(null);
+        Pilote pilote = piloteRepository.findById(idPilote).orElse(null);
+    }
+
+    @Override
     public CategorieDto convertEntityToDto(Categorie categorie) {
         CategorieDto categorieDto = new CategorieDto();
         if(categorie!=null){
@@ -63,5 +73,6 @@ public class CategorieServiceImpl implements CategorieService{
         }
         return categorie;
     }
+
 
 }

@@ -2,6 +2,9 @@ package soighiri.com.coursemoto.model;
 
 import jakarta.persistence.*;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 //@Data
 //@NoArgsConstructor  //Constructeur sans argument
 //@AllArgsConstructor //Constructeur avec tout les argument
@@ -14,6 +17,8 @@ public class Categorie {
     private String nomCategorie;
 
     private String descriptionCategorie;
+    @ManyToMany(mappedBy = "categories")
+    private Set<Pilote> pilotes = new LinkedHashSet<>();
 
     public Categorie() {
     }
@@ -41,6 +46,14 @@ public class Categorie {
 
     public String getDescriptionCategorie() {
         return descriptionCategorie;
+    }
+
+    public Set<Pilote> getPilotes() {
+        return pilotes;
+    }
+
+    public void setPilotes(Set<Pilote> pilotes) {
+        this.pilotes = pilotes;
     }
 
     public void setDescriptionCategorie(String descriptionCategorie) {

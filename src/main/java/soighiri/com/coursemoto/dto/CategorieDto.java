@@ -15,7 +15,7 @@ private Long idCategorie;
 @Size(min = 6, max = 30, message = "Longueur incorrecte")
 private String nomCategorie;
 @NotBlank(message = "Description requise")
-@Size(min =49, max=250, message = "Logueur du texte incorrecte")
+@Size(min =1, max=250, message = "Logueur du texte incorrecte")
 
 private String descriptionCategorie;
 }

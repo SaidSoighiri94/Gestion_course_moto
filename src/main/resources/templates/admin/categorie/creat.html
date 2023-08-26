@@ -1,23 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title> Gestion de course moto</title>
-    <!-- Insertion du webjars bootstrap-->
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" />
+    <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
-<h2>Ajouter d'une nouvelle categorie</h2>
-<form method="post" th:object="${categorieDto}" th:action="@{/admin/categorie/create}">
-    <label for="nomCategorie">Nom du categorie:</label>
-    <input type="text" id="nomCategorie" name="nomCategorie" th:field="*{nomCategorie}" required />
-    <br/>
-    <label for="descriptionCategorie">Description:</label>
-    <textarea id="descriptionCategorie" name="descriptionCategorie" th:field="*{descriptionCategorie}" required></textarea>
-    <br/>
-    <input type="submit" value="Ajouter" />
-</form>
-<a href="/admin/listeCategories">Retour</a>
+<header th:replace="fragments/header ::navigation"></header>
+<div class="container">
+    <div class="row">
+        <div class="card col-6 mt-3">
+            <div class="card-title">
+                <h4>Ajouter d'une nouvelle categorie</h4>
+
+            </div>
+            <div class="card-body">
+                <form method="post" th:object="${categorieDto}" th:action="@{/admin/categorie/create}">
+                    <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label for="nomCategorie" class="form-label"> Nom du categorie :</label>
+                        <input type="text" id="nomCategorie" name="nomCategorie" class="form-control" th:field="*{nomCategorie}" required placeholder="Nom de la categorie " aria-describedby="NomCategorie"/>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8
+                         mb-3">
+                            <label for="pilotes" class="form-label">Liste pilotes :</label>
+                            <select class="form-select" multiple aria-label="Multiple select" id="pilotes" name="pilotes">
+                                <option selected>Selectionnez au moin un pilote</option>
+                                <option th:each="pilote : ${pilotes}" th:value="${pilote.idPilote}" th:text="${pilote.nomPilote}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label for="descriptionCategorie" class="form-label"> Description :</label>
+                        <textarea id="descriptionCategorie" rows="4" name="descriptionCategorie" th:field="*{descriptionCategorie}" required class="form-control" placeholder="Entrez la description de la categorie" aria-describedby="DescriptionCategorie"></textarea>
+                        <hr/>
+                    </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Ajouter</button>
+                    </div>
+                </form>
+                <a href="/admin/listeCategories" class="mt-3 btn btn-secondary"><i class="fas fa-arrow-left"></i> Retour</a>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
 
 </body>
 </html>
