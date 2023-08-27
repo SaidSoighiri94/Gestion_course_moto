@@ -27,7 +27,7 @@ public class CircuitController {
         return"admin/circuit/index";
     }
 
-    // Methode permettant de ajouter un nouveau circuit
+    // Methode permettant d'ajouter un nouveau circuit
     @GetMapping("/circuit/create")
     public String create(Model model){
         model.addAttribute("circuitDto", new CircuitDto());

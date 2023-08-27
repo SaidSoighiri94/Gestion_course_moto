@@ -9,24 +9,37 @@
     <div class="container">
 
         <div class="row">
-            <div class="card col-8 mt-4">
-                <div class="card-title mt-4"><h3>Ajout d'une moto</h3></div>
-                <form method="post" th:object="${motoDto}" th:action="@{/admin/moto/create}">
+            <div class="card mt-4">
+                <div class="card-header mt-4"><h3>Ajout d'une moto</h3></div>
 
                     <div class="card-body ">
-                        <div class="col-4 mb-4">
-                        <label for="marqueMoto" class="form-label"> Marque Moto:</label>
+                        <form method="post" th:object="${motoDto}" th:action="@{/admin/moto/create}">
+
+                        <label for="marqueMoto" class="form-label"> Marque Moto</label>
                         <div th:if="${#fields.hasErrors('marqueMoto')}" class="alert alert-danger">
                             <div th:each="err : ${#fields.errors('marqueMoto')}" th:text="${err}"></div>
                         </div>
                         <input type="text" id="marqueMoto" class="form-control" th:field="*{marqueMoto}"/>
-                        </div>
-                        <div class="col-4 mt-4">
+
+                        <div class="col-6 mt-4">
                             <label for="versionMoto" class="form-label">Version:</label>
                             <input type="date" name="versionMoto" id="versionMoto" class="form-control" th:field="*{versionMoto}" placeholder="version moto"/>
                         </div>
+                            <div class="mb-4 mt-4" >
+                                <label for="puissanceMoto" class="form-label">Puissance</label>
+                                <input type="text" id="puissanceMoto" name="puissanceMoto" class="form-control" th:field="*{puissanceMoto}"/>
+                            </div>
+                            <div class="mb-4">
+                                <label for="modeleMoto" class="form-label">Modele</label>
+                                <input type="text" name="modeleMoto" id="modeleMoto" class="form-control" th:field="*{modeleMoto}"/>
+                            </div>
+                            <div class="d-grid gap-2 mb-4">
+                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Ajouter</button>
+                            </div>
+                        </form>
+                        <a href="/admin/moto/listeMotos" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Retour</a>
                     </div>
-                </form>
+
             </div>
         </div>
     </div>

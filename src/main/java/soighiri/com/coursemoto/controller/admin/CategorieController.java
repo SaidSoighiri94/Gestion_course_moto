@@ -85,6 +85,6 @@ public class CategorieController {
     @PostMapping(value = "categorie/delete/{idCategorie}")
     public String deleteCategoieById(@PathVariable Long idCategorie){
         categorieService.deleteCategorieById(idCategorie);
-        return "redirect:/admin/listeCategories";
+        return "redirect:/admin/categorie/listeCategories";
     }
 }
