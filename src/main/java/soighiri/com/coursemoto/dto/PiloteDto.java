@@ -19,7 +19,7 @@ public class PiloteDto {
     private String PrenomPilote;
 
     @NotNull(message ="Le numero du pilote est obligatoire")
-    @Min(value = 1, message = "Les numero du pilote doit etre entre 1 a 200")
+    @Min(value = 1, message = "Le numero du pilote doit etre entre 1 a 200")
     @Max(value =200, message="Le numero pilote doit etre entre 1 a 200" )
     private int numeroPilote;
 

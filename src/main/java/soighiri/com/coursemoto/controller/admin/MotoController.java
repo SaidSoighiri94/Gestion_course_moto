@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import soighiri.com.coursemoto.dto.MotoDto;
 import soighiri.com.coursemoto.model.Moto;
 import soighiri.com.coursemoto.service.MotoService;
 
@@ -21,7 +22,14 @@ public class MotoController {
     @GetMapping("/moto/listeMotos")
     public String  index(Model model){
         List<Moto> motos = motoService.getAllMotos();
+        model.addAttribute("lesMotos", motos);
         return "admin/moto/index";
+    }
+    // methode permettant d ajoute une moto
+    @GetMapping(value ="/moto/create")
+    public  String  create(Model model){
+    model.addAttribute("motoDto",new MotoDto());
+    return "admin/moto/creat";
     }
 }
 
