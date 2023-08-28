@@ -5,21 +5,26 @@
 </head>
 <body>
 <header th:replace="~{fragments/header :: navigation}"></header>
-<h1>Details Pilotes</h1>
-<div class="container">
-<p>ID : <span th:text="${pilote.idPilote}"></span></p>
-<p>Nom : <span th:text="${pilote.nomPilote}"></span></p>
-<p>Prénom : <span th:text="${pilote.prenomPilote}"></span></p>
-<p>Numéro : <span th:text="${pilote.numeroPilote}"></span></p>
-<p>Date Naissance : <span th:text="${pilote.dateNaissance}"></span></p>
-<p>Adresse : <span th:text="${pilote.adressePilote}"></span></p>
-<p>Email : <span th:text="${pilote.emailPilote}"></span></p>
-<p>Telephone : <span th:text="${pilote.telPilote}"></span></p>
-</div>
-<!-- Ajouter d'autres détails du circuit ici si nécessaire -->
-<div class="container">
-    <a href="/admin/pilote/listePilote" class="mt-3 btn btn-secondary"><i class="fas fa-arrow-left"></i> Retour</a>
-</div>
+<main class="container">
+    <div class="row">
+        <div class="card mt-4 col-md-8" >
+            <div class="card-header"><h1>Details Pilotes</h1></div>
+            <div class="card-body">
+                <p class="card-text">ID : <span th:text="${pilote.idPilote}"></span></p>
+                <p class="card-text">Nom : <span th:text="${pilote.nomPilote}"></span></p>
+                <p class="card-text">Prénom : <span th:text="${pilote.prenomPilote}"></span></p>
+                <p class="card-text">Numéro : <span th:text="${pilote.numeroPilote}"></span></p>
+                <p class="card-text">Date Naissance : <span th:text="${pilote.dateNaissance}"></span></p>
+                <p class="card-text">Adresse : <span th:text="${pilote.adressePilote}"></span></p>
+                <p class="card-text">Email : <span th:text="${pilote.emailPilote}"></span></p>
+                <p class="card-text">Telephone : <span th:text="${pilote.telPilote}"></span></p>
+            </div>
+        </div>
+    </div>
+    <a href="/admin/pilote/listePilotes" class="mt-3 btn btn-secondary"><i class="fas fa-arrow-left"></i> Retour</a>
+
+</main>
+
 <footer th:replace="~{fragments/footer ::footer}"></footer>
 </body>
 

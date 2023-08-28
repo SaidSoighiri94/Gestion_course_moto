@@ -10,7 +10,7 @@
 <h1>Listes de tous les pilotes</h1>
 <a class="btn btn-lg btn-primary"  th:href="@{/admin/pilote/create}" role="button"><i class="fas fa-add"></i>Ajouter un pilote</a>
 
-<table class="table">
+<table class="table table-hover table-striped">
     <thead>
     <tr>
         <th>Id</th>
@@ -30,10 +30,7 @@
         <td>
             <a th:href="@{/admin/pilote/detail/__${pilote.idPilote}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i>Details</a>
             <a th:href="@{/admin/pilote/edit/__${pilote.idPilote}__}"  class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i>Modifier</a>
-            <a th:href="@{/admin/pilote/Supprimer/__${pilote.idPilote}__}" class="btn btn-danger btn-sm"><i class="fas fa-delete-left
-
-"></i>Supprimer</a>
-
+            <a th:href="@{/admin/pilote/Supprimer/__${pilote.idPilote}__}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Supprimer</a>
         </td>
 
     </tr>

@@ -5,15 +5,19 @@
 </head>
 <body>
 <header th:replace="~{fragments/header :: navigation}"></header>
-<h1>Details de la categorie</h1>
-<p>ID : <span th:text="${categorie.idCategorie}"></span></p>
-<p>Nom de la categorie  : <span th:text="${categorie.nomCategorie}"></span></p>
-<p>Description de la  categorie : <span th:text="${categorie.descriptionCategorie}"></span></p>
-
-<!-- Ajouter d'autres détails du circuit ici si nécessaire -->
-<div class="container">
-    <a href="/admin/categorie/listeCategories">Retour</a>
-</div>
+<main class="container">
+    <div class="row">
+        <div class="card col-md-8">
+            <div class="card-header"><h1>Details de la categorie</h1></div>
+            <div class="card-body">
+                <p class="card-text"><span>ID :</span> <span th:text="${categorie.idCategorie}"></span></p>
+                <p><i>Nom de la categorie :</i> <span th:text="${categorie.nomCategorie}"></span></p>
+                <p><i>Description de la  categorie :</i> <span th:text="${categorie.descriptionCategorie}"></span></p>
+            </div>
+            <div class="card-footer"><a class="btn btn-secondary btn-sm" href="/admin/categorie/listeCategories">Retour</a></div>
+        </div>
+    </div>
+</main>
 <footer th:replace="~{fragments/footer ::footer}"></footer>
 </body>
 
