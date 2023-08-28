@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
-
+<header th:replace="fragments/header :: navigation"></header>
+<main class="container">
+    <div class="row">
+        <div class="card mt-4">
+            <div class="card-header"><h3>Detail moto</h3></div>
+            <div class="card-body">
+                <p class="card-text">Id : <span th:text="${moto.idMoto}"></span></p>
+                <p class="card-text">Marque : <span th:text="${moto.marqueMoto}"></span></p>
+                <p class="card-text">Version : <span th:text="${moto.versionMoto}"></span></p>
+                <p class="card-text">Puissance : <span th:text="${moto.puissanceMoto}"></span></p>
+                <p class="card-text">Modele : <span th:text="${moto.modeleMoto}"></span></p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3 mt-4">
+        <a th:href="@{/admin/moto/listeMotos}" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i>Retour</a>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

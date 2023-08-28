@@ -65,6 +65,7 @@ public class MotoServiceImpl implements MotoService {
             motoDto.setIdMoto(moto.getIdMoto());
             motoDto.setMarqueMoto(moto.getMarqueMoto());
             motoDto.setVersionMoto(moto.getVersionMoto());
+            motoDto.setPuissanceMoto(moto.getPuissanceMoto());
             motoDto.setModeleMoto(moto.getModeleMoto());
         }
 

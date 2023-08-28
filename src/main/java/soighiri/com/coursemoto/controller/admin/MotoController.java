@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import soighiri.com.coursemoto.dto.MotoDto;
+import soighiri.com.coursemoto.model.Circuit;
 import soighiri.com.coursemoto.model.Moto;
 import soighiri.com.coursemoto.service.MotoService;
 
@@ -62,6 +63,18 @@ public class MotoController {
         motoService.saveMotoFromMotoDto(motoDto);
         return"redirect:/admin/moto/listeMotos";
     }
+    // Afficher les detail d'une moto
+    @GetMapping(value = "/moto/detail/{idMoto}")
+    public String getMoto(@PathVariable Long idMoto,Model model){
+        Moto moto = motoService.getMotoById(idMoto);
+        if(moto==null){
+            return"error/notFound";
+        }
+        model.addAttribute("moto",moto);
+        return"admin/moto/motoDetail";
+    }
+
+
     //Methode de Suppression d'un Moto
     @GetMapping(value ="/moto/delete/{idMoto}")
     public String deleteMoto(@PathVariable Long idMoto){

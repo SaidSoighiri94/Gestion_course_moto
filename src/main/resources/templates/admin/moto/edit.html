@@ -27,19 +27,19 @@
                         <input type="date" class="form-control" id="versionMoto" name="versionMoto" th:field="*{versionMoto}">
                     </div>
                     <div class="mb-4">
-                        <label for="puissanceMoto" class="form-label">Puissance</label>
-                        <input type="text" id="puissanceMoto" class="form-control" name="puissanceMoto" th:field="*{puissanceMoto}"/>
+                        <label for = "puissanceMoto" class = "form-label" >Puissance</label>
+                        <input type="text" id = "puissanceMoto" class = "form-control" name = "puissanceMoto" th:field = "*{puissanceMoto}"/>
                     </div>
                     <div class="mb-4">
                         <label for="modeleMoto" class="form-label">Modéle</label>
-                        <input type="text" id="modeleMoto" class="form-control" name="modeleMoto" th:field="*{modeleMoto}"/>
+                        <input type="text" id = "modeleMoto" class = "form-control" name = "modeleMoto" th:field = "*{modeleMoto}"/>
                     </div>
                     <div class="d-grid gap-2 mb-4">
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Enregister
                         </button>
                     </div>
                 </form>
-                <a class="btn btn-secondary btn-sm" th:href="@{/admin/moto/listeMotos}"><i class="fas fa-cancel"></i></a>
+                <a class="btn btn-secondary btn-sm" th:href="@{/admin/moto/listeMotos}"><i class="fas fa-cancel"></i>Annuler</a>
 
             </div>
         </div>

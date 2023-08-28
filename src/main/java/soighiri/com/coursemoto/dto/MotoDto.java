@@ -13,7 +13,8 @@ public class MotoDto {
     private Long idMoto;
     private String marqueMoto;
     private String versionMoto;
-    private String modeleMoto;
     private String puissanceMoto;
+    private String modeleMoto;
+
 
 }
