@@ -69,7 +69,7 @@ public class CategorieController {
             return "admin/categorie/edit";
         }
         categorieService.saveCategorieFromCategorieDto(categorieDto);
-        return "redirect:/admin/listeCategories";
+        return "redirect:/admin/categorie/listeCategories";
     }
 
     @GetMapping(value = "categorie/detail/{idCategorie}")

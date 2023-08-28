@@ -18,6 +18,7 @@
                 <p class="card-text">Adresse : <span th:text="${pilote.adressePilote}"></span></p>
                 <p class="card-text">Email : <span th:text="${pilote.emailPilote}"></span></p>
                 <p class="card-text">Telephone : <span th:text="${pilote.telPilote}"></span></p>
+                <p class="card-text">Categorie :<span th:each="categorie : ${pilote.categories}" th:text="${categorie.nomCategorie}"></span></p>
             </div>
         </div>
     </div>

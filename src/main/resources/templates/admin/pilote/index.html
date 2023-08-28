@@ -5,7 +5,7 @@
 </head>
 <body>
 <header th:replace="~{fragments/header :: navigation(activeTab='pilote')}"></header>
-<div class="container">
+<main class="container">
 
 <h1>Listes de tous les pilotes</h1>
 <a class="btn btn-lg btn-primary"  th:href="@{/admin/pilote/create}" role="button"><i class="fas fa-add"></i>Ajouter un pilote</a>
@@ -36,7 +36,7 @@
     </tr>
     </tbody>
 </table>
-</div>
+</main>
 <div th:replace="~{fragments/footer :: footer }"></div>
 </body>
 </html>

@@ -10,9 +10,25 @@
         <div class="card col-md-8">
             <div class="card-header"><h1>Details de la categorie</h1></div>
             <div class="card-body">
-                <p class="card-text"><span>ID :</span> <span th:text="${categorie.idCategorie}"></span></p>
-                <p><i>Nom de la categorie :</i> <span th:text="${categorie.nomCategorie}"></span></p>
-                <p><i>Description de la  categorie :</i> <span th:text="${categorie.descriptionCategorie}"></span></p>
+                <div class="mb-3">
+                    <label for="idCategorie" class="form-label">ID</label>
+                    <p class="card-text" id="idCategorie"> <span th:text="${categorie.idCategorie}"></span></p>
+
+                </div>
+                <div class="mb-3">
+                    <label for="nomCategorie" class="form-label">Nom categorie:</label>
+                    <p class="card-text" id="nomCategorie"><span th:text="${categorie.nomCategorie}"></span></p>
+
+                </div>
+                <div class="mb-3">
+                    <label for="descriptionCategorie" class="form-label"> Description</label>
+                    <p class="card-text" id="descriptionCategorie"><span th:text="${categorie.descriptionCategorie}"></span></p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="pilotes">Pilote:</label>
+                    <p class="card-text" id="pilotes"> <span th:each="pilote : ${categorie.pilotes}" th:text="${pilote.nomPilote}"></span></p>
+                </div>
             </div>
             <div class="card-footer"><a class="btn btn-secondary btn-sm" href="/admin/categorie/listeCategories">Retour</a></div>
         </div>

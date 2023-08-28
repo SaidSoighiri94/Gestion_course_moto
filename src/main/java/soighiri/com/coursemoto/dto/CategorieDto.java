@@ -5,6 +5,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import soighiri.com.coursemoto.model.Pilote;
+
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -18,4 +21,5 @@ private String nomCategorie;
 @Size(min =1, max=250, message = "Logueur du texte incorrecte")
 
 private String descriptionCategorie;
+private Set<Pilote> pilotes;
 }

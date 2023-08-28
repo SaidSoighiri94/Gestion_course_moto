@@ -15,12 +15,19 @@
                 <div class="col-md-4">
                     <div class="mb-3">
                         <label for="nomPilote" class="form-label">Nom :</label>
+
+                        <div th:if="${#fields.hasErrors('nomPilote')}" class="alert alert-danger">
+                            <div th:each="err : ${#fields.errors('nomPilote')}" th:text="${err}"></div>
+                        </div>
                         <input type="text" class="form-control" id="nomPilote" name="nomPilote" th:field="*{nomPilote}" placeholder="Nom du pilote" aria-describedby="NomPilote">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="mb-3">
                         <label for="prenomPilote" class="form-label">Prénom :</label>
+                        <div th:if="${#fields.hasErrors('prenomPilote')}" class="alert alert-danger">
+                            <div th:each="err : ${#fields.errors('prenomPilote')}" th:text="${err}"></div>
+                        </div>
                         <input type="text" class="form-control" id="prenomPilote" name="prenomPilote" th:field="*{prenomPilote}" placeholder="Prénom pilote" aria-describedby="PrenomPilote">
                     </div>
                 </div>
@@ -29,12 +36,20 @@
                 <div class="col-md-4">
                     <div class="mb-3">
                         <label for="numeroPilote" class="form-label">Numéro :</label>
+
+                        <div th:if="${#fields.hasErrors('numeroPilote')}" class="alert alert-danger">
+                            <div th:each="err : ${#fields.errors('numeroPilote')}" th:text="${err}"></div>
+                        </div>
                         <input type="number" class="form-control" id="numeroPilote" name="numeroPilote" th:field="*{numeroPilote}" placeholder="Numéro pilote" aria-describedby="NumeroPilote">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="mb-3">
                         <label for="dateNaissance" class="form-label">Date de naissance :</label>
+
+                        <div th:if="${#fields.hasErrors('dateNaissance')}" class="alert alert-danger">
+                            <div th:each="err : ${#fields.errors('dateNaissance')}" th:text="${err}"></div>
+                        </div>
                         <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" th:field="*{dateNaissance}" placeholder="Date de naissance" aria-describedby="DateNaissance">
                     </div>
                 </div>

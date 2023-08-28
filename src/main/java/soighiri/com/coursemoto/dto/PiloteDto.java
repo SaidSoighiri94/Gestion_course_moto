@@ -4,8 +4,10 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import soighiri.com.coursemoto.model.Categorie;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -14,7 +16,7 @@ public class PiloteDto {
     private Long idPilote;
 
     @NotBlank(message = "Nom du pilote requis")
-    @Size(min = 10, max = 60, message = "Longueure incorrecte")
+    @Size(min = 2, max = 60, message = "Longueure incorrecte")
     private String nomPilote;
     private String PrenomPilote;
 
@@ -30,6 +32,7 @@ public class PiloteDto {
     private String emailPilote;
     private String adressePilote;
     private String telPilote;
+    private Set<Categorie> categories;
 
 
 }

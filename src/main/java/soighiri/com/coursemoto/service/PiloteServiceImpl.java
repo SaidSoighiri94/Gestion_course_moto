@@ -57,6 +57,11 @@ public class PiloteServiceImpl implements PiloteService {
             piloteDto.setNomPilote(pilote.getNomPilote());
             piloteDto.setPrenomPilote(pilote.getPrenomPilote());
             piloteDto.setNumeroPilote(pilote.getNumeroPilote());
+            piloteDto.setDateNaissance(pilote.getDateNaissance());
+            piloteDto.setAdressePilote(pilote.getAdressePilote());
+            piloteDto.setEmailPilote(pilote.getEmailPilote());
+            piloteDto.setTelPilote(pilote.getTelPilote());
+            piloteDto.setCategories(pilote.getCategories());
         }
         return piloteDto;
     }
@@ -67,6 +72,11 @@ public class PiloteServiceImpl implements PiloteService {
         pilote.setNomPilote(piloteDto.getNomPilote());
         pilote.setPrenomPilote(piloteDto.getPrenomPilote());
         pilote.setNumeroPilote(piloteDto.getNumeroPilote());
+        pilote.setDateNaissance(piloteDto.getDateNaissance());
+        pilote.setAdressePilote(piloteDto.getAdressePilote());
+        pilote.setEmailPilote(piloteDto.getEmailPilote());
+        pilote.setTelPilote(piloteDto.getTelPilote());
+        pilote.setCategories(piloteDto.getCategories());
         return pilote;
     }
 

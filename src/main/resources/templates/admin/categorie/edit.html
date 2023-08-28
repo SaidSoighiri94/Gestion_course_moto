@@ -1,27 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title> Gestion de course moto</title>
-    <!-- Insertion du webjars bootstrap-->
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}" />
+    <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
-<h2>Formulaire de modification d'une categorie </h2>
-<form method ="post" th:object="${categorieDto}" th:action="@{/admin/categorie/edit}">
-    <input type="hidden" th:field="*{idCategorie}" readonly/>
-    <label for="nomCategorie">Nom de la categorie:</label>
-    <div th:if="${#fields.hasErrors('nomCategorie')}"
-         th:errors="*{nomCategorie}" class="alert alert-danger"></div>
-    <input type="text" name="nomCategorie" id="nomCategorie" th:field="*{nomCategorie}" required />
+<header th:replace="fragments/header :: navigation"></header>
+<main class="container">
+    <div class="row">
+        <div class="card col-md-8 mt-4">
+            <div class="card-header">
+                <h2>Modifier une categorie </h2>
+            </div>
+            <div class="card-body">
+                <form method ="post" th:object="${categorieDto}" th:action="@{/admin/categorie/edit}">
+                    <div class="mb-3">
+                        <label for="idCategorie" class="form-label"></label>
+                        <input type="text" id="idCategorie" class="form-control" th:field="*{idCategorie}" readonly/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nomCategorie" class="form-label">Nom de la categorie:</label>
+                        <div th:if="${#fields.hasErrors('nomCategorie')}"
+                             th:errors="*{nomCategorie}" class="alert alert-danger"></div>
+                        <input type="text" name="nomCategorie" class="form-control" id="nomCategorie" th:field="*{nomCategorie}" required />
 
-    <label for="descriptionCategorie">Description:</label>
-    <div th:if="${#fields.hasErrors('descriptionCategorie')}"
-         th:errors="*{descriptionCategorie}" class="alert alert-danger"></div>
-    <input type="text" name="descriptionCategorie" id="descriptionCategorie" th:field="*{descriptionCategorie}" required />
+                    </div>
+                      <div class="mb-3">
+                        <label for="descriptionCategorie" class="form-label">Description:</label>
+                        <div th:if="${#fields.hasErrors('descriptionCategorie')}"
+                             th:errors="*{descriptionCategorie}" class="alert alert-danger"></div>
+                          <textarea name="descriptionCategorie" class="form-control" rows="4" id="descriptionCategorie" th:field="*{descriptionCategorie}" required></textarea>
+                      </div>
+                    <div class="mb-3">
+                        <label for="pilotes" class="form-label">Liste pilotes :</label>
+                        <select class="form-select" multiple aria-label="Multiple select" id="pilotes" name="pilotes">
+                            <option th:each="pilote : ${pilotes}" th:value="${pilote.idPilote}"
+                                    th:text="${pilote.nomPilote}"></option>
+                        </select>
 
-    <input type="submit" value="Enregistrer">
-</form>
- <a href="/admin/listeCategories">Annuler</a>
+                    </div>
+                    <hr>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i>Enregistrer</button>
+
+                    </div>
+                </form>
+                <a href="/admin/listeCategories" class="btn btn-secondary btn-sm mt-3"><i class="fas fa-arrow-left"></i>Annuler</a>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

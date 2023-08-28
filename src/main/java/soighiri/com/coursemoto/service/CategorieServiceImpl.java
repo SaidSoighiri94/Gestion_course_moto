@@ -60,6 +60,8 @@ public class CategorieServiceImpl implements CategorieService{
             categorieDto.setIdCategorie(categorie.getIdCategorie());
             categorieDto.setNomCategorie(categorie.getNomCategorie());
             categorieDto.setDescriptionCategorie(categorie.getDescriptionCategorie());
+            categorieDto.setPilotes(categorie.getPilotes());
+
         }
         return categorieDto;
     }
@@ -70,6 +72,7 @@ public class CategorieServiceImpl implements CategorieService{
             categorie.setIdCategorie(categorieDto.getIdCategorie());
             categorie.setNomCategorie(categorieDto.getNomCategorie());
             categorie.setDescriptionCategorie(categorieDto.getDescriptionCategorie());
+            categorie.setPilotes(categorieDto.getPilotes());
         }
         return categorie;
     }
