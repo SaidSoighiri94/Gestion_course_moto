@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="~{fragments/header :: header-css}" />
+    <div th:replace="~{fragments/header :: header-css}"/>
 </head>
 <body>
-    <h2>Formulaire de modification de circuit </h2>
-    <form method ="post" th:object="${circuitDto}" th:action="@{/admin/circuit/edit}">
-        <input type="hidden" th:field="*{idCircuit}" readonly/>
-        <label for="nomCircuit">Nom du circuit:</label>
-        <div th:if="${#fields.hasErrors('nomCircuit')}"
-        th:errors="*{nomCircuit}" class="alert alert-danger"></div>
-        <input type="text" name="nomCicruit" id="nomCircuit" th:field="*{nomCircuit}" />
+<header th:replace="fragments/header :: navigation"></header>
+<main class="container">
+    <div class="row">
+        <div class="card mt-4 ">
+            <div class="card-header"><h2>Formulaire de modification de circuit </h2></div>
+            <div class="card-body">
+                <form method="post" th:object="${circuitDto}" th:action="@{/admin/circuit/edit}">
+                    <div class="mb-4">
+                        <label for="idCircuit" class="form-label">ID circuit</label>
+                        <input type="text" th:field="*{idCircuit}" name="idCircuit" class="form-control" id="idCircuit" readonly/>
+                    </div>
+                     <div class="mb-4">
+                        <label for="nomCircuit" class="form-label">Nom circuit:</label>
+                        <div th:if="${#fields.hasErrors('nomCircuit')}"
+                             th:errors="*{nomCircuit}" class="alert alert-danger"></div>
+                        <input type="text"class="form-control" name="nomCicruit" id="nomCircuit" th:field="*{nomCircuit}"/>
+                    </div>
+                    <div class="mb-4">
+                        <label for="adresseCircuit" class="form-label">Adresse du circuit:</label>
+                        <input type="text" class="form-control" name="adresseCircuit" id="adresseCircuit" th:field="*{adresseCircuit}"
+                               required/>
+                    </div>
+                    <div class="mb-4">
+                        <label for="longueur" class="form-label">Longueur du ciruit en KM</label>
+                        <input type="number" class="form-control" name="longueur" id="longueur" th:field="*{longueur}" required/>
 
-        <label for="adresseCircuit">Adresse du circuit:</label>
-        <input type="text" name="adresseCircuit" id="adresseCircuit" th:field="*{adresseCircuit}" required/>
+                    </div>
+                    <div class="d-grid gap-2 mb-4">
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Enregister
+                        </button>
+                    </div>
+                </form>
+                <a  class="btn btn-secondary btn-sm" href="/admin/listeCircuits"><i class="fas fa-cancel"></i> Annuler</a>
+            </div>
+        </div>
+    </div>
 
-        <label for="longueur">Longueur du ciruit en KM</label>
-        <input type="number" name="longueur" id="longueur"  th:field="*{longueur}" required/>
-
-        <input type="submit" value="Enregistrer">
-    </form>
-    <button> <a href="/admin/listeCircuits">Annuler</a></button>
+</main>
+<footer th:replace="fragments/footer ::footer"></footer>
 </body>
 </html>

@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import soighiri.com.coursemoto.dto.MotoDto;
 import soighiri.com.coursemoto.model.Moto;
 import soighiri.com.coursemoto.service.MotoService;
@@ -44,5 +41,33 @@ public class MotoController {
         motoService.saveMotoFromMotoDto(motoDto);
         return "redirect:/admin/moto/listeMotos";
     }
+
+    // Modification d'une moto
+    @GetMapping(value = "/moto/edit/{idMoto}")
+    public String editMoto(@PathVariable Long idMoto,Model model){
+        Moto moto = motoService.getMotoById(idMoto);
+        if(moto == null){
+            return "error/notFound";
+        }
+        MotoDto motoDto = motoService.convertEntityToDto(moto);
+        model.addAttribute("motoDto",motoDto);
+        return "admin/moto/edit";
+    }
+    //Pour sauvegarder les modifications
+    @PostMapping(value = "/moto/edit")
+    public String  updateMoto(@ModelAttribute @Valid MotoDto motoDto,BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "admin/moto/edit";
+        }
+        motoService.saveMotoFromMotoDto(motoDto);
+        return"redirect:/admin/moto/listeMotos";
+    }
+    //Methode de Suppression d'un Moto
+    @GetMapping(value ="/moto/delete/{idMoto}")
+    public String deleteMoto(@PathVariable Long idMoto){
+        motoService.deletemotoById(idMoto);
+        return"redirect:/admin/moto/listeMotos";
+    }
+
 }
 

@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <div th:replace="fragments/header :: header-css"/>
+    <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <header th:replace="fragments/header ::navigation">
 </header>
-<main>
-  <div class="container">
-    <a class="btn btn-lg btn-primary mb-4 mt-4" th:href="@{/admin/moto/create}" role="button"><i class="fas fa-add"></i>Ajouter une moto</a>
+<main class="container">
     <h1> Liste Des Motos</h1>
 
-    <table class="table
-    table-hover">
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Marque</th>
-        <th>Version</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="moto: ${lesMotos}">
-        <td th:text="${moto.idMoto}"></td>
-        <td th:text="${moto.marqueMoto}"></td>
-        <td th:text="${moto.versionMoto}"></td>
+    <a class="btn btn-lg btn-primary mb-4 mt-4" th:href="@{/admin/moto/create}" role="button"><i class="fas fa-add"></i>Ajouter une moto</a>
 
-        <!--Ajout des boutons avec icônes-->
-        <td><a th:href="@{admin/moto/edit/__${moto.idMoto}__}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Modifier</a></td>
-        <td><a th:href="@{admin/moto/detail/__${moto.idMoto}__}" class="btn btn-sm btn-secondary"><i class="fas fa-circle-info "></i>Detail</a></td>
-        <td><a th:href="@{admin/moto/delete/__${moto.idMoto}__}" class=" btn btn-sm btn-danger"><i class="fas fa-delete"></i>Supprimer</a> </td>
-      </tr>
-
-      </tbody>
-    </table>
-
-  </div>
+    <div th:switch="${lesMotos}">
+        <h2 th:case="null">Aucune moto!</h2>
+        <div th:case="*">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Marque</th>
+                    <th>Version</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="moto: ${lesMotos}">
+                    <td th:text="${moto.idMoto}"></td>
+                    <td th:text="${moto.marqueMoto}"></td>
+                    <td th:text="${moto.versionMoto}"></td>
+                    <td><a th:href="@{/admin/moto/edit/__${moto.idMoto}__}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i>Modifier</a></td>
+                    <td><a th:href="@{/admin/moto/detail/__${moto.idMoto}__}" class="btn btn-sm btn-secondary"><i class="fas fa-circle-info"></i>Detail</a></td>
+                    <td><a th:href="@{/admin/moto/delete/__${moto.idMoto}__}" class="btn btn-sm btn-danger"><i class="fas fa-delete"></i>Supprimer</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </main>
 <footer th:replace="fragments/footer :: footer"></footer>
 </body>

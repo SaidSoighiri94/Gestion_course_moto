@@ -19,7 +19,7 @@ public interface MotoService {
      Moto updateMotoFromMotoDto(MotoDto motoDto);
 
      //supprimer Un fichier a l iade de son id
-    void DeletemotoById(Long idMoto);
+    void deletemotoById(Long idMoto);
 
     // Convertir l'entity en DTO
 

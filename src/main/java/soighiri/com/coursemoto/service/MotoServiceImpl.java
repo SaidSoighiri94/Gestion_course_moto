@@ -49,7 +49,7 @@ public class MotoServiceImpl implements MotoService {
     }
 
     @Override
-    public void DeletemotoById(Long idMoto) {
+    public void deletemotoById(Long idMoto) {
 
 
         // Supprimer la moto par son ID
