@@ -3,25 +3,21 @@ package soighiri.com.coursemoto.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import soighiri.com.coursemoto.dto.EcurieDto;
-import soighiri.com.coursemoto.dto.PiloteDto;
 import soighiri.com.coursemoto.model.Ecurie;
-import soighiri.com.coursemoto.model.Pilote;
 import soighiri.com.coursemoto.repository.EcurieRepository;
-import soighiri.com.coursemoto.repository.PiloteRepository;
 
 import java.util.List;
 
 @Service
 public class EcurieServiceImpl implements EcurieService {
     private  EcurieRepository ecurieRepository;
-    private final PiloteRepository piloteRepository;
+
 
     @Autowired
 
-    public EcurieServiceImpl(EcurieRepository ecurieRepository,
-                             PiloteRepository piloteRepository) {
+    public EcurieServiceImpl(EcurieRepository ecurieRepository) {
         this.ecurieRepository = ecurieRepository;
-        this.piloteRepository = piloteRepository;
+
     }
 
     @Override
@@ -43,7 +39,7 @@ public class EcurieServiceImpl implements EcurieService {
     }
     @Override
     public void deleteEcurieByid(Long idecurie) {
-        piloteRepository.deleteById(idecurie);
+        ecurieRepository.deleteById(idecurie);
 
     }
 
@@ -70,9 +66,16 @@ public class EcurieServiceImpl implements EcurieService {
     }
 
     private Ecurie convertDtoToEntity(EcurieDto ecurieDto) {
-        Ecurie Ecurie = new Ecurie();
+        Ecurie ecurie = new Ecurie();
 
+        ecurie.setIdEcurie(ecurieDto.getIdEcurie());
         ecurie.setNomEcurie(ecurieDto.getNomEcurie());
+        ecurie.setResponsable(ecurieDto.getResponsable());
+        ecurie.setDateCreation(ecurieDto.getDateCreation());
+        ecurie.setAdresseEcurie(ecurieDto.getAdresseEcurie());
+        ecurie.setEmailEcurie(ecurieDto.getEmailEcurie());
+        ecurie.setTelEcurie(ecurieDto.getTelEcurie());
+        ecurie.setDescription(ecurieDto.getDescription());
         return ecurie;
     }
 
