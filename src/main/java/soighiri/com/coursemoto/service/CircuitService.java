@@ -22,7 +22,7 @@ public interface CircuitService {
     // Récupère la liste de tous les circuits
     List<Circuit> getAllCircuits();
 
-    // Convertit un objet Circuit en CircuitDto
+    // Convertir un objet Circuit en CircuitDto
     CircuitDto convertEntityToDto(Circuit circuit);
 
 }
