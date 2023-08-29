@@ -32,14 +32,6 @@ public class Ecurie {
         this.description = description;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Long getIdEcurie() {
         return idEcurie;
     }
@@ -95,6 +87,14 @@ public class Ecurie {
     public void setAdresseEcurie(String adresseEcurie) {
         this.adresseEcurie = adresseEcurie;
     }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     @Override
     public String toString() {

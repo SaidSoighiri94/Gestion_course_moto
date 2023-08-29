@@ -21,7 +21,7 @@ public class EcurieDto {
 
     @NotBlank(message="Une description est requise")
     @Size(min = 4, max=250 ,message="La description doit etre de 4 a 255 caracteres")
-    private String decription;
+    private String description;
 
     @NotBlank(message = "nom du responsable requis")
     @Size(min =2, max = 150, message = "Longueure du nom incorrecte ")

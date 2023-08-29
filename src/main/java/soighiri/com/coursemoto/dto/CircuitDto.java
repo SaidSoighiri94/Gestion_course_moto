@@ -18,6 +18,4 @@ public class CircuitDto {
     private String adresseCircuit;
     private Double longueur;
 
-
-
 }

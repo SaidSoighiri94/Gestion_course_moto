@@ -23,6 +23,6 @@ public interface EcurieService {
     List<Ecurie> getAllCircuits();
 
     //Methode de conversion d'un Entity en Dto
-    Ecurie convertEntityToDto( Ecurie ecurie);
+    Ecurie convertEntityToDto(Ecurie ecurie);
 
 }
