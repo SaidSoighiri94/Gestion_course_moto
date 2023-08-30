@@ -20,9 +20,9 @@ public interface EcurieService {
     void deleteEcurieByid(Long idecurie);
 
     // Methode pour afficher toutes les ecurie;
-    List<Ecurie> getAllCircuits();
+    List<Ecurie> getAllEcuries();
 
     //Methode de conversion d'un Entity en Dto
-    Ecurie convertEntityToDto(Ecurie ecurie);
+    EcurieDto convertEntityToDto(Ecurie ecurie);
 
 }

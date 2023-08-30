@@ -55,7 +55,7 @@ public class CircuitController {
     }
 
         //Methode de modification d'un circuit
-        @GetMapping(value = "circuit/edit/{idCircuit}")
+        @GetMapping(value = "/circuit/edit/{idCircuit}")
         public String editCircuit (@PathVariable Long idCircuit, Model model)
         {
             Circuit circuit = circuitService.getCircuit(idCircuit);

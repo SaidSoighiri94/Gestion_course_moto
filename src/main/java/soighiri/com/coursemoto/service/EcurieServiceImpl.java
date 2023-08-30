@@ -44,8 +44,7 @@ public class EcurieServiceImpl implements EcurieService {
     }
 
     @Override
-    public List<Ecurie> getAllCircuits() {
-
+    public List<Ecurie>  getAllEcuries() {
         return ecurieRepository.findAll();
     }
 
