@@ -34,5 +34,4 @@ public class PiloteDto {
     private String telPilote;
     private Set<Categorie> categories;
 
-
 }
