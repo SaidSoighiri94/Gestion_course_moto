@@ -39,7 +39,7 @@ public class WebSecurityConfig {
 
                 // Configuration pour les autorisations d'accès aux différentes URL
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/home","/visiteur", "/inscirption", "/css/**", "/img/**", "/favicon.co","/webjars/**").permitAll()
+                        .requestMatchers("/home","/visiteur", "/inscription", "/css/**", "/img/**", "/favicon.co","/webjars/**").permitAll()
                         .requestMatchers(HttpMethod.POST,("/insciption")).permitAll()
 
                         //Interdir la page si l'utilisateur n'est pas admin
