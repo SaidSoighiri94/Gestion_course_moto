@@ -17,6 +17,16 @@ public class Utilisateur {
     @Basic(optional = false)
     private String mdpUtilisateur;
 
+    //Note il est possible d'avoir une association Many to Many entre Utilisateur et Role
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+    public Role getRole() {
+        return role;
+    }
+    public void setRole(Role role) {
+        this.role = role;
+    }
     public Utilisateur() {
     }
 
