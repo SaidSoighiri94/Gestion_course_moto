@@ -1,4 +1,7 @@
 package soighiri.com.coursemoto.repository;
 
-public interface RoleRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import soighiri.com.coursemoto.model.Role;
+
+public interface RoleRepository extends JpaRepository <Role,Long> {
 }
