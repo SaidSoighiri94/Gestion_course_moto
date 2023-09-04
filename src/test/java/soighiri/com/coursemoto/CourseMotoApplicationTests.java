@@ -11,7 +11,7 @@ import java.util.List;
 @SpringBootTest
 class CourseMotoApplicationTests {
 
-    /*@Autowired
+    /* @Autowired
     private CircuitRepository circuitRepository;
     // puis on injecte la @Test
 
