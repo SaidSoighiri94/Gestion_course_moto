@@ -62,5 +62,4 @@ public class HomeController {
         return "home"; // le nom du fichier "home.html" sans l'extension html
     }
 
-
 }
