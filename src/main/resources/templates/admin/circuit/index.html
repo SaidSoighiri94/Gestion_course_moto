@@ -12,8 +12,19 @@
 <div class="container mt-4">
 
     <h1>Liste des circuits</h1>
-    <a th:href="@{/admin/circuit/create}" class="btn btn-lg btn-primary mb-3 mt-4" role="button"><i class="fas fa-add"></i>Ajouter un circuit</a>
-    <table class="table table-hover table-striped">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a th:href="@{/admin/circuit/create}" class="btn btn-lg btn-primary" role="button"><i class="fas fa-add"></i> Ajouter un circuit</a>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" id="searchCircuit" class="form-control" placeholder="Rechercher un circuit">
+                <label for="searchCircuit" class="form-label"></label>
+                <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i>Rechercher</button>
+            </div>
+        </div>
+    </div>
+       <table class="table table-hover table-striped">
         <thead>
         <tr>
             <th>ID</th>

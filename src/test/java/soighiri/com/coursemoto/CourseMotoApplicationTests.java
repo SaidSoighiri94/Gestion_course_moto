@@ -1,5 +1,6 @@
 package soighiri.com.coursemoto;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +12,7 @@ import java.util.List;
 @SpringBootTest
 class CourseMotoApplicationTests {
 
-    /* @Autowired
+    @Autowired
     private CircuitRepository circuitRepository;
     // puis on injecte la @Test
 
@@ -19,7 +20,8 @@ class CourseMotoApplicationTests {
     @Test
     public void testCreateCircuit(){
         Circuit circuit = new Circuit("Circuit de CSFX ","Ambatomena, Fianarantsoa",5.400);
-        circuitRepository.save(circuit);
+        Circuit savedCircuit=circuitRepository.save(circuit);
+        Assertions.assertEquals("Circuit de CSFX ",savedCircuit.getNomCircuit());
     }
     // Test de la methode findCircuitById(idCircuit)
     @Test
@@ -56,9 +58,9 @@ class CourseMotoApplicationTests {
             System.out.println(circuit);
         }
     }
-    /*
+
     void contextLoads() {
     }
 
-*/
+
 }

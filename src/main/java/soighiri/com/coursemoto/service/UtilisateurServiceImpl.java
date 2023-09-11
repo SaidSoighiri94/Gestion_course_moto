@@ -25,7 +25,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public Utilisateur inscrireUtilisateur(UtilisateurDto utilisateurDto) {
         Utilisateur utilisateur = this.convertDtoToEntity(utilisateurDto);
-        utilisateur.setRole(roleRepository.findById(2L).get());
+        utilisateur.setRole(roleRepository.findById(1L).get());
         utilisateur.setMdpUtilisateur(passwordEncoder.encode(utilisateur.getMdpUtilisateur()));
         return utilisateurRepository.save(utilisateur);
     }

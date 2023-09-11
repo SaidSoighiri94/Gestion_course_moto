@@ -29,7 +29,7 @@ public class WebSecurityConfig {
 
                 // Configuration pour la page de connexion
                 .formLogin(form -> form
-                        .loginPage("/login") // Page de connexion
+                        .loginPage("/login").defaultSuccessUrl("/home") // Page de connexion
                         .permitAll() // Accessible sans authentification
                 )
                 .logout(logout -> logout

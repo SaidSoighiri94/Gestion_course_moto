@@ -13,11 +13,12 @@
                 <h1>Login</h1>
             </div>
             <div class="card-body">
-                <form>
+                <form th:action="@{/login}" method="post">
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fas fa-envelope text-primary"></i></span>
                         <div class="form-floating">
-                            <input type="text" class="form-control " id="email" placeholder="exemple@email.com">
+                            <input type="text" class="form-control " name="username" id="email"
+                                   placeholder="exemple@email.com">
                             <label for="email">Email</label>
                         </div>
 
@@ -25,14 +26,15 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         <div class="form-floating">
-                            <input type="password" id="password" name="password" placeholder="Mot de passe" class="form-control">
+                            <input type="password" id="password" name="password" placeholder="Mot de passe"
+                                   class="form-control">
                             <label for="password" class="form-label">Mot de passe</label>
                         </div>
-                        </div>
+                    </div>
                     <div class="d-grid gap-2 mb-4">
                         <button class="btn btn-primary col-4"><i class="fas fa-sign-in"></i>Se connecter</button>
                     </div>
-                     </form>
+                </form>
             </div>
         </div>
 

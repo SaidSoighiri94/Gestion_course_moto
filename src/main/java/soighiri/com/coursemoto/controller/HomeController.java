@@ -35,7 +35,7 @@ public class HomeController {
      */
     @GetMapping(value = "/inscription")
     public String inscription(Model model) {
-        model.addAttribute("utilisateur", new Utilisateur());
+        model.addAttribute("utilisateurDto", new UtilisateurDto());
         return "visiteur/inscription";
     }
 
@@ -47,7 +47,7 @@ public class HomeController {
         }
         utilisateurService.inscrireUtilisateur(utilisateurDto);
         redirectAttributes.addFlashAttribute("succesMessage", "Inscription reussie");
-        return "redirect:/login";
+        return "redirect:/home";
     }
 
     /**
@@ -61,5 +61,15 @@ public class HomeController {
     public String accueil() {
         return "home"; // le nom du fichier "home.html" sans l'extension html
     }
+    /**
+     * EXEMPLE DE PAGE CLIENT/ADMIN
+     * Dirige vers la page le dashboard du client ou admin (visible seulement si l'utilisateur est un client ou admin)
+     */
+
+    @GetMapping("/pilote/listePilotes")
+    public String clientDash(){
+        return "admin/pilotes/index";
+    }
+
 
 }

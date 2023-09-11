@@ -1,12 +1,63 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymleaf-extrass-springsecurity5">
 <head>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <header th:replace="fragments/header :: navigation"></header>
 <main class="container">
-    <h1>Inscription</h1>
+    <div class="row">
+        <div class="card col-8 mt-4 mx-auto">
+            <div class="card-header">
+                <h1>Inscription</h1>
+            </div>
+            <div class="card-body">
+                <!--Ajoutde message de succé de l inscription-->
+                <div th:if="${succesMessage}" class="alert alert-success">
+                    <i class="fas fa-check-circle"></i><span th:text="${succesMessage}"></span>
+                </div>
+                <!-- Ajout d'un message d'erreur si l'inscription echoue -->
+                <div th:if="${errorMessage}" class="alert alert-danger">
+                    <i class="fas fa-che"></i>
+                </div>
+
+                <form th:action="@{/inscription}" method="post" th:object="${utilisateurDto}">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fas fa-envelope text-primary"></i></span>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" th:field="*{email}" id="email"placeholder="exemple@email.com" aria-describedby="emailHelp">
+                            <label for="email" class="form-label">Email</label>
+                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                               class="validation-message"></p>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <div class="form-floating">
+                            <input type="password" id="mdp1" th:field="*{mdp1NonEncoder}" name="mdp1NonEncoder"
+                                   class="form-control" placeholder="Entrez votre mot de passe">
+                            <label for="mdp1" class="form-label">Entrez votre mot de passe</label>
+                            <p th:if="${#fields.hasErrors('mdp1NonEncoder')}" th:errors="*{mdp1NonEncoder}"
+                               class="validation-message"></p>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <div class="form-floating">
+                            <input type ="password" name="mdp2NonEncoder" th:field="*{mdp2NonEncoder}" class="form-control" id="mdp2NonEncoder" placeholder="Confirmez votre mot de passe">
+                            <label for="mdp2NonEncoder" class="form-label">Confirmez votre mot de passe</label>
+                            <p th:if="${#fields.hasErrors('mdp2NonEncoder')}" th:errors="*{mdp2NonEncoder}" class="validation-message"></p>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 mb-4">
+                        <button class="btn btn-primary col-4"><i class="fas fa-user-plus"></i>S'inscrire</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
 </main>
 <footer th:replace="fragments/footer :: footer"></footer>
 </body>
