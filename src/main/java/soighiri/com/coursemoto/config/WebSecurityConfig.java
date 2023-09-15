@@ -30,6 +30,7 @@ public class WebSecurityConfig {
                 // Configuration pour la page de connexion
                 .formLogin(form -> form
                         .loginPage("/login").defaultSuccessUrl("/home") // Page de connexion
+                        .failureUrl("/login-error") // Affcihe les messages d'erreur
                         .permitAll() // Accessible sans authentification
                 )
                 .logout(logout -> logout

@@ -14,6 +14,10 @@
             </div>
             <div class="card-body">
                 <form th:action="@{/login}" method="post">
+                    <div>
+
+                        <p class="alert alert-danger" th:if="${error}" th:text="${error}"><i class="fas fa-exclamation-circle"></i></p>
+                    .----------</div>
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fas fa-envelope text-primary"></i></span>
                         <div class="form-floating">

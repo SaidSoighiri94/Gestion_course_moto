@@ -30,6 +30,15 @@ public class HomeController {
         return "visiteur/login";
     }
 
+    // Ajout d'un nouveau mapping dans le cas ou il ya dans un erreur lors de la connexion
+
+    @GetMapping(value = "/login-error")
+    public String loginError(Model model ){
+        model.addAttribute("error", "Erreur: Identfiant ou mot de passe incorrect");
+        return "visiteur/login";
+    }
+
+
     /**
      * Affiche le formulaire d'inscription
      */
@@ -40,12 +49,13 @@ public class HomeController {
     }
 
     @PostMapping(value = "/inscription")
-    public String traitementInsciption(@Valid @ModelAttribute UtilisateurDto utilisateurDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String traitementInsciption(Model model,@Valid @ModelAttribute UtilisateurDto utilisateurDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Le formulaire comporte une erreur");
+            model.addAttribute("errorMessage", "Le formulaire comporte une erreur");
             return "visiteur/inscription";
         }
         utilisateurService.inscrireUtilisateur(utilisateurDto);
+        // on ajoute le model attribute au lieu de redirecteAttribute, et on l ajoute aussi
         redirectAttributes.addFlashAttribute("succesMessage", "Inscription reussie");
         return "redirect:/home";
     }
@@ -70,6 +80,8 @@ public class HomeController {
     public String clientDash(){
         return "admin/pilotes/index";
     }
+
+
 
 
 }
