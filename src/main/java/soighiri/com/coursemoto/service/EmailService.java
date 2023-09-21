@@ -1,45 +1,26 @@
 package soighiri.com.coursemoto.service;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
+import soighiri.com.coursemoto.dto.EmailDto;
 import soighiri.com.coursemoto.model.Email;
-import soighiri.com.coursemoto.repository.EmailRepository;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
-@Service
-public class EmailService {
-    @Autowired
-    private JavaMailSender emailSender;
+public interface EmailService {
 
-    // on injecte notre EmailRepositoy pour archive les mail envoyé
-    @Autowired
-    private EmailRepository emailRepository;
+     // Sauvegarde un email en utilisant un EmailDto
+     Email saveEmailFromEmailDto(EmailDto emailDto);
 
-    public void sendEmailAndArchive(String to,String subject,String text) {
-        // pour envoyer l'email
-        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setTo(to);
-        simpleMailMessage.setSubject(subject);
-        simpleMailMessage.setText(text);
-        emailSender.send(simpleMailMessage);
+     // Met à jour un email en utilisant un EmailDto
+     Email updateEmailFromEmailDto(EmailDto emailDto);
 
-        /**
-         * Pour archiver les emails
-         */
-        Email email = new Email();
-        email.setRecipient(to);
-        email.setSubject(subject);
-        email.setSentDate(LocalDateTime.now()); // Date au moment de l'envoi
-        email.setContent(text);
-        emailRepository.save(email);
-     }
+     // Récupère un circuit en fonction de son ID
+     Email getEmail(Long idEmail);
+
+     // Supprime un circuit de la base de données en fonction de son ID
+     void  deleteEmailById(Long idEmail);
+     void sendEmailAndArchive(EmailDto emailDto);
+
      //Methode pour recuperer la listes des email archivés
-    public List<Email> emailList(){
-        return emailRepository.findAll();
-    }
+     List<Email> emailList();
 
+     //Convertir un objet Circuit en EmailDto
+     EmailDto convertEntityToDto(Email email);
 }
