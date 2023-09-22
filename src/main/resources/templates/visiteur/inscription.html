@@ -13,8 +13,8 @@
             </div>
             <div class="card-body">
                 <!--Ajoutde message de succé de l inscription-->
-                <div th:if="${succesMessage}" class="alert alert-success">
-                    <i class="fas fa-check-circle"></i><span th:text="${succesMessage}"></span>
+                <div th:if="${successMessage}" class="alert alert-success">
+                    <i class="fas fa-check-circle"></i><span th:text="${successMessage}"></span>
                 </div>
                 <!-- Ajout d'un message d'erreur si l'inscription echoue -->
                 <div th:if="${errorMessage}" class="alert alert-danger">
@@ -68,5 +68,14 @@
     </div>
 </main>
 <footer th:replace="fragments/footer :: footer"></footer>
+<script th:inline="javascript">
+    /* Javascript methode permettant d'afficher le message de succés apres pendant 5 seconde*/
+    let successMessage = document.getElementById('successMessage');
+    if(successMessage){
+        setTimeout(function () {
+            successMessage.style.display ='none';
+            },5000); // 5000 => 5seconde
+    }
+</script>
 </body>
 </html>

@@ -56,7 +56,7 @@ public class HomeController {
         }
         utilisateurService.inscrireUtilisateur(utilisateurDto);
         // on ajoute le model attribute au lieu de redirecteAttribute, et on l ajoute aussi
-        redirectAttributes.addFlashAttribute("succesMessage", "Inscription reussie");
+        redirectAttributes.addFlashAttribute("successMessage", "Inscription reussie");
         return "redirect:/home";
     }
 
