@@ -12,10 +12,6 @@
                 <h1>Inscription</h1>
             </div>
             <div class="card-body">
-                <!--Ajoutde message de succé de l inscription-->
-                <div th:if="${successMessage}" class="alert alert-success">
-                    <i class="fas fa-check-circle"></i><span th:text="${successMessage}"></span>
-                </div>
                 <!-- Ajout d'un message d'erreur si l'inscription echoue -->
                 <div th:if="${errorMessage}" class="alert alert-danger">
                     <i class="fas fa-exclamation-circle"></i><span th:text="${errorMessage}"></span>
@@ -28,11 +24,12 @@
 
                 </div>
 
-                <form th:action="@{/inscription}" method="post" th:object="${utilisateurDto}">
+                <form id="formInscription" th:action="@{/inscription}" method="post" th:object="${utilisateurDto}">
+
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fas fa-envelope text-primary"></i></span>
                         <div class="form-floating">
-                            <input type="text" class="form-control" th:field="*{email}" id="email" placeholder="exemple@email.com" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" th:field="*{email}" id="email" name="email" placeholder="exemple@email.com" aria-describedby="emailHelp">
                             <label for="email" class="form-label">Email</label>
                             <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
                                class=" alert alert-danger validation-message"></p>
@@ -67,15 +64,8 @@
         </div>
     </div>
 </main>
+
 <footer th:replace="fragments/footer :: footer"></footer>
-<script th:inline="javascript">
-    /* Javascript methode permettant d'afficher le message de succés apres pendant 5 seconde*/
-    let successMessage = document.getElementById('successMessage');
-    if(successMessage){
-        setTimeout(function () {
-            successMessage.style.display ='none';
-            },5000); // 5000 => 5seconde
-    }
-</script>
+<script th:src="@{'/js/inscription.js'}"></script>
 </body>
 </html>

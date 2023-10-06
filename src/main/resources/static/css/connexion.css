@@ -1,0 +1,39 @@
+/* style.css */
+
+/* Style général du formulaire */
+.form-container {
+    background: #f0f0f0; /* Couleur de fond */
+    border-radius: 15px; /* Coins arrondis */
+    box-shadow: 5px 5px 10px #c0c0c0, -5px -5px 10px #ffffff; /* Ombre douce */
+    padding: 20px; /* Marge intérieure */
+    margin: 0 auto;
+    width: 80%;
+    max-width: 400px; /* Largeur maximale du formulaire */
+}
+
+/* Style des champs de formulaire */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #f5f5f5; /* Couleur de fond des champs */
+    box-shadow: inset 3px 3px 5px #d0d0d0, inset -3px -3px 5px #ffffff; /* Effet enfoncé */
+}
+
+/* Style du bouton */
+.btn {
+    background: #007bff; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px #c0c0c0, -3px -3px 5px #ffffff; /* Effet enfoncé */
+}
+
+/* Style du bouton au survol */
+.btn:hover {
+    background: #0056b3; /* Nouvelle couleur de fond au survol */
+}
