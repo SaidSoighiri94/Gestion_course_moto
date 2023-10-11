@@ -31,19 +31,25 @@
                         <div class="form-floating">
                             <input type="text" class="form-control" th:field="*{email}" id="email" name="email" placeholder="exemple@email.com" aria-describedby="emailHelp">
                             <label for="email" class="form-label">Email</label>
-                            <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                            <p id="msgemail"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
                                class=" alert alert-danger validation-message"></p>
+                            <p id="msgemailjs"  th:unless="${#fields.hasErrors('email')}"
+                               class=" collapse alert alert-danger validation-message"></p>
                         </div>
                     </div>
-
+  <p id="msgformjs" class="collapse alert alert-danger validation-message">
+                        </p>
                     <div class="input-group mb-3">
+
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         <div class="form-floating">
-                            <input type="password" id="mdp1" th:field="*{mdp1NonEncoder}" name="mdp1NonEncoder"
+                            <input type="password" id="mdp1NonEncoder" th:field="*{mdp1NonEncoder}" name="mdp1NonEncoder"
                                    class="form-control" placeholder="Entrez votre mot de passe">
-                            <label for="mdp1" class="form-label">Entrez votre mot de passe</label>
+                            <label for="mdp1NonEncoder" class="form-label">Entrez votre mot de passe</label>
                             <p th:if="${#fields.hasErrors('mdp1NonEncoder')}" th:errors="*{mdp1NonEncoder}"
                                class="alert alert-danger validation-message"></p>
+                            <p id="msgmdp1NonEncoderjs"  th:unless="${#fields.hasErrors('mdp1NonEncoder')}"
+                               class="collapse alert alert-danger validation-message"></p>
                         </div>
                     </div>
                     <div class="input-group mb-3">
@@ -52,6 +58,8 @@
                             <input type ="password" name="mdp2NonEncoder" th:field="*{mdp2NonEncoder}" class="form-control" id="mdp2NonEncoder" placeholder="Confirmez votre mot de passe">
                             <label for="mdp2NonEncoder" class="form-label">Confirmez votre mot de passe</label>
                             <p th:if="${#fields.hasErrors('mdp2NonEncoder')}" th:errors="*{mdp2NonEncoder}" class="alert alert-danger validation-message "></p>
+                            <p id="msgmdp2NonEncoderjs"  th:unless="${#fields.hasErrors('mdp2NonEncoder')}"
+                               class="collapse alert alert-danger validation-message"></p>
                         </div>
                     </div>
                     <div class="d-grid gap-2 mb-4">

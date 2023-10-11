@@ -21,7 +21,7 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fas fa-envelope text-primary"></i></span>
                         <div class="form-floating">
-                            <input type="text" class="form-control " name="username" id="email"
+                            <input required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control " name="username" id="email"
                                    placeholder="exemple@email.com">
                             <label for="email">Email</label>
                         </div>
