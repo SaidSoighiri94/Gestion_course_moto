@@ -145,34 +145,3 @@ async function fetchValidation(urlAPI) {
 //     if(!response.ok) {
 //         return response.json()}
 // })
-
-/**
- function  verificationFormulaire() {
-    // Recuperer les valeur des champs du formulaire
-    const email =document.getElementById('email').value;
-    const mdp1 = document.getElementById('mdp1').value;
-    const mdp2 = document.getElementById('mdp2').value;
-// Effectuer les validations (par exemple, vérifier si les champs ne sont pas vides)
-
-    // Si les validations réussissent, vous pouvez envoyer les données au serveur
-    const  utlisateurDto = {
-        email:email,
-        mdp1NonEncoder:mdp1,
-        mdp2NonEncoder:mdp2
-    };
-    axios.post('api/verification/inscription',utlisateurDto)
-        .then((response)=>{
-            // Gérer la réponse du serveur ici (par exemple, afficher un message de succès)
-            console.log(response.data);
-        })
-        .catch((error)=>{
-            // Gérer les erreurs ici (par exemple, afficher un message d'erreur)
-            console.error(error);
-        });
-}
- // Écoutez l'événement de soumission du formulaire
- const formInscr= document.getElementById('formInscription');
- formInscr.addEventListener('submit',function (event){
-    event.preventDefault();// empeche le formaulaire d'etre envoyer par defaut
-    verificationFormulaire(); // appel la fonction verification
-}) **/

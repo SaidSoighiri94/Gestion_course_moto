@@ -23,16 +23,25 @@
 
                         <div class="col-6 mt-4">
                             <label for="versionMoto" class="form-label">Version:</label>
+                            <div th:if="${#fields.hasErrors('versionMoto')}" class="alert alert-danger">
+                                <div th:each="err : ${#fields.errors('versionMoto')}" th:text="${err}"></div>
+                            </div>
                             <input type="date" name="versionMoto" id="versionMoto" class="form-control"
                                    th:field="*{versionMoto}" placeholder="version moto"/>
                         </div>
                         <div class="mb-4 mt-4">
                             <label for="puissanceMoto" class="form-label">Puissance</label>
+                            <div th:if="${#fields.hasErrors('puissanceMoto')}" class="alert alert-danger">
+                                <div th:each="err : ${#fields.errors('puissanceMoto')}" th:text="${err}"></div>
+                            </div>
                             <input type="text" id="puissanceMoto" name="puissanceMoto" class="form-control"
                                    th:field="*{puissanceMoto}"/>
                         </div>
                         <div class="mb-4">
                             <label for="modeleMoto" class="form-label">Modele</label>
+                            <div th:if="${#fields.hasErrors('modeleMoto')}" class="alert alert-danger">
+                                <div th:each="err : ${#fields.errors('modeleMoto')}" th:text="${err}"></div>
+                            </div>
                             <input type="text" name="modeleMoto" id="modeleMoto" class="form-control"
                                    th:field="*{modeleMoto}"/>
                         </div>
