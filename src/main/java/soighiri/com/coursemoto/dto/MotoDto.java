@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 
@@ -27,6 +28,11 @@ public class MotoDto {
     @NotBlank(message = "Ce champs est obligatoire")
     @Size(min = 6, max = 20, message ="Les caractere ne doivent etre entre 6 à 20"  )
     private String modeleMoto;
+
+    @NotBlank(message = "Veuillez indiquer un chemin vers l'image")
+    private String imagePath;
+
+    private MultipartFile multipartFile; // le telechargement du fichier
 
 
 }
