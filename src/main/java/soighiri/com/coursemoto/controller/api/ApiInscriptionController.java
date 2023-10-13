@@ -22,9 +22,9 @@ public class ApiInscriptionController {
             bindingResult.getAllErrors().forEach(error -> errors.add(error));
             return ResponseEntity.badRequest().body(errors);
         } else {
-            return ResponseEntity.ok(utilisateurDto);
+            return ResponseEntity.ok(new ArrayList<ObjectError>());
         }
-        }
+    }
 
 
 }

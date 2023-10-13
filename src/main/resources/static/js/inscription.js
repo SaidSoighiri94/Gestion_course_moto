@@ -1,5 +1,7 @@
 /** Fonction pour vérifier si le formulaire est valide avant de soumettre */
 let formInscription = document.querySelector('#formInscription'); // Sélectionne le formulaire d'inscription
+let inputmdp1=document.querySelector("#mdp1NonEncoder")
+let inputmdp2=document.querySelector("#mdp2NonEncoder")
 
 // Écouteur d'événement pour le soumission du formulaire
 formInscription.addEventListener('submit', function (event) {
@@ -83,39 +85,94 @@ function resetValidationInput(input) {
 }
 
 // Fonction pour valider un champ et afficher les erreurs
-function validateInput(input, listeErreurs) {
-    if (listeErreurs.length > 0) { // S'il y a des erreurs de validation
-        for (let uneErreur of listeErreurs) { // Parcourt la liste des erreurs
-            if (input.id === uneErreur.field) { // Si l'erreur correspond au champ actuel
-                input.classList.add("is-invalid"); // Ajoute la classe "is-invalid" (champ invalide)
-                input.classList.remove("is-valid"); // Supprime la classe "is-valid" (champ valide)
+// function validateInput(input, listeErreurs) {
+//     if (listeErreurs.length > 0) { // S'il y a des erreurs de validation
+//         for (let uneErreur of listeErreurs) { // Parcourt la liste des erreurs
+//             if (input.id === uneErreur.field) { // Si l'erreur correspond au champ actuel
+//                 input.classList.add("is-invalid"); // Ajoute la classe "is-invalid" (champ invalide)
+//                 input.classList.remove("is-valid"); // Supprime la classe "is-valid" (champ valide)
+//
+//                 let inputMsg = document.querySelector("#msg" + uneErreur.field + "js"); // Sélectionne le message d'erreur du champ
+//                 if (inputMsg) {
+//                     inputMsg.textContent += uneErreur.defaultMessage; // Ajoute le message d'erreur
+//                     inputMsg.classList.add("show"); // Ajoute la classe "show" (affiche le message)
+//                 }
+//             }
+//
+//             if (uneErreur?.field == null) { // S'il y a une erreur globale du formulaire
+//                 let msg = document.querySelector("#msgformjs"); // Sélectionne le message d'erreur global
+//                 msg.textContent = uneErreur.defaultMessage; // Définit le message d'erreur
+//                 msg.classList.add("show"); // Ajoute la classe "show" (affiche le message)
+//
+//                 // Remarque : Ce bloc de code semble être en commentaire, donc il ne sera pas exécuté
+//                 // let mdp1= document.querySelector("#mdp1NonEncoder")
+//                 // let mdp2= document.querySelector("#mdp2NonEncoder")
+//                 // mdp1.classList.add("is-invalid")
+//                 // mdp2.classList.add("is-invalid")
+//             }
+//         }
+//     }
+//
+//     if (!input.classList.contains("is-invalid")) { // Si le champ n'a pas d'erreur
+//         input.classList.add("is-valid"); // Ajoute la classe "is-valid" (champ valide)
+//         input.classList.remove("is-invalid"); // Supprime la classe "is-invalid" (champ invalide)
+//     }
+// }
 
-                let inputMsg = document.querySelector("#msg" + uneErreur.field + "js"); // Sélectionne le message d'erreur du champ
-                if (inputMsg) {
-                    inputMsg.textContent += uneErreur.defaultMessage; // Ajoute le message d'erreur
-                    inputMsg.classList.add("show"); // Ajoute la classe "show" (affiche le message)
-                }
+//
+
+function validateInput(input, listeErreur) {
+    const erreurInput = listeErreur.filter(uneErreur => uneErreur?.field === input.id);
+    const inputMsg = document.querySelector("#msg" + input.id + "js");
+    inputMsg.innerText = "";
+
+    if (input === inputmdp1 || input === inputmdp2) {
+        const erreurConcord = listeErreur.filter(uneErreur => uneErreur.field === undefined || uneErreur.field === null);
+
+        inputmdp1.classList.remove("is-valid", "is-invalid");
+        inputmdp2.classList.remove("is-valid", "is-invalid");
+
+        if (erreurConcord.length > 0) {
+            inputmdp1.classList.add("is-invalid");
+            inputmdp2.classList.add("is-invalid");
+            if(erreurInput.length>0){
+                let lesErreurs= listeErreur.filter(uneErreur =>uneErreur.field== input.id)
+                inputMsg.innerText = lesErreurs.map(uneErreur=>uneErreur.defaultMessage).join("")
+                inputMsg.classList.add("show");
             }
-
-            if (uneErreur?.field == null) { // S'il y a une erreur globale du formulaire
-                let msg = document.querySelector("#msgformjs"); // Sélectionne le message d'erreur global
-                msg.textContent = uneErreur.defaultMessage; // Définit le message d'erreur
-                msg.classList.add("show"); // Ajoute la classe "show" (affiche le message)
-
-                // Remarque : Ce bloc de code semble être en commentaire, donc il ne sera pas exécuté
-                // let mdp1= document.querySelector("#mdp1NonEncoder")
-                // let mdp2= document.querySelector("#mdp2NonEncoder")
-                // mdp1.classList.add("is-invalid")
-                // mdp2.classList.add("is-invalid")
+            else{
+                inputMsg.classList.remove("show");
             }
+        } else if (erreurInput.length > 0) {
+            inputmdp1.classList.add("is-invalid");
+            inputmdp2.classList.add("is-invalid");
+            let lesErreurs= listeErreur.filter(uneErreur =>uneErreur.field== input.id)
+            inputMsg.innerText = lesErreurs.map(uneErreur=>uneErreur.defaultMessage).join("")
+            inputMsg.classList.add("show");
+        } else {
+            inputmdp1.classList.add("is-valid");
+            inputmdp2.classList.add("is-valid");
+        }
+
+        const msg = document.querySelector("#msgformjs");
+        msg.innerText = erreurConcord.length > 0 ? erreurConcord[0].defaultMessage : "";
+        msg.classList.toggle("show", erreurConcord.length > 0);
+    } else {
+        input.classList.remove("is-valid", "is-invalid");
+
+        if (erreurInput.length > 0) {
+            input.classList.add("is-invalid");
+            let lesErreurs= listeErreur.filter(uneErreur =>uneErreur.field== input.id);
+            console.log(typeof lesErreurs)
+            inputMsg.innerText = lesErreurs.map(uneErreur=>uneErreur.defaultMessage).join("")
+            inputMsg.classList.add("show");
+        } else {
+            input.classList.add("is-valid");
+            inputMsg.classList.remove("show");
         }
     }
-
-    if (!input.classList.contains("is-invalid")) { // Si le champ n'a pas d'erreur
-        input.classList.add("is-valid"); // Ajoute la classe "is-valid" (champ valide)
-        input.classList.remove("is-invalid"); // Supprime la classe "is-invalid" (champ invalide)
-    }
 }
+
 
 // Fonction asynchrone pour effectuer une requête Ajax et récupérer les erreurs de validation
 async function fetchValidation(urlAPI) {
