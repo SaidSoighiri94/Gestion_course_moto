@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +28,8 @@ public class EmailDto {
     @Size(min = 2)
     private String content;
     private LocalDateTime sentDate;
+    private String imagePath;
+    private MultipartFile multipartFile;
 
 
 }

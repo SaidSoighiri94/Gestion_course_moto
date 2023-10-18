@@ -1,5 +1,6 @@
 package soighiri.com.coursemoto.service;
 
+import org.springframework.stereotype.Service;
 import soighiri.com.coursemoto.dto.CategorieDto;
 import soighiri.com.coursemoto.dto.CircuitDto;
 import soighiri.com.coursemoto.model.Categorie;

@@ -13,14 +13,17 @@
                 <div class="card-header mt-4"><h3>Ajout d'une moto</h3></div>
 
                 <div class="card-body ">
-                    <form method="post" th:object="${motoDto}" th:action="@{/admin/moto/create}">
+                    <form method="post" th:object="${motoDto}" th:action="@{/admin/moto/create}" enctype="multipart/form-data">
+                        <label for="fichierImage">Image Moto</label>
+                        <input type="file" id="fichierImage" name="fichierImage" th:field="*{fichierImage}"/>
 
+                        <div class="col-6 mt-4">
                         <label for="marqueMoto" class="form-label"> Marque Moto</label>
                         <div th:if="${#fields.hasErrors('marqueMoto')}" class="alert alert-danger">
                             <div th:each="err : ${#fields.errors('marqueMoto')}" th:text="${err}"></div>
                         </div>
                         <input type="text" id="marqueMoto" class="form-control" th:field="*{marqueMoto}"/>
-
+                        </div>
                         <div class="col-6 mt-4">
                             <label for="versionMoto" class="form-label">Version:</label>
                             <div th:if="${#fields.hasErrors('versionMoto')}" class="alert alert-danger">

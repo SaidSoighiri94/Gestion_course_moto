@@ -6,23 +6,39 @@ import soighiri.com.coursemoto.dto.MotoDto;
 import soighiri.com.coursemoto.model.Moto;
 import soighiri.com.coursemoto.repository.MotoRepository;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
 public class MotoServiceImpl implements MotoService {
-    private MotoRepository motoRepository;
+    private final MotoRepository motoRepository;
+    private final FileUploadService fileUploadService;
 
     @Autowired
-    public MotoServiceImpl(MotoRepository motoRepository) {
+    public MotoServiceImpl(MotoRepository motoRepository, FileUploadService fileUploadService) {
         this.motoRepository = motoRepository;
+        this.fileUploadService = fileUploadService;
     }
 
     @Override
-    public Moto saveMotoFromMotoDto(MotoDto motoDto) {
-        Moto moto = convertDtoToEntity(motoDto);
+    public Moto saveMotoFromMotoDto(MotoDto motoDto) throws IOException{
 
-        // Sauvegarder la moto dans la base de données
-        return motoRepository.save(moto);
+
+            Moto moto = convertDtoToEntity(motoDto);
+            // Si une nouvelle image est fournie, téléchargez-la
+            if (motoDto.getFichierImage() != null){
+                String nomFichierImage = fileUploadService.telechargerFichier(motoDto.getFichierImage(),"moto");
+
+                //supprimer l'image si necessaire
+                if(moto.getImagePath() != null) {
+                    fileUploadService.deleteFile(moto.getImagePath(),"moto");
+                }
+                moto.setImagePath(nomFichierImage);
+            }
+
+            // Sauvegarder la moto dans la base de données
+            return motoRepository.save(moto);
+
     }
     @Override
     public Moto getMotoById(Long idMoto) {
@@ -47,10 +63,8 @@ public class MotoServiceImpl implements MotoService {
         // Mettre à jour la moto dans la base de données
         return motoRepository.save(moto);
     }
-
     @Override
-    public void deletemotoById(Long idMoto) {
-
+    public void deleteMotoById(Long idMoto) {
 
         // Supprimer la moto par son ID
         motoRepository.deleteById(idMoto);
@@ -61,16 +75,18 @@ public class MotoServiceImpl implements MotoService {
 
         // Convertir l'entité Moto en DTO MotoDto
         MotoDto motoDto = new MotoDto();
-        if(moto !=null){
-            motoDto.setIdMoto(moto.getIdMoto());
-            motoDto.setMarqueMoto(moto.getMarqueMoto());
-            motoDto.setVersionMoto(moto.getVersionMoto());
-            motoDto.setPuissanceMoto(moto.getPuissanceMoto());
-            motoDto.setModeleMoto(moto.getModeleMoto());
-        }
+        //try {
+            if(moto !=null){
+                motoDto.setIdMoto(moto.getIdMoto());
+                motoDto.setMarqueMoto(moto.getMarqueMoto());
+                motoDto.setVersionMoto(moto.getVersionMoto());
+                motoDto.setPuissanceMoto(moto.getPuissanceMoto());
+                motoDto.setModeleMoto(moto.getModeleMoto());
+                motoDto.setImagePath(moto.getImagePath());
+            }
 
-        // On retourne un MotoDto
-        return motoDto;
+            // On retourne un MotoDto
+            return motoDto;
     }
 
     // Méthode pour convertir un DTO MotoDto en entité Moto
@@ -86,6 +102,5 @@ public class MotoServiceImpl implements MotoService {
 
         return moto;
     }
-
 }
 

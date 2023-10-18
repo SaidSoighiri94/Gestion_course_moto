@@ -1,7 +1,6 @@
 package soighiri.com.coursemoto.model;
 
 import jakarta.persistence.*;
-import nonapi.io.github.classgraph.utils.LogNode;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -17,18 +16,18 @@ public class Moto {
      private String modeleMoto;
      private String imagePath;
      @Transient
-     private MultipartFile multipartFile;
+     private MultipartFile fichierImage;
 
      public Moto(){
 
      }
-    public Moto(String marqueMoto, String versionMoto, String puissanceMoto, String modeleMoto,String imagePath, MultipartFile multipartFile) {
+    public Moto(String marqueMoto, String versionMoto, String puissanceMoto, String modeleMoto,String imagePath, MultipartFile fichierImage) {
         MarqueMoto = marqueMoto;
         this.versionMoto = versionMoto;
         this.puissanceMoto = puissanceMoto;
         this.modeleMoto = modeleMoto;
         this.imagePath = imagePath;
-        this.multipartFile = multipartFile;
+        this.fichierImage = fichierImage;
     }
 
     public String getImagePath() {
@@ -39,12 +38,12 @@ public class Moto {
         this.imagePath = imagePath;
     }
 
-    public MultipartFile getMultipartFile() {
-        return multipartFile;
+    public MultipartFile getFichierImage() {
+        return fichierImage;
     }
 
-    public void setMultipartFile(MultipartFile multipartFile) {
-        this.multipartFile = multipartFile;
+    public void setFichierImage(MultipartFile fichierImage) {
+        this.fichierImage = fichierImage;
     }
 
     public Long getIdMoto() {

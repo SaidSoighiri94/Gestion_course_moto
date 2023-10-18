@@ -11,6 +11,7 @@ import soighiri.com.coursemoto.model.Circuit;
 import soighiri.com.coursemoto.model.Moto;
 import soighiri.com.coursemoto.service.MotoService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -35,7 +36,7 @@ public class MotoController {
     }
     // Enregistrer le pilote
     @PostMapping(value = "/moto/create")
-    public String store(@ModelAttribute("motoDto") @Valid MotoDto motoDto, BindingResult bindingResult){
+    public String store(@ModelAttribute("motoDto") @Valid MotoDto motoDto, BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()){
             return "admin/moto/creat";
         }
@@ -56,7 +57,7 @@ public class MotoController {
     }
     //Pour sauvegarder les modifications
     @PostMapping(value = "/moto/edit")
-    public String  updateMoto(@ModelAttribute @Valid MotoDto motoDto,BindingResult bindingResult){
+    public String  updateMoto(@ModelAttribute @Valid MotoDto motoDto,BindingResult bindingResult) throws IOException {
         if(bindingResult.hasErrors()){
             return "admin/moto/edit";
         }
@@ -78,7 +79,7 @@ public class MotoController {
     //Methode de Suppression d'un Moto
     @GetMapping(value ="/moto/delete/{idMoto}")
     public String deleteMoto(@PathVariable Long idMoto){
-        motoService.deletemotoById(idMoto);
+        motoService.deleteMotoById(idMoto);
         return"redirect:/admin/moto/listeMotos";
     }
 

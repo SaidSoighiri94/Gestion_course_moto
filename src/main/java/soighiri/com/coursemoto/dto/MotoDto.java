@@ -32,7 +32,7 @@ public class MotoDto {
     @NotBlank(message = "Veuillez indiquer un chemin vers l'image")
     private String imagePath;
 
-    private MultipartFile multipartFile; // le telechargement du fichier
+    private MultipartFile fichierImage; // le telechargement du fichier
 
 
 }
