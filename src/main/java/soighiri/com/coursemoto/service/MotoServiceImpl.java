@@ -75,7 +75,7 @@ public class MotoServiceImpl implements MotoService {
 
         // Convertir l'entité Moto en DTO MotoDto
         MotoDto motoDto = new MotoDto();
-        //try {
+
             if(moto !=null){
                 motoDto.setIdMoto(moto.getIdMoto());
                 motoDto.setMarqueMoto(moto.getMarqueMoto());

@@ -34,7 +34,7 @@ public class MotoController {
     model.addAttribute("motoDto",new MotoDto());
     return "admin/moto/creat";
     }
-    // Enregistrer le pilote
+    // Enregistrer une moto
     @PostMapping(value = "/moto/create")
     public String store(@ModelAttribute("motoDto") @Valid MotoDto motoDto, BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()){

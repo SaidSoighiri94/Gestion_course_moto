@@ -1,5 +1,6 @@
 package soighiri.com.coursemoto.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -43,4 +44,34 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         utilisateur.setRole(utilisateurDto.getRole());
         return utilisateur;
     }
+
+    @Override
+    public Utilisateur findByEmail(String email) {
+        return utilisateurRepository.findByEmail(email);
+    }
+
+    @Override
+    public Utilisateur updateUtilisateur(Utilisateur utilisateur) {
+        // Assurons-nous que l'utilisateur que nous recevons est déjà présent en base de données.
+        // Vous devrez probablement effectuer une vérification pour vous assurer que l'utilisateur existe.
+
+
+        // Mise à jour de l'utilisateur en base de données
+        Utilisateur utilisateurExist  = utilisateurRepository.findById(utilisateur.getIdUtilisateur()).orElse(null);
+
+        if(utilisateurExist != null){
+           // utilisateurExist.setEmail(utilisateur.getEmail());
+            utilisateurExist.setMdpUtilisateur(passwordEncoder.encode(utilisateur.getMdpUtilisateur()));
+            // Vous pouvez mettre à jour d'autres champs ici si nécessaire
+
+            return utilisateurRepository.save(utilisateurExist);
+        } else {
+            // Gérer le cas où l'utilisateur n'existe pas
+            throw new EntityNotFoundException("L'utilisateur n'a pas été trouvé dans la base de données.");
+        }
+
+    }
+
+
+
 }

@@ -29,7 +29,7 @@ public class MotoDto {
     @Size(min = 6, max = 20, message ="Les caractere ne doivent etre entre 6 à 20"  )
     private String modeleMoto;
 
-    @NotBlank(message = "Veuillez indiquer un chemin vers l'image")
+    //@NotBlank(message = "Veuillez indiquer un chemin vers l'image")
     private String imagePath;
 
     private MultipartFile fichierImage; // le telechargement du fichier

@@ -1,5 +1,6 @@
 package soighiri.com.coursemoto.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -40,7 +41,7 @@ public class WebSecurityConfig {
 
                 // Configuration pour les autorisations d'accès aux différentes URL
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/home","/visiteur","/api/**","/inscription","/js/**", "/css/**", "/img/**", "/favicon.co","/webjars/**").permitAll()
+                        .requestMatchers("/home","/visiteur/**","/api/**","/inscription","/js/**", "/css/**", "/img/**", "/favicon.co","/webjars/**").permitAll()
                         .requestMatchers(HttpMethod.POST,("/insciption")).permitAll()
                         .requestMatchers(HttpMethod.POST,("/api/**")).permitAll()
 
