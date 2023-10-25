@@ -91,7 +91,7 @@ public class PassworsResetController {
             // Le token est valide, réinitialisez le mot de passe
             Utilisateur utilisateur = resetToken.getUtilisateur();
             utilisateur.setMdpUtilisateur(newPassword);
-            utilisateurService.updateUtilisateur(utilisateur); // Vous devrez implémenter cette méthode dans votre service.
+            utilisateurService.updateUtilisateur(utilisateur);
 
             // Supprimez le token pour éviter une utilisation future
             passwordResetTokenService.deleteToken(resetToken);
