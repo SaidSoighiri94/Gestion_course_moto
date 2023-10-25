@@ -55,7 +55,7 @@ public class PasswordResetTokenServiceImpl implements PasswordResetTokenService 
     @Override
     public void sendPasswordResetEmail(String recipientAdress, String token) {
         String subject = "Réinitilisation de mot de passe ";
-        String resetUrl = "https://votre-site.com/reset-password?token=" + token;
+        String resetUrl = "http://localhost:9001/visiteur/resetPassword?token=" + token;
         String message = "Cliquez sur le lien suivant pour réinitialiser votre mot de passe : " + resetUrl;
 
         // Pour envoyer un e-mail de reinitilisation
