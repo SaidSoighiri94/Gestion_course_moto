@@ -14,6 +14,7 @@ import java.util.List;
 public class PiloteServiceImpl implements PiloteService {
 
     private final PiloteRepository piloteRepository;
+
     private final CategorieRepository categorieRepository;
 
     @Autowired

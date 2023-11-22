@@ -1,66 +1,113 @@
 package soighiri.com.coursemoto;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import soighiri.com.coursemoto.dto.CircuitDto;
 import soighiri.com.coursemoto.model.Circuit;
 import soighiri.com.coursemoto.repository.CircuitRepository;
+import soighiri.com.coursemoto.service.CircuitServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 @SpringBootTest
-class CourseMotoApplicationTests {
+class CircuitServiceImplTest {
 
-    @Autowired
+    // Crée un mock pour le CircuitRepository
+    @Mock
     private CircuitRepository circuitRepository;
-    // puis on injecte la @Test
 
-    // Teste de la methode createCircuit
+    // Injecte les mocks annotés dans CircuitServiceImpl
+    @InjectMocks
+    private CircuitServiceImpl circuitService;
+
+    // Teste la méthode saveCircuitFromCircuitDto
     @Test
-    public void testCreateCircuit(){
-        Circuit circuit = new Circuit("Circuit de CSFX ","Ambatomena, Fianarantsoa",5.400);
-        Circuit savedCircuit=circuitRepository.save(circuit);
-        Assertions.assertEquals("Circuit de CSFX ",savedCircuit.getNomCircuit());
+    void testSaveCircuitFromCircuitDto() {
+        // Arrange
+        CircuitDto circuitDto = new CircuitDto(1L,"Circuit de Test", "Adresse de Test", 10.0);
+        Circuit expectedCircuit = new Circuit(2L,"Circuit de Test", "Adresse de Test", 10.0);
+        when(circuitRepository.save(Mockito.any())).thenReturn(expectedCircuit);
+
+        // Act
+        Circuit savedCircuit = circuitService.saveCircuitFromCircuitDto(circuitDto);
+
+        // Assert
+        assertEquals(expectedCircuit, savedCircuit);
+        verify(circuitRepository).save(Mockito.any());
     }
-    // Test de la methode findCircuitById(idCircuit)
+
+    // Teste la méthode updateCircuitFromCircuitDto
     @Test
-    public void testFindCircuit(){
-        Circuit circuit = circuitRepository.findById(1L).get();
-        System.out.println(circuit);
+    void testUpdateCircuitFromCircuitDto() {
+        // Arrange
+        CircuitDto circuitDto = new CircuitDto(1L,"Circuit de Teste", "Adresse de Teste", 10.0);
+        Circuit existingCircuit = new Circuit(2L,"Circuit existant", "Adresse existante", 5.0);
+        Circuit updatedCircuit = new Circuit(1L,"Circuit de Test", "Adresse de Test", 10.0);
+        when(circuitRepository.findById(Mockito.anyLong())).thenReturn(java.util.Optional.of(existingCircuit));
+        when(circuitRepository.save(Mockito.any())).thenReturn(updatedCircuit);
+
+        // Act
+        Circuit result = circuitService.updateCircuitFromCircuitDto(circuitDto);
+
+        // Assert
+        assertEquals(updatedCircuit, result);
+        verify(circuitRepository).findById(Mockito.anyLong());
+        verify(circuitRepository).save(Mockito.any());
     }
 
-    //Test pour la methode UpdateCircuit permettant de mettre a jour un circuit
+    // Teste la méthode deleteCircuitById
     @Test
-    public void testUpdateCircuit(){
-        Circuit circuit = circuitRepository.findById(1L).get();
-        circuit.setAdresseCircuit("Imertsiatosika, Antananarivo");
-        circuit.setNomCircuit("Circuit Imerka ");
-        circuitRepository.save(circuit);
+    void testDeleteCircuitById() {
+        // Arrange
+        Long idCircuit = 1L;
+
+        // Act
+        circuitService.deleteCircuitById(idCircuit);
+
+        // Assert
+        verify(circuitRepository).deleteById(idCircuit);
     }
 
-    // Test permettant de supprimer un circuit avec la methode testDeleteCircuit()
+    // Teste la méthode getCircuit
     @Test
-    public void testDeleteCircuit(){
-        circuitRepository.deleteById(7L);
+    void testGetCircuit() {
+        // Arrange
+        Long idCircuit = 1L;
+        Circuit expectedCircuit = new Circuit(1L,"Circuit de Test", "Adresse de Test", 10.0);
+        when(circuitRepository.findById(Mockito.anyLong())).thenReturn(java.util.Optional.of(expectedCircuit));
+
+        // Act
+        Circuit result = circuitService.getCircuit(idCircuit);
+
+        // Assert
+        assertEquals(expectedCircuit, result);
+        verify(circuitRepository).findById(Mockito.anyLong());
     }
 
-    //Test de la methode permettand de lister tous les circuits avec findAllCircuits
+    // Teste la méthode getAllCircuits
     @Test
-    public void testListerTousCircuits(){
+    void testGetAllCircuits() {
+        // Arrange
+        List<Circuit> circuits = new ArrayList<>();
+        circuits.add(new Circuit(2L,"Circuit 1", "Adresse 1", 5.0));
+        circuits.add(new Circuit(2L,"Circuit 2", "Adresse 2", 8.0));
+        when(circuitRepository.findAll()).thenReturn(circuits);
 
-        // on utilise la generité avec un list
-        List<Circuit> circuits = circuitRepository.findAll();
+        // Act
+        List<Circuit> result = circuitService.getAllCircuits();
 
-            // Puis on fait un foreach sur le circuit
-        for (Circuit circuit : circuits
-             ) {
-            System.out.println(circuit);
-        }
+        // Assert
+        assertEquals(circuits, result);
+        verify(circuitRepository).findAll();
     }
-
-    void contextLoads() {
-    }
-
 
 }

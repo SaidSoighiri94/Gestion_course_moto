@@ -1,11 +1,10 @@
 package soighiri.com.coursemoto.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Ecurie {
@@ -19,17 +18,19 @@ public class Ecurie {
     private String emailEcurie;
     private String telEcurie;
     private String adresseEcurie;
-
+    @OneToMany(mappedBy ="ecurie", cascade = CascadeType.ALL)
+    private List<Pilote> pilotes;
     public Ecurie() {
     }
-    public Ecurie(String nomEcurie, Date dateCreation,String description, String responsable, String emailEcurie, String telEcurie, String adresseEcurie) {
+    public Ecurie(String nomEcurie, String description, Date dateCreation, String responsable, String emailEcurie, String telEcurie, String adresseEcurie) {
+
         this.nomEcurie = nomEcurie;
+        this.description = description;
         this.dateCreation = dateCreation;
         this.responsable = responsable;
         this.emailEcurie = emailEcurie;
         this.telEcurie = telEcurie;
         this.adresseEcurie = adresseEcurie;
-        this.description = description;
     }
 
     public Long getIdEcurie() {
@@ -95,6 +96,13 @@ public class Ecurie {
         this.description = description;
     }
 
+    public List<Pilote> getPilotes() {
+        return pilotes;
+    }
+
+    public void setPilotes(List<Pilote> pilotes) {
+        this.pilotes = pilotes;
+    }
 
     @Override
     public String toString() {

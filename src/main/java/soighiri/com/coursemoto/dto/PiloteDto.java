@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import soighiri.com.coursemoto.model.Categorie;
+import soighiri.com.coursemoto.model.Ecurie;
 
 import java.sql.Date;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class PiloteDto {
     private String nomPilote;
     private String PrenomPilote;
 
-    @NotEmpty(message ="Le numero du pilote est obligatoire")
+    //@NotEmpty(message ="Le numero du pilote est obligatoire")
     @Min(value = 1, message = "Le numero du pilote doit etre entre 1 a 200")
     @Max(value =200, message="Le numero pilote doit etre entre 1 a 200" )
     private int numeroPilote;
@@ -33,5 +34,7 @@ public class PiloteDto {
     private String adressePilote;
     private String telPilote;
     private Set<Categorie> categories;
+    private Ecurie ecurie;
+
 
 }

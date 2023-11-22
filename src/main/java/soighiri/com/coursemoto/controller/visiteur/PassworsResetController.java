@@ -1,5 +1,6 @@
 package soighiri.com.coursemoto.controller.visiteur;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +39,7 @@ public class PassworsResetController {
 
     // Étape 2 : Traite la demande de réinitialisation de mot de passe
     @PostMapping(value = "/passwordReset")
-    public String resetPassword(@ModelAttribute("passwordResetDto") PasswordResetDto passwordResetDto, BindingResult bindingResult) {
+    public String resetPassword(@Valid @ModelAttribute("passwordResetDto") PasswordResetDto passwordResetDto, BindingResult bindingResult) {
 
         // Vérifie si des erreurs de validation existent
         if (bindingResult.hasErrors()) {

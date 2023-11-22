@@ -19,10 +19,10 @@
 <!-- Fragments de header -->
 <div th:fragment="navigation">
     <!-- Barre de navigation -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark md-4">
+    <nav class="navbar navbar-expand-md navbar-dark bg-black md-4">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/home}">
-                <img src="/images/imgFont/logoMoto.png" width="70" height="50" alt="Image logo"/>
+                <img th:src="@{/images/imgFont/logoMoto.png}" width="70" height="50" alt="Image logo"/>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

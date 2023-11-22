@@ -11,17 +11,20 @@ import soighiri.com.coursemoto.repository.UtilisateurRepository;
 
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService {
+    @Autowired
     private UtilisateurRepository utilisateurRepository;
+    @Autowired
     private RoleRepository roleRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
 
-    public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+
+    /*public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.utilisateurRepository = utilisateurRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
-    }
+    }*/
 
     @Override
     public Utilisateur inscrireUtilisateur(UtilisateurDto utilisateurDto) {

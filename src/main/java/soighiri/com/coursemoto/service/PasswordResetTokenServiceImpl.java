@@ -16,7 +16,6 @@ import java.util.UUID;
 
 @Service
 public class PasswordResetTokenServiceImpl implements PasswordResetTokenService {
-    @Autowired
     private final PasswordResetTokenRepository passwordResetTokenRepository;
     private final JavaMailSender emailSender; // Injection du service JavaMailSender
 

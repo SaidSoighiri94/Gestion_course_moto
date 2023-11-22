@@ -7,8 +7,10 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import soighiri.com.coursemoto.model.Pilote;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor

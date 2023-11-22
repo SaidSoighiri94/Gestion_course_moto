@@ -1,7 +1,9 @@
 package soighiri.com.coursemoto.service;
 
 import soighiri.com.coursemoto.dto.EcurieDto;
+import soighiri.com.coursemoto.dto.PiloteDto;
 import soighiri.com.coursemoto.model.Ecurie;
+import soighiri.com.coursemoto.model.Pilote;
 
 import java.util.List;
 
@@ -24,5 +26,6 @@ public interface EcurieService {
 
     //Methode de conversion d'un Entity en Dto
     EcurieDto convertEntityToDto(Ecurie ecurie);
+    void addPiloteToEcurie(Long idEcurie, PiloteDto piloteDto);
 
 }

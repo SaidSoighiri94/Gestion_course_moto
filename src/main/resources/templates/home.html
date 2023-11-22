@@ -9,7 +9,7 @@
 <!-- Inclusion de la navigation qui se trouve dans le fichier header sous le sous frament navigation -->
  <header th:replace="~{fragments/header :: navigation(activeTab='home') }"></header>
 <div th:replace="~{fragments/sideBar :: sidebar}"></div>
-
+<main class="ContenuPrincipale">
 <!-- Le contenu spécifique de la page ici -->
 <div class="container">
     <div class="row mb-4">
@@ -24,8 +24,9 @@
             <p>Ceci est le contenu spécifique de la page d'accueil.</p>
         </div>
     </div>
-</div>
 
+</div>
+</main>
 <!-- inclure le footer ici -->
 
 <div th:replace="~{fragments/footer}">

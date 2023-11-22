@@ -6,9 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import soighiri.com.coursemoto.dto.EcurieDto;
 import soighiri.com.coursemoto.dto.PiloteDto;
+import soighiri.com.coursemoto.model.Ecurie;
 import soighiri.com.coursemoto.model.Pilote;
 import soighiri.com.coursemoto.model.Categorie;
+import soighiri.com.coursemoto.service.EcurieService;
 import soighiri.com.coursemoto.service.PiloteService;
 import soighiri.com.coursemoto.service.CategorieService;
 
@@ -19,11 +22,12 @@ import java.util.List;
 public class PiloteController {
     private final PiloteService piloteService;
     private final CategorieService categorieService;
-
+    private final EcurieService ecurieService;
     @Autowired
-    public PiloteController(PiloteService piloteService, CategorieService categorieService) {
+    public PiloteController(PiloteService piloteService, CategorieService categorieService, EcurieService ecurieService) {
         this.piloteService = piloteService;
         this.categorieService = categorieService;
+        this.ecurieService = ecurieService;
     }
 
     @GetMapping(value = "/pilote/listePilotes")
@@ -53,7 +57,9 @@ public class PiloteController {
     public String create(Model model) {
         model.addAttribute("piloteDto", new PiloteDto());
         List<Categorie> categories = categorieService.getAllCategories();
+        List<Ecurie> ecuries = ecurieService.getAllEcuries();
         model.addAttribute("categories", categories);
+        model.addAttribute("ecuries", ecuries);
         return "admin/pilote/creat";
     }
 
@@ -61,7 +67,9 @@ public class PiloteController {
     public String store(@ModelAttribute("piloteDto") @Valid PiloteDto piloteDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             List<Categorie> categories = categorieService.getAllCategories();
+            List<Ecurie> ecuries = ecurieService.getAllEcuries();
             model.addAttribute("categories", categories);
+            model.addAttribute("lesEcuries",ecuries);
             return "admin/pilote/creat";
         }
         piloteService.savePiloteFromPiloteDto(piloteDto);

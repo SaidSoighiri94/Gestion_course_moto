@@ -3,16 +3,16 @@ package soighiri.com.coursemoto.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import soighiri.com.coursemoto.dto.EcurieDto;
+import soighiri.com.coursemoto.dto.PiloteDto;
 import soighiri.com.coursemoto.model.Ecurie;
+import soighiri.com.coursemoto.model.Pilote;
 import soighiri.com.coursemoto.repository.EcurieRepository;
 
 import java.util.List;
 
 @Service
 public class EcurieServiceImpl implements EcurieService {
-    private  EcurieRepository ecurieRepository;
-
-
+    private final EcurieRepository ecurieRepository;
     @Autowired
 
     public EcurieServiceImpl(EcurieRepository ecurieRepository) {
@@ -62,6 +62,27 @@ public class EcurieServiceImpl implements EcurieService {
             ecurieDto.setDescription(ecurie.getDescription());
         }
         return ecurieDto;
+    }
+
+    @Override
+    public void addPiloteToEcurie(Long idEcurie, PiloteDto piloteDto) {
+       Ecurie ecurie = ecurieRepository.findById(idEcurie).orElseThrow(() -> new RuntimeException("Ecurie non trouvée"));
+       if (piloteDto != null) {
+           //Mapper les données du DTO vers l'entité Pilote
+           Pilote pilote = new Pilote();
+           pilote.setNomPilote(piloteDto.getNomPilote());
+           pilote.setPrenomPilote(piloteDto.getPrenomPilote());
+           pilote.setNumeroPilote(piloteDto.getNumeroPilote());
+           pilote.setDateNaissance(piloteDto.getDateNaissance());
+           pilote.setEmailPilote(piloteDto.getEmailPilote());
+           pilote.setAdressePilote(piloteDto.getAdressePilote());
+           pilote.setTelPilote(piloteDto.getTelPilote());
+           pilote.setCategories(piloteDto.getCategories());
+           pilote.setEcurie(ecurie);
+           ecurie.getPiloteList().add(pilote);
+           ecurieRepository.save(ecurie);
+       }
+
     }
 
     private Ecurie convertDtoToEntity(EcurieDto ecurieDto) {

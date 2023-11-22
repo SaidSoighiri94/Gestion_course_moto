@@ -14,7 +14,7 @@ public class Circuit {
     public Circuit() {
     }
 
-    public Circuit(String nomCircuit, String adresseCircuit, Double longueur) {
+    public Circuit( Long idCircuit,String nomCircuit, String adresseCircuit, Double longueur) {
         this.idCircuit = idCircuit;
         this.nomCircuit = nomCircuit;
         this.adresseCircuit = adresseCircuit;

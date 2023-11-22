@@ -27,10 +27,12 @@ public class Pilote {
     inverseJoinColumns = @JoinColumn(name = "id_categorie")
     )
     private Set<Categorie> categories = new LinkedHashSet<>();
+    @ManyToOne
+    @JoinColumn(name="ecurie_id")
+    private Ecurie ecurie;
     public Pilote() {
     }
-
-    public Pilote(String nomPilote, String prenomPilote, int numeroPilote, Date dateNaissance, String emailPilote, String adressePilote, String telPilote) {
+    public Pilote(String nomPilote, String prenomPilote, int numeroPilote, Date dateNaissance, String emailPilote, String adressePilote, String telPilote, Set<Categorie> categories, Ecurie ecurie) {
         this.nomPilote = nomPilote;
         PrenomPilote = prenomPilote;
         this.numeroPilote = numeroPilote;
@@ -38,6 +40,8 @@ public class Pilote {
         this.emailPilote = emailPilote;
         this.adressePilote = adressePilote;
         this.telPilote = telPilote;
+        this.categories = categories;
+        this.ecurie = ecurie;
     }
 
     public Long getIdPilote() {
@@ -110,6 +114,14 @@ public class Pilote {
 
     public void setCategories(Set<Categorie> categories) {
         this.categories = categories;
+    }
+
+    public Ecurie getEcurie() {
+        return ecurie;
+    }
+
+    public void setEcurie(Ecurie ecurie) {
+        this.ecurie = ecurie;
     }
 
     @Override
