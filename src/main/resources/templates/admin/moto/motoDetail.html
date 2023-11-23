@@ -7,21 +7,28 @@
 <header th:replace="fragments/header :: navigation"></header>
 <main class="container">
     <div class="row">
-        <div class="card mt-4">
+        <div class="card mt-4 mx-auto" style="max-width: 800px;">
             <div class="card-header"><h3>Detail moto</h3></div>
-            <img th:src="@{'/images/motomoto/'+${moto.imagePath}}" class="card-img-top"  alt="phot moto">
-            <div class="card-body">
-                <p class="card-text">Id : <span th:text="${moto.idMoto}"></span></p>
-                <p class="card-text">Marque : <span th:text="${moto.marqueMoto}"></span></p>
-                <p class="card-text">Version : <span th:text="${moto.versionMoto}"></span></p>
-                <p class="card-text">Puissance : <span th:text="${moto.puissanceMoto}"></span></p>
-                <p class="card-text">Modele : <span th:text="${moto.modeleMoto}"></span></p>
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img th:src="@{'/images/motomoto/'+${moto.imagePath}}" class="card-img-top" alt="photo moto">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">Id : <span th:text="${moto.idMoto}"></span></p>
+                        <p class="card-text">Marque : <span th:text="${moto.marqueMoto}"></span></p>
+                        <p class="card-text">Version : <span th:text="${moto.versionMoto}"></span></p>
+                        <p class="card-text">Puissance : <span th:text="${moto.puissanceMoto}"></span></p>
+                        <p class="card-text">Modele : <span th:text="${moto.modeleMoto}"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-3 mt-4">
+                <a th:href="@{/admin/moto/listeMotos}" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i>Retour</a>
             </div>
         </div>
     </div>
-    <div class="mb-3 mt-4">
-        <a th:href="@{/admin/moto/listeMotos}" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i>Retour</a>
-    </div>
+
 </main>
 <footer th:replace="fragments/footer :: footer"></footer>
 </body>

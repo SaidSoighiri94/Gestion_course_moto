@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"></div>
+</head>
+<body>
+<header th:replace="fragments/header :: navigation"></header>
+<main>
+    <div class="container">
+
+        <div class="row">
+            <div class="card mt-4">
+                <div class="card-header mt-4"><h3>Création d'une Écurie</h3></div>
+
+                <div class="card-body ">
+                    <form method="post" th:object="${ecurieDto}" th:action="@{/admin/ecurie/create}">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="nomEcurie" class="form-label">Nom de l'Écurie :</label>
+                                <input type="text" class="form-control" id="nomEcurie" name="nomEcurie" th:field="*{nomEcurie}" placeholder="Nom de l'Écurie" required>
+                                <small class="text-danger" th:if="${#fields.hasErrors('nomEcurie')}" th:errors="*{nomEcurie}"></small>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="description" class="form-label">Description :</label>
+                                <textarea class="form-control" id="description" name="description" th:field="*{description}" placeholder="Description" required></textarea>
+                                <small class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="responsable" class="form-label">Responsable :</label>
+                                <input type="text" class="form-control" id="responsable" name="responsable" th:field="*{responsable}" placeholder="Responsable" required>
+                                <small class="text-danger" th:if="${#fields.hasErrors('responsable')}" th:errors="*{responsable}"></small>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="dateCreation" class="form-label">Date de création :</label>
+                                <input type="date" class="form-control" id="dateCreation" name="dateCreation" th:field="*{dateCreation}" required>
+                                <small class="text-danger" th:if="${#fields.hasErrors('dateCreation')}" th:errors="*{dateCreation}"></small>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="emailEcurie" class="form-label">Email :</label>
+                                <input type="text" class="form-control" id="emailEcurie" name="emailEcurie" th:field="*{emailEcurie}" placeholder="Email" required>
+                                <small class="text-danger" th:if="${#fields.hasErrors('emailEcurie')}" th:errors="*{emailEcurie}"></small>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="telEcurie" class="form-label">Tel :</label>
+                                <input type="tel" class="form-control" id="telEcurie" name="telEcurie" th:field="*{telEcurie}" required>
+                                <small class="text-danger" th:if="${#fields.hasErrors('telEcurie')}" th:errors="*{telEcurie}"></small>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="adresseEcurie" class="form-label">Adresse :</label>
+                                <input type="text" class="form-control" id="adresseEcurie" name="adresseEcurie" th:field="*{adresseEcurie}" placeholder="Adresse" required>
+                                <small class="text-danger" th:if="${#fields.hasErrors('adresseEcurie')}" th:errors="*{adresseEcurie}"></small>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mb-4">
+                            <button type="submit" class="btn btn-primary">Créer l'Écurie</button>
+                        </div>
+                    </form>
+                    <a href="/admin/ecurie/listeEcuries" class="btn btn-secondary"><i
+                            class="fas fa-arrow-left"></i>Retour</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

@@ -19,7 +19,7 @@ public interface EcurieService {
     Ecurie getEcurieById(Long idEcurie);
 
     // Metode pour supprimer une ecurie
-    void deleteEcurieByid(Long idecurie);
+    void deleteEcurieById(Long idecurie);
 
     // Methode pour afficher toutes les ecurie;
     List<Ecurie> getAllEcuries();

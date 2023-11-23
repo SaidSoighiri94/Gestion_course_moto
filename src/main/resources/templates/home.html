@@ -1,35 +1,101 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
     <link th:replace="fragments/header :: header-css" />
 </head>
 
 <body>
 
-<!-- Inclusion de la navigation qui se trouve dans le fichier header sous le sous frament navigation -->
- <header th:replace="~{fragments/header :: navigation(activeTab='home') }"></header>
-<div th:replace="~{fragments/sideBar :: sidebar}"></div>
+<!-- Inclusion de la navigation qui se trouve dans le fichier header sous le sous-fragment navigation -->
+<header th:replace="~{fragments/header :: navigation(activeTab='home') }"></header>
+<!--div th:replace="~{fragments/sideBar :: sidebar}"></div-->
 <main class="ContenuPrincipale">
-<!-- Le contenu spécifique de la page ici -->
-<div class="container">
-    <div class="row mb-4">
+    <!-- Le contenu spécifique de la page ici -->
+    <div class="container">
+        <div class="row mb-4">
 
-        <!--Ajoutde message de succé de l inscription-->
-        <div th:if="${successMessage}" class="alert alert-success">
-            <i class="fas fa-check-circle"></i><span th:text="${successMessage}"></span>
-        </div>
-        <div class="col">
+            <!-- Message de succès de l'inscription -->
+            <div th:if="${successMessage}" class="alert alert-success">
+                <i class="fas fa-check-circle"></i><span th:text="${successMessage}"></span>
+            </div>
 
-            <h1>Bienvenue sur la page d'accueil</h1>
-            <p>Ceci est le contenu spécifique de la page d'accueil.</p>
+            <!-- Section de Bienvenue -->
+            <section>
+                <div class="col">
+                    <h1>Bienvenue sur Bike Racing</h1>
+                    <p>Votre solution rapide pour la Gestion de course Moto.</p>
+                </div>
+            </section>
+
+            <!-- Section "Pourquoi Nous" avec des cartes -->
+            <section>
+                <div class="col">
+                    <h2 class="text-center mt-4 mb-4">Pourquoi Bike Racing ?</h2>
+                    <div class="row">
+
+                        <!-- Carte 1 -->
+                        <div class="col-12 col-lg-4">
+                            <div class="card mb-4 mb-lg-0 border-light shadow-sm">
+                            <img th:src="@{/images/imgFont/Mv.jpg}" class="card-img-top" alt="Image 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Visibilité Complète</h5>
+                                <p class="card-text">Obtenez une vision détaillée de chaque course avec Visibilité Complète.</p>
+                                <a href="#" class="btn btn-primary stretched-link" role="button">En savoir plus</a>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Carte 2 -->
+                        <div class="col-12 col-lg-4">
+                            <div class="card mb-4 mb-lg-0 border-light shadow-sm">
+                                <img th:src="@{/images/imgFont/cugnus.jpg}" class="card-img-top" alt="Image 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Précision et Fiabilité </h5>
+                                    <p class="card-text">Éliminez les erreurs manuelles avec une saisie de données automatisée et assurez-vous que chaque détail compte.</p>
+                                    <a href="#" class="btn btn-primary stretched-link" role="button">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carte 3 -->
+                        <div class="col-12 col-lg-4">
+                            <div class="card mb-4 mb-lg-0 border-light shadow-sm">
+                                <img th:src="@{/images/imgFont/peccoFb.jpg}" class="card-img-top" alt="Image 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Gestion Simplifiée </h5>
+                                    <p class="card-text">Dites adieu à la paperasse ! <br/>
+                                        Notre application simplifie l'enregistrement des participants, les résultats et bien plus encore.</p>
+                                    <a href="#" class="btn btn-primary stretched-link" role="button">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                </div>
+            </section>
+
+
+            <!-- Section "Rejoignez-nous" avec un appel à l'action et un bouton d'inscription -->
+            <section th:unless="${#authorization.expression('isAuthenticated')}">
+                <div class="col">
+                    <h3></h3>
+                    <p>Rejoignez-nous dès Aujourd'hui !<a href="/inscription">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inscriptionModal">
+                            Inscrivez-vous maintenant
+                        </button>
+                    </a>
+                    </p>
+
+                </div>
+            </section>
+
+
         </div>
     </div>
-
-</div>
 </main>
-<!-- inclure le footer ici -->
 
-<div th:replace="~{fragments/footer}">
-</div>
+<!-- inclure le footer ici -->
+<div th:replace="~{fragments/footer}"></div>
+
 </body>
 </html>

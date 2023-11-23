@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymleaf-extrass-springsecurity5">
 <head>
+
     <div th:replace="fragments/header :: header-css"/>
+    <!--link rel="stylesheet" th:href="@{/css/inscription.css}" /-->
 </head>
 <body>
 <header th:replace="fragments/header :: navigation"></header>
@@ -37,8 +39,8 @@
                                class=" collapse alert alert-danger validation-message"></p>
                         </div>
                     </div>
-  <p id="msgformjs" class="collapse alert alert-danger validation-message">
-                        </p>
+                    <p id="msgformjs" class="collapse alert alert-danger validation-message">
+                    </p>
                     <div class="input-group mb-3">
 
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>

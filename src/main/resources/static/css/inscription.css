@@ -1,0 +1,21 @@
+
+body {
+    background-color: #2C3F50; /* Couleur de fond */
+    color: #FFFFFF; /* Couleur du texte */
+}
+
+.card {
+    background-color: #FF5436; /* Couleur de fond de la carte */
+    color: #000000; /* Couleur du texte dans la carte */
+    border: 2px solid #00ABCF; /* Bordure de la carte */
+}
+
+.btn-primary {
+    background-color: #00ABCF; /* Couleur de fond du bouton */
+    border-color: #00ABCF; /* Couleur de la bordure du bouton */
+}
+
+.btn-primary:hover {
+    background-color: #007F99; /* Couleur de fond du bouton au survol */
+    border-color: #007F99; /* Couleur de la bordure du bouton au survol */
+}

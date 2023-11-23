@@ -4,48 +4,51 @@
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
-<header th:replace="fragments/header ::navigation">
-
-</header>
+<header th:replace="fragments/header ::navigation"></header>
 
 <main class="container">
-    <div class="row">
-        <div class="card mt-4">
+    <div class="row justify-content-center mt-4">
+        <div class="card col-md-8">
             <div class="card-header"><h3>Modification d'une moto</h3></div>
             <div class="card-body">
                 <form th:action="@{/admin/moto/edit}" method="post" th:object="${motoDto}">
-                    <div class="mb-4">
-                        <label for="idMoto" class="form-label">Id Moto</label>
-                        <input type="number" class="form-control" id="idMoto" name="idMoto" th:field="*{idMoto}" readonly/>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="idMoto" class="form-label">Id Moto</label>
+                            <input type="number" class="form-control" id="idMoto" name="idMoto" th:field="*{idMoto}" readonly/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="marqueMoto" class="form-label">Marque moto</label>
+                            <input type="text" id="marqueMoto" class="form-control" name="marqueMoto" th:field="*{marqueMoto}" />
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <label for="marqueMoto" class="form-label">Marque moto</label>
-                        <input type="text" id="marqueMoto" class="form-control" name="marqueMoto" th:field="*{marqueMoto}" />
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="versionMoto">Version </label>
+                            <input type="date" class="form-control" id="versionMoto" name="versionMoto" th:field="*{versionMoto}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="puissanceMoto" class="form-label">Puissance</label>
+                            <input type="text" id="puissanceMoto" class="form-control" name="puissanceMoto" th:field="*{puissanceMoto}"/>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <label for="versionMoto">Version </label>
-                        <input type="date" class="form-control" id="versionMoto" name="versionMoto" th:field="*{versionMoto}">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="modeleMoto" class="form-label">Modéle</label>
+                            <input type="text" id="modeleMoto" class="form-control" name="modeleMoto" th:field="*{modeleMoto}"/>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <label for = "puissanceMoto" class = "form-label" >Puissance</label>
-                        <input type="text" id = "puissanceMoto" class = "form-control" name = "puissanceMoto" th:field = "*{puissanceMoto}"/>
-                    </div>
-                    <div class="mb-4">
-                        <label for="modeleMoto" class="form-label">Modéle</label>
-                        <input type="text" id = "modeleMoto" class = "form-control" name = "modeleMoto" th:field = "*{modeleMoto}"/>
-                    </div>
+                    <hr>
                     <div class="d-grid gap-2 mb-4">
-                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Enregister
-                        </button>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Enregistrer</button>
                     </div>
                 </form>
-                <a class="btn btn-secondary btn-sm" th:href="@{/admin/moto/listeMotos}"><i class="fas fa-cancel"></i>Annuler</a>
-
+                <a class="btn btn-secondary btn-sm" th:href="@{/admin/moto/listeMotos}"><i class="fas fa-cancel"></i> Annuler</a>
             </div>
         </div>
     </div>
-
 </main>
+
 <footer th:replace="fragments/footer ::footer"></footer>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class EcurieDto {
     @Size(min = 3,max = 255, message = "Longueure de mail incorrecte")
     private String emailEcurie;
     @NotBlank(message = "numero tel requis")
-    @Size(message ="Longueure incorrecte", max = 150, min = 4)
+    @Size( max = 150, min = 4,message ="Longueure incorrecte")
     private String telEcurie;
     @NotBlank(message = "Adresse requis")
     @Size(min = 4, max = 255, message = "Logueure incorrecte")

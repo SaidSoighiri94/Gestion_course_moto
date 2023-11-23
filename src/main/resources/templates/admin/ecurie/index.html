@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header-css"/>
+    <div th:replace="~{fragments/header :: header-css}"/>
 </head>
 <body>
-<header th:replace="fragments/header :: navigation"></header>
-<main class="col-md-8">
-  <h1>Liste des Ecurie</h1>
+<header th:replace="~{fragments/header :: navigation(activeTab='ecurie')}"></header>
+<main class="container">
 
+    <h1>Liste de toutes les écuries</h1>
+    <a class="btn btn-lg btn-primary" th:href="@{/admin/ecurie/create}" role="button"><i class="fas fa-add"></i>Ajouter une écurie</a>
+
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom de l'écurie</th>
+            <!-- Ajoutez d'autres en-têtes de colonne selon vos besoins -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ecurie : ${lesEcuries}">
+            <td th:text="${ecurie.idEcurie}"></td>
+            <td th:text="${ecurie.nomEcurie}"></td>
+            <!-- Ajoutez d'autres colonnes selon vos besoins -->
+
+            <!-- Ajout des liens et des icônes Bootstrap -->
+            <td>
+                <a th:href="@{/admin/ecurie/detail/__${ecurie.idEcurie}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i>Détails</a>
+                <a th:href="@{/admin/ecurie/edit/__${ecurie.idEcurie}__}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i>Modifier</a>
+                <a th:href="@{/admin/ecurie/delete/__${ecurie.idEcurie}__}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Supprimer</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
 </main>
-<footer th:replace="fragments/footer ::footer"></footer>
+<div th:replace="~{fragments/footer :: footer }"></div>
 </body>
 </html>

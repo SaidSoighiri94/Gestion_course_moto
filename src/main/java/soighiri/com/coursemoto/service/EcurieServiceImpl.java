@@ -38,7 +38,7 @@ public class EcurieServiceImpl implements EcurieService {
         return ecurieRepository.findById(idEcurie).orElse(null) ;
     }
     @Override
-    public void deleteEcurieByid(Long idecurie) {
+    public void deleteEcurieById(Long idecurie) {
         ecurieRepository.deleteById(idecurie);
 
     }
@@ -79,7 +79,7 @@ public class EcurieServiceImpl implements EcurieService {
            pilote.setTelPilote(piloteDto.getTelPilote());
            pilote.setCategories(piloteDto.getCategories());
            pilote.setEcurie(ecurie);
-           ecurie.getPiloteList().add(pilote);
+           ecurie.getPilotes().add(pilote);
            ecurieRepository.save(ecurie);
        }
 

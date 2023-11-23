@@ -4,5 +4,8 @@ INSERT INTO circuit (nom_circuit, adresse_circuit, longueur) VALUES ( 'Imertsiat
 INSERT INTO categorie (nom_categorie, description_categorie) VALUES( 'Categorie Catal', 'Dans cette categorie la puissance de la moto ne dois pas depassé les 90cc, le carbe de doit etre d\'origine avec un echappement catal Z');
 INSERT INTO pilote (nom_pilote,prenom_pilote,numero_pilote, date_naissance, email_pilote, adresse_pilote, tel_pilote) VALUES ( 'Mlay','Malme be',44,'2023-08-08', 'malay@gmail.com','Mdrawadjou domoni-Adjou, Comores','0343644031'),( 'Zoro','Taks be',35,'2023-08-08', 'tax@gmail.com','Mdrambwani domoni-Adjou, Comores','0343644034');
 INSERT INTO role (nom_role) VALUES ('admin');
+INSERT INTO role (nom_role) VALUES ('visiteur');
+INSERT INTO role (nom_role) VALUES ('ecurie');
+
 INSERT INTO utilisateur(role_id, email, mdp_utilisateur) VALUES (1,'admin@email.com','$2a$10$MJn5SDUCgsm3XEyvELGQI.lcCzCXtxhA8hunr9jX9yvDd6/FkjxYO');
 INSERT INTO utilisateur(role_id, email, mdp_utilisateur) VALUES (1,'exemple@email.com','$2a$10$bAa6hny3kv8Ehj6BCmHskuibB6Z/3n5p3eicOTorGiaLd8aRzg6b2');

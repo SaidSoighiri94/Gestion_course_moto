@@ -58,6 +58,9 @@ public class PiloteController {
         model.addAttribute("piloteDto", new PiloteDto());
         List<Categorie> categories = categorieService.getAllCategories();
         List<Ecurie> ecuries = ecurieService.getAllEcuries();
+
+        // Pour verifier si la liste est bien charger dans la console
+        //System.out.println("Ecuries: " + ecuries);
         model.addAttribute("categories", categories);
         model.addAttribute("ecuries", ecuries);
         return "admin/pilote/creat";
