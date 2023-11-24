@@ -72,7 +72,7 @@ public class PiloteController {
             List<Categorie> categories = categorieService.getAllCategories();
             List<Ecurie> ecuries = ecurieService.getAllEcuries();
             model.addAttribute("categories", categories);
-            model.addAttribute("lesEcuries",ecuries);
+            model.addAttribute("ecuries",ecuries);
             return "admin/pilote/creat";
         }
         piloteService.savePiloteFromPiloteDto(piloteDto);
@@ -87,8 +87,10 @@ public class PiloteController {
         }
         PiloteDto piloteDto = piloteService.convertEntityToDto(pilote);
         List<Categorie> categories = categorieService.getAllCategories();
+        List<Ecurie> ecuries = ecurieService.getAllEcuries();
         model.addAttribute("piloteDto", piloteDto);
         model.addAttribute("categories", categories);
+        model.addAttribute("ecuries",ecuries);
         return "admin/pilote/edit";
     }
 
@@ -96,7 +98,9 @@ public class PiloteController {
     public String updatePilote(@ModelAttribute @Valid PiloteDto piloteDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             List<Categorie> categories = categorieService.getAllCategories();
+            List<Ecurie> ecuries = ecurieService.getAllEcuries();
             model.addAttribute("categories", categories);
+            model.addAttribute("ecuries",ecuries);
             return "admin/pilote/edit";
         }
         piloteService.updatePiloteFromPiloteDto(piloteDto);
