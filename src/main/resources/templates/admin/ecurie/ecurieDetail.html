@@ -11,14 +11,17 @@
             <div class="card-header"><h3>Détail Écurie</h3></div>
             <div class="card-body">
                 <p class="card-text">ID : <span th:text="${ecurie.idEcurie}"></span></p>
-                <p class="card-text">Nom : <span th:text="${ecurie.nomEcurie}"></span></p>
-                <p class="card-text">Année de création : <span th:text="${ecurie.anneeCreation}"></span></p>
-                <p class="card-text">Pays : <span th:text="${ecurie.paysEcurie}"></span></p>
-                <p class="card-text">Budget : <span th:text="${ecurie.budgetEcurie}"></span></p>
-                <!-- Ajoutez d'autres informations spécifiques à l'écurie -->
+                <p class="card-text">Nom de l'Écurie : <span th:text="${ecurie.nomEcurie}"></span></p>
+                <p class="card-text">Description : <span th:text="${ecurie.description}"></span></p>
+                <p class="card-text">Responsable : <span th:text="${ecurie.responsable}"></span></p>
+                <p class="card-text">Date de création : <span th:text="${ecurie.dateCreation}"></span></p>
+                <p class="card-text">Email : <span th:text="${ecurie.emailEcurie}"></span></p>
+                <p class="card-text">Téléphone : <span th:text="${ecurie.telEcurie}"></span></p>
+                <p class="card-text">Adresse : <span th:text="${ecurie.adresseEcurie}"></span></p>
+
 
                 <!-- Si besoin d'afficher des informations liées aux pilotes de l'écurie -->
-                <p class="card-text">Pilotes :</p>
+                <!--p class="card-text">Pilotes :</--p-->
                 <ul>
                     <li th:each="pilote : ${ecurie.pilotes}" th:text="${pilote.nomPilote + ' ' + pilote.prenomPilote}"></li>
                 </ul>
