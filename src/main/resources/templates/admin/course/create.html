@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"></div>
+</head>
+<body>
+<header th:replace="fragments/header :: navigation"></header>
+<main>
+    <div class="container">
+
+        <div class="row">
+            <div class="card mt-4">
+                <div class="card-header mt-4"><h3>Ajout d'une course</h3></div>
+
+                <div class="card-body ">
+                    <form method="post" th:object="${courseDto}" th:action="@{/admin/course/create}">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="dateCourse" class="form-label">Date de la course:</label>
+                                <div th:if="${#fields.hasErrors('dateCourse')}" class="alert alert-danger">
+                                    <div th:each="err : ${#fields.errors('dateCourse')}" th:text="${err}"></div>
+                                </div>
+                                <input type="date" id="dateCourse" name="dateCourse" class="form-control" th:field="*{dateCourse}" />
+                            </div>
+
+                            <div class="col">
+                                <label for="heureCourse" class="form-label">Heure de la course:</label>
+                                <div th:if="${#fields.hasErrors('heureCourse')}" class="alert alert-danger">
+                                    <div th:each="err : ${#fields.errors('heureCourse')}" th:text="${err}"></div>
+                                </div>
+                                <input type="text" id="heureCourse" name="heureCourse" class="form-control" th:field="*{heureCourse}" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="nomCourse" class="form-label">Nom de la course:</label>
+                                <div th:if="${#fields.hasErrors('nomCourse')}" class="alert alert-danger">
+                                    <div th:each="err : ${#fields.errors('nomCourse')}" th:text="${err}"></div>
+                                </div>
+                                <input type="text" id="nomCourse" name="nomCourse" class="form-control" th:field="*{nomCourse}" />
+                            </div>
+
+                            <div class="col">
+                                <label for="nombreTour" class="form-label">Nombre de tours:</label>
+                                <div th:if="${#fields.hasErrors('nombreTour')}" class="alert alert-danger">
+                                    <div th:each="err : ${#fields.errors('nombreTour')}" th:text="${err}"></div>
+                                </div>
+                                <input type="number" id="nombreTour" name="nombreTour" class="form-control" th:field="*{nombreTour}" />
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mb-4">
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Ajouter
+                            </button>
+                        </div>
+                    </form>
+                    <a href="/admin/course/listeCourses" class="btn btn-secondary"><i
+                            class="fas fa-arrow-left"></i>Retour</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

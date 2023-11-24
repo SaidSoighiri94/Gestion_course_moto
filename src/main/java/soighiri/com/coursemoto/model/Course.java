@@ -1,11 +1,9 @@
 package soighiri.com.coursemoto.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -17,17 +15,20 @@ public class Course {
     private String heureCourse;
     private String nomCourse;
     private int nombreTour;
-
+    @ManyToOne
+    @JoinColumn(name = "idCircuit")
+    private Circuit circuit;
     public Course() {
     }
 
-    public Course(Date dateCourse, String heureCourse, String nomCourse, int nombreTour) {
+    public Course(Date dateCourse, String heureCourse, String nomCourse, int nombreTour, Circuit circuit) {
         this.dateCourse = dateCourse;
         this.heureCourse = heureCourse;
         this.nomCourse = nomCourse;
         this.nombreTour = nombreTour;
+        this.circuit = circuit;
     }
-    // Ajout les getters et setters appropriés
+// Ajout les getters et setters appropriés
 
 
     public Long getIdCourse() {
@@ -68,5 +69,13 @@ public class Course {
 
     public void setNombreTour(int nombreTour) {
         this.nombreTour = nombreTour;
+    }
+
+    public Circuit getCircuit() {
+        return circuit;
+    }
+
+    public void setCircuit(Circuit circuit) {
+        this.circuit = circuit;
     }
 }

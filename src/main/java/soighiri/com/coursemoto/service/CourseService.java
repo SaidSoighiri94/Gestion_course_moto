@@ -14,7 +14,7 @@ public interface CourseService {
     void deleteCourseById(Long id);
 
     //Modifier Une moto en utilisant un dto
-    Course updateMotoFromCourseDto(CourseDto courseDto);
+    Course updateCourseFromCourseDto(CourseDto courseDto);
 
     // Convertir l'entity en DTO
     CourseDto convertEntityToDto(Course course);

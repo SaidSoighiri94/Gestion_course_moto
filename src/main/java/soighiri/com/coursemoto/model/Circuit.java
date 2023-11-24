@@ -2,6 +2,8 @@ package soighiri.com.coursemoto.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Circuit {
     @Id
@@ -10,6 +12,8 @@ public class Circuit {
     private String nomCircuit;
     private String adresseCircuit;
     private Double longueur;
+    @OneToMany(mappedBy = "circuit",cascade = CascadeType.ALL)
+    private List<Course> courses;
 
     public Circuit() {
     }
@@ -51,6 +55,14 @@ public class Circuit {
 
     public void setLongueur(Double longueur) {
         this.longueur = longueur;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     @Override
