@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/header :: header-css"></div>
 </head>
 <body>
+<header th:replace="fragments/header :: navigation"></header>
+<main class="container">
+    <div class="row">
+        <div class="card mt-4 mx-auto" style="max-width: 800px;">
+            <div class="card-header"><h3>Détail Écurie</h3></div>
+            <div class="card-body">
+                <p class="card-text">ID : <span th:text="${ecurie.idEcurie}"></span></p>
+                <p class="card-text">Nom : <span th:text="${ecurie.nomEcurie}"></span></p>
+                <p class="card-text">Année de création : <span th:text="${ecurie.anneeCreation}"></span></p>
+                <p class="card-text">Pays : <span th:text="${ecurie.paysEcurie}"></span></p>
+                <p class="card-text">Budget : <span th:text="${ecurie.budgetEcurie}"></span></p>
+                <!-- Ajoutez d'autres informations spécifiques à l'écurie -->
 
+                <!-- Si besoin d'afficher des informations liées aux pilotes de l'écurie -->
+                <p class="card-text">Pilotes :</p>
+                <ul>
+                    <li th:each="pilote : ${ecurie.pilotes}" th:text="${pilote.nomPilote + ' ' + pilote.prenomPilote}"></li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-between mb-3 mt-4">
+                <a th:href="@{/admin/ecurie/listeEcuries}" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Retour</a>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

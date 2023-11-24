@@ -20,6 +20,8 @@ public class Ecurie {
     private String adresseEcurie;
     @OneToMany(mappedBy ="ecurie", cascade = CascadeType.ALL)
     private List<Pilote> pilotes;
+    @OneToMany(mappedBy = "ecurie", cascade = CascadeType.ALL)
+    private List<Moto> motos;
     public Ecurie() {
     }
     public Ecurie(String nomEcurie, String description, Date dateCreation, String responsable, String emailEcurie, String telEcurie, String adresseEcurie) {
@@ -102,6 +104,14 @@ public class Ecurie {
 
     public void setPilotes(List<Pilote> pilotes) {
         this.pilotes = pilotes;
+    }
+
+    public List<Moto> getMotos() {
+        return motos;
+    }
+
+    public void setMotos(List<Moto> motos) {
+        this.motos = motos;
     }
 
     @Override

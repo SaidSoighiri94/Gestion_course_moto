@@ -47,9 +47,10 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course updateCourseFromCourseDto(CourseDto courseDto) {
-        Course existingCourse = courseRepository.findById(courseDto.getIdCourse()).orElse(null);
+        Course course= convertDtoToEntity(courseDto);
+        return courseRepository.save(course);
 
-        if (existingCourse != null) {
+        /*if (existingCourse != null) {
             // Mettez à jour les propriétés de l'entité avec les valeurs du DTO
             existingCourse.setDateCourse(courseDto.getDateCourse());
             existingCourse.setHeureCourse(courseDto.getHeureCourse());
@@ -64,7 +65,7 @@ public class CourseServiceImpl implements CourseService {
         } else {
             // Gérer le cas où la course n'est pas trouvée
             return null;
-        }
+        }*/
     }
 
     @Override

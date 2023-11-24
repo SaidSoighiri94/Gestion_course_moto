@@ -17,6 +17,9 @@ public class Moto {
      private String imagePath;
      @Transient
      private MultipartFile fichierImage;
+    @ManyToOne
+    @JoinColumn(name = "id_ecurie")
+    private Ecurie ecurie;
 
      public Moto(){
 
@@ -84,6 +87,14 @@ public class Moto {
 
     public void setModeleMoto(String modeleMoto) {
         this.modeleMoto = modeleMoto;
+    }
+
+    public Ecurie getEcurie() {
+        return ecurie;
+    }
+
+    public void setEcurie(Ecurie ecurie) {
+        this.ecurie = ecurie;
     }
 
     @Override
