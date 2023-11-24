@@ -60,13 +60,20 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="ecurieId" class="form-label">Ecurie</label>
+                                <select class="form-select" id="ecurieId" name="ecurieId" th:field="*{ecurie.idEcurie}">
+                                    <option th:each="ecurie : ${ecuries}" th:value="${ecurie.idEcurie}" th:text="${ecurie.nomEcurie}"></option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="d-grid gap-2 mb-4">
-                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Ajouter
-                            </button>
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Ajouter</button>
                         </div>
                     </form>
-                    <a href="/admin/moto/listeMotos" class="btn btn-secondary"><i
-                            class="fas fa-arrow-left"></i>Retour</a>
+                    <a href="/admin/moto/listeMotos" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Retour</a>
                 </div>
 
             </div>

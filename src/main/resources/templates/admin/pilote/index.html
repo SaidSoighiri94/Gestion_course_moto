@@ -10,6 +10,11 @@
 <h1>Listes de tous les pilotes</h1>
 <a class="btn btn-lg btn-primary"  th:href="@{/admin/pilote/create}" role="button"><i class="fas fa-add"></i>Ajouter un pilote</a>
 
+    <!-- Section ajoutant  le message flash -->
+    <div th:if="${successMessage}" class="alert alert-success mt-4 mb-3" role="alert">
+        <strong th:text="${successMessage}"></strong>
+    </div>
+
 <table class="table table-hover table-striped">
     <thead>
     <tr>
@@ -17,6 +22,7 @@
         <th>Nom </th>
         <th>Prénom</th>
         <th>Numéro</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>

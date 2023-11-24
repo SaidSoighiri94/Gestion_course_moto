@@ -1,5 +1,6 @@
 package soighiri.com.coursemoto.service;
 
+import soighiri.com.coursemoto.dto.EcurieDto;
 import soighiri.com.coursemoto.dto.MotoDto;
 import soighiri.com.coursemoto.model.Moto;
 
@@ -25,5 +26,8 @@ public interface MotoService {
 
     // Convertir l'entity en DTO
     MotoDto convertEntityToDto(Moto moto);
+
+    void addMotoToEcurie(Long idMoto, Long idEcurie);
+
 
 }

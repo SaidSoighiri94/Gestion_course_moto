@@ -24,11 +24,11 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @GetMapping(value = "/listeCourses")
+    @GetMapping(value = "/course/listeCourses")
     public String listCourses(Model model) {
         List<Course> courses = courseService.getAllCourses();
         model.addAttribute("courses", courses);
-        return "course/listCourses";
+        return "admin/course/listCourses";
     }
 
     @GetMapping(value = "/detail/{idCourse}")

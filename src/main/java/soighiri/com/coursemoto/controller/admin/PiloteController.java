@@ -6,12 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import soighiri.com.coursemoto.dto.EcurieDto;
 import soighiri.com.coursemoto.dto.PiloteDto;
 import soighiri.com.coursemoto.model.Ecurie;
+import soighiri.com.coursemoto.model.Moto;
 import soighiri.com.coursemoto.model.Pilote;
 import soighiri.com.coursemoto.model.Categorie;
 import soighiri.com.coursemoto.service.EcurieService;
+import soighiri.com.coursemoto.service.MotoService;
 import soighiri.com.coursemoto.service.PiloteService;
 import soighiri.com.coursemoto.service.CategorieService;
 
@@ -23,11 +26,13 @@ public class PiloteController {
     private final PiloteService piloteService;
     private final CategorieService categorieService;
     private final EcurieService ecurieService;
+    private final MotoService motoService;
     @Autowired
-    public PiloteController(PiloteService piloteService, CategorieService categorieService, EcurieService ecurieService) {
+    public PiloteController(PiloteService piloteService, CategorieService categorieService, EcurieService ecurieService, MotoService motoService) {
         this.piloteService = piloteService;
         this.categorieService = categorieService;
         this.ecurieService = ecurieService;
+        this.motoService = motoService;
     }
 
     @GetMapping(value = "/pilote/listePilotes")
@@ -58,16 +63,18 @@ public class PiloteController {
         model.addAttribute("piloteDto", new PiloteDto());
         List<Categorie> categories = categorieService.getAllCategories();
         List<Ecurie> ecuries = ecurieService.getAllEcuries();
+        //List<Moto> motos = motoService.getAllMotos();
 
         // Pour verifier si la liste est bien charger dans la console
         //System.out.println("Ecuries: " + ecuries);
         model.addAttribute("categories", categories);
         model.addAttribute("ecuries", ecuries);
+        //model.addAttribute("motos" )
         return "admin/pilote/creat";
     }
 
     @PostMapping(value = "/pilote/create")
-    public String store(@ModelAttribute("piloteDto") @Valid PiloteDto piloteDto, BindingResult bindingResult, Model model) {
+    public String store(@ModelAttribute("piloteDto") @Valid PiloteDto piloteDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             List<Categorie> categories = categorieService.getAllCategories();
             List<Ecurie> ecuries = ecurieService.getAllEcuries();
@@ -76,6 +83,10 @@ public class PiloteController {
             return "admin/pilote/creat";
         }
         piloteService.savePiloteFromPiloteDto(piloteDto);
+
+        // Ajoute d'un message flash pour indiquer le succès
+        redirectAttributes.addFlashAttribute("successMessage", "Ajout effectué avec succès");
+
         return "redirect:/admin/pilote/listePilotes";
     }
 

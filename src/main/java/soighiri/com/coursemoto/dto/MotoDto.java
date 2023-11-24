@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
+import soighiri.com.coursemoto.model.Ecurie;
 
 import java.sql.Date;
 
@@ -33,6 +34,7 @@ public class MotoDto {
     private String imagePath;
 
     private MultipartFile fichierImage; // le telechargement du fichier
+    private Ecurie ecurie;
 
 
 }

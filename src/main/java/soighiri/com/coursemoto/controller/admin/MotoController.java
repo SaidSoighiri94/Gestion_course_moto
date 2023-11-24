@@ -1,14 +1,14 @@
 package soighiri.com.coursemoto.controller.admin;
 
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import soighiri.com.coursemoto.dto.MotoDto;
-import soighiri.com.coursemoto.model.Circuit;
+import soighiri.com.coursemoto.model.Ecurie;
 import soighiri.com.coursemoto.model.Moto;
+import soighiri.com.coursemoto.service.EcurieService;
 import soighiri.com.coursemoto.service.MotoService;
 
 import java.io.IOException;
@@ -18,10 +18,13 @@ import java.util.List;
 @RequestMapping(value = "/admin")
 public class MotoController {
     private MotoService motoService;
-    @Autowired
-    public MotoController(MotoService motoService) {
+    private final EcurieService ecurieService;
+
+    public MotoController(MotoService motoService, EcurieService ecurieService) {
         this.motoService = motoService;
+        this.ecurieService = ecurieService;
     }
+
     @GetMapping("/moto/listeMotos")
     public String  index(Model model){
         List<Moto> motos = motoService.getAllMotos();
@@ -31,6 +34,8 @@ public class MotoController {
     // methode permettant d ajoute une moto
     @GetMapping(value ="/moto/create")
     public  String  create(Model model){
+    List<Ecurie> ecuries = ecurieService.getAllEcuries();
+    model.addAttribute("ecuries",ecuries);
     model.addAttribute("motoDto",new MotoDto());
     return "admin/moto/creat";
     }
@@ -52,16 +57,21 @@ public class MotoController {
             return "error/notFound";
         }
         MotoDto motoDto = motoService.convertEntityToDto(moto);
+        List<Ecurie> ecuries = ecurieService.getAllEcuries();
         model.addAttribute("motoDto",motoDto);
+        model.addAttribute("ecuries", ecuries);
         return "admin/moto/edit";
     }
     //Pour sauvegarder les modifications
     @PostMapping(value = "/moto/edit")
-    public String  updateMoto(@ModelAttribute @Valid MotoDto motoDto,BindingResult bindingResult) throws IOException {
+    public String  updateMoto(@ModelAttribute @Valid MotoDto motoDto,BindingResult bindingResult,Model model) throws IOException {
         if(bindingResult.hasErrors()){
+            List<Ecurie> ecuries = ecurieService.getAllEcuries();
+            model.addAttribute("ecuries",ecuries);
             return "admin/moto/edit";
         }
         motoService.saveMotoFromMotoDto(motoDto);
+
         return"redirect:/admin/moto/listeMotos";
     }
     // Afficher les detail d'une moto

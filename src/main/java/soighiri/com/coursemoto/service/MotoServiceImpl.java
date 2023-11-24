@@ -2,8 +2,11 @@ package soighiri.com.coursemoto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import soighiri.com.coursemoto.dto.EcurieDto;
 import soighiri.com.coursemoto.dto.MotoDto;
+import soighiri.com.coursemoto.model.Ecurie;
 import soighiri.com.coursemoto.model.Moto;
+import soighiri.com.coursemoto.repository.EcurieRepository;
 import soighiri.com.coursemoto.repository.MotoRepository;
 
 import java.io.IOException;
@@ -13,12 +16,15 @@ import java.util.List;
 public class MotoServiceImpl implements MotoService {
     private final MotoRepository motoRepository;
     private final FileUploadService fileUploadService;
-
+    private final EcurieRepository ecurieRepository;
     @Autowired
-    public MotoServiceImpl(MotoRepository motoRepository, FileUploadService fileUploadService) {
+    public MotoServiceImpl(MotoRepository motoRepository, FileUploadService fileUploadService, EcurieRepository ecurieRepository) {
         this.motoRepository = motoRepository;
         this.fileUploadService = fileUploadService;
+        this.ecurieRepository = ecurieRepository;
     }
+
+
 
     @Override
     public Moto saveMotoFromMotoDto(MotoDto motoDto) throws IOException{
@@ -89,6 +95,15 @@ public class MotoServiceImpl implements MotoService {
             return motoDto;
     }
 
+    @Override
+    public void addMotoToEcurie(Long idMoto, Long idEcurie) {
+        Moto moto = motoRepository.findById(idMoto).orElseThrow(() -> new RuntimeException("Moto non trouvée"));
+        Ecurie ecurie = ecurieRepository.findById(idEcurie).orElseThrow(() -> new RuntimeException("Ecurie non trouvée"));
+        moto.setEcurie(ecurie);
+        ecurie.getMotos().add(moto);
+        ecurieRepository.save(ecurie);
+    }
+
     // Méthode pour convertir un DTO MotoDto en entité Moto
     private Moto convertDtoToEntity(MotoDto motoDto) {
         Moto moto = new Moto();
@@ -102,5 +117,6 @@ public class MotoServiceImpl implements MotoService {
 
         return moto;
     }
+
 }
 

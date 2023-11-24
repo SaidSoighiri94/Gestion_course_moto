@@ -16,12 +16,14 @@
                     <div class="mb-3">
                         <label for="nomPilote" class="form-label">Nom :</label>
                         <input type="text" class="form-control" id="nomPilote" name="nomPilote" th:field="*{nomPilote}" placeholder="Nom du pilote" aria-describedby="NomPilote">
+                        <small class="text-danger" th:if="${#fields.hasErrors('nomPilote')}" th:errors="*{nomPilote}"></small>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="prenomPilote" class="form-label">Prénom :</label>
                         <input type="text" class="form-control" id="prenomPilote" name="prenomPilote" th:field="*{prenomPilote}" placeholder="Prénom pilote" aria-describedby="PrenomPilote">
+                        <small class="text-danger" th:if="${#fields.hasErrors('prenomPilote')}" th:errors="*{prenomPilote}"></small>
                     </div>
                 </div>
             </div>
@@ -30,12 +32,14 @@
                     <div class="mb-3">
                         <label for="numeroPilote" class="form-label">Numéro :</label>
                         <input type="number" class="form-control" id="numeroPilote" name="numeroPilote" th:field="*{numeroPilote}" placeholder="Numéro pilote" aria-describedby="NumeroPilote">
+                        <small class="text-danger" th:if="${#fields.hasErrors('numeroPilote')}" th:errors="*{numeroPilote}"></small>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="dateNaissance" class="form-label">Date de naissance :</label>
                         <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" th:field="*{dateNaissance}" placeholder="Date de naissance" aria-describedby="DateNaissance">
+                        <small class="text-danger" th:if="${#fields.hasErrors('dateNaissance')}" th:errors="*{dateNaissance}"></small>
                     </div>
                 </div>
             </div>
@@ -43,10 +47,12 @@
                 <div class="col-md-6 mb-3">
                     <label for="emailPilote" class="form-label">Email :</label>
                     <input type="email" name="emailPilote" id="emailPilote" th:field="*{emailPilote}" placeholder="email@exemple.com" class="form-control" aria-describedby="Emailpilote">
+                    <small class="text-danger" th:if="${#fields.hasErrors('emailPilote')}" th:errors="*{emailPilote}"></small>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="telPilote" class="form-label">Téléphone :</label>
                     <input type="tel" id="telPilote" class="form-control" name="telPilote" th:field="*{telPilote}" placeholder="34XXXXXX" aria-describedby="TelPilote">
+                    <small class="text-danger" th:if="${#fields.hasErrors('telPilote')}" th:errors="*{telPilote}"></small>
                 </div>
             </div>
 
@@ -57,6 +63,7 @@
                         <option selected>Selectionnez au moins une catégorie</option>
                         <option th:text="${categorie.nomCategorie}" th:value="${categorie.idCategorie}" th:each="categorie:${categories}"></option>
                     </select>
+                    <small class="text-danger" th:if="${#fields.hasErrors('categories')}" th:errors="*{categories}"></small>
                 </div>
 
                 <div class="col-md-6 mb-3">
@@ -65,12 +72,14 @@
                         <option selected>Selectionnez au moins une écurie</option>
                         <option th:text="${ecurie.nomEcurie}" th:value="${ecurie.idEcurie}" th:each="ecurie:${ecuries}"></option>
                     </select>
+                    <small class="text-danger" th:if="${#fields.hasErrors('ecurie')}" th:errors="*{ecurie}"></small>
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="adressePilote" class="form-label">Adresse :</label>
-                <textarea class="form-control" id="adressePilote" name="adressePilote" placeholder="L'adresse du pilote " aria-describedby="AdressePilote" rows="3"></textarea>
+                <textarea class="form-control" id="adressePilote" name="adressePilote" th:field="*{adressePilote}"  placeholder="L'adresse du pilote " aria-describedby="AdressePilote" rows="3"></textarea>
+                <small class="text-danger" th:if="${#fields.hasErrors('adressePilote')}" th:errors="*{adressePilote}"></small>
             </div>
 
             <div class="d-grid gap-2">

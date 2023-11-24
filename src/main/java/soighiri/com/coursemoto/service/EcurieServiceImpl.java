@@ -3,20 +3,24 @@ package soighiri.com.coursemoto.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import soighiri.com.coursemoto.dto.EcurieDto;
+import soighiri.com.coursemoto.dto.MotoDto;
 import soighiri.com.coursemoto.dto.PiloteDto;
 import soighiri.com.coursemoto.model.Ecurie;
+import soighiri.com.coursemoto.model.Moto;
 import soighiri.com.coursemoto.model.Pilote;
 import soighiri.com.coursemoto.repository.EcurieRepository;
+import soighiri.com.coursemoto.repository.MotoRepository;
 
 import java.util.List;
 
 @Service
 public class EcurieServiceImpl implements EcurieService {
     private final EcurieRepository ecurieRepository;
+    private final MotoRepository motoRepository;
     @Autowired
-
-    public EcurieServiceImpl(EcurieRepository ecurieRepository) {
+    public EcurieServiceImpl(EcurieRepository ecurieRepository, MotoRepository motoRepository) {
         this.ecurieRepository = ecurieRepository;
+        this.motoRepository = motoRepository;
 
     }
 
@@ -83,6 +87,21 @@ public class EcurieServiceImpl implements EcurieService {
            ecurieRepository.save(ecurie);
        }
 
+    }
+
+    @Override
+    public void addMotoToEcurie(Long idEcurie, MotoDto motoDto) {
+        Ecurie ecurie = ecurieRepository.findById(idEcurie).orElseThrow(( )-> new RuntimeException("Ecurie non trouvée"));
+        if (motoDto !=null){
+            Moto moto = new Moto();
+            moto.setMarqueMoto(motoDto.getMarqueMoto());
+            moto.setVersionMoto(motoDto.getVersionMoto());
+            moto.setModeleMoto(motoDto.getModeleMoto());
+            moto.setPuissanceMoto(motoDto.getPuissanceMoto());
+            moto.setFichierImage(moto.getFichierImage());
+            moto.setEcurie(motoDto.getEcurie());
+            ecurieRepository.save(ecurie);
+        }
     }
 
     private Ecurie convertDtoToEntity(EcurieDto ecurieDto) {

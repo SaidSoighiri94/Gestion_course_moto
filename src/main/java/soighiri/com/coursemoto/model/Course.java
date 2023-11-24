@@ -8,6 +8,7 @@ import java.sql.Date;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCourse",nullable = false)
     private Long idCourse;
 
     private Date dateCourse;
@@ -15,7 +16,7 @@ public class Course {
     private String nomCourse;
     private int nombreTour;
     @ManyToOne
-    @JoinColumn(name = "idCircuit")
+    @JoinColumn(name = "circuit_id")
     private Circuit circuit;
     public Course() {
     }

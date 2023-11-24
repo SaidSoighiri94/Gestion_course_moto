@@ -12,6 +12,7 @@ import java.util.Set;
 public class Pilote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="idPilote",nullable = false)
     private Long idPilote;
     private String nomPilote;
     private String PrenomPilote;

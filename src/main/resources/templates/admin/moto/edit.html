@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header-css"/>
+    <div th:replace="fragments/header :: header-css"></div>
 </head>
 <body>
-<header th:replace="fragments/header ::navigation"></header>
+<header th:replace="fragments/header :: navigation"></header>
 
 <main class="container">
     <div class="row justify-content-center mt-4">
         <div class="card col-md-8">
             <div class="card-header"><h3>Modification d'une moto</h3></div>
             <div class="card-body">
-                <form th:action="@{/admin/moto/edit}" method="post" th:object="${motoDto}">
+                <form th:action="@{/admin/moto/edit}" method="post" th:object="${motoDto}" enctype="multipart/form-data">
                     <div class="row mb-4">
                         <div class="col-md-6">
                             <label for="idMoto" class="form-label">Id Moto</label>
@@ -37,6 +37,21 @@
                             <label for="modeleMoto" class="form-label">Modéle</label>
                             <input type="text" id="modeleMoto" class="form-control" name="modeleMoto" th:field="*{modeleMoto}"/>
                         </div>
+                        <div class="col-md-6">
+                            <label for="ecurieId" class="form-label">Ecurie</label>
+                            <select class="form-select" id="ecurieId" name="ecurieId" th:field="*{ecurie.idEcurie}">
+                                <option th:each="ecurie : ${ecuries}" th:value="${ecurie.idEcurie}" th:text="${ecurie.nomEcurie}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="fichierImage">Image Moto</label>
+                            <input type="file" id="fichierImage" name="fichierImage" />
+                        </div>
+                        <div class="col-md-6">
+                            <img th:src="@{'/images/moto/' + ${motoDto.imagePath}}" alt="Image de la moto"/>
+                        </div>
                     </div>
                     <hr>
                     <div class="d-grid gap-2 mb-4">
@@ -49,6 +64,6 @@
     </div>
 </main>
 
-<footer th:replace="fragments/footer ::footer"></footer>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
