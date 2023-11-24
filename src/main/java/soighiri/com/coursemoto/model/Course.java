@@ -3,7 +3,6 @@ package soighiri.com.coursemoto.model;
 import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 public class Course {
