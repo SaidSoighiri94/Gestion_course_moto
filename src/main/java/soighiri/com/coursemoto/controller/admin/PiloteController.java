@@ -83,6 +83,7 @@ public class PiloteController {
             return "admin/pilote/creat";
         }
         piloteService.savePiloteFromPiloteDto(piloteDto);
+       // piloteService.addCategorieToPilote(pilote.getIdPilote(), piloteDto.getCategories().getId());
 
         // Ajoute d'un message flash pour indiquer le succès
         redirectAttributes.addFlashAttribute("successMessage", "Ajout effectué avec succès");
@@ -115,6 +116,7 @@ public class PiloteController {
             return "admin/pilote/edit";
         }
         piloteService.updatePiloteFromPiloteDto(piloteDto);
+
         return "redirect:/admin/pilote/listePilotes";
     }
 }

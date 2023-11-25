@@ -9,3 +9,5 @@ INSERT INTO role (nom_role) VALUES ('ecurie');
 
 INSERT INTO utilisateur(role_id, email, mdp_utilisateur) VALUES (1,'admin@email.com','$2a$10$MJn5SDUCgsm3XEyvELGQI.lcCzCXtxhA8hunr9jX9yvDd6/FkjxYO');
 INSERT INTO utilisateur(role_id, email, mdp_utilisateur) VALUES (1,'exemple@email.com','$2a$10$bAa6hny3kv8Ehj6BCmHskuibB6Z/3n5p3eicOTorGiaLd8aRzg6b2');
+INSERT INTO `ecurie` (`date_creation`, `id_ecurie`, `adresse_ecurie`, `description`, `email_ecurie`, `nom_ecurie`, `responsable`, `tel_ecurie`) VALUES ('2018-11-01', 1, 'Domoni-Ajoud', 'Garage 35 est specialisé dans les courses de cmoto 2 temps', 'garage35@gmail.com', 'Garage 35', 'Charane', '434343433');
+INSERT INTO `ecurie` (`date_creation`, `id_ecurie`, `adresse_ecurie`, `description`, `email_ecurie`, `nom_ecurie`, `responsable`, `tel_ecurie`) VALUES ('2002-10-23', 2, 'Fianarantsoa,Madagascar', 'Garage de course de toute categorie ', 'garagetaxman@gmail.com', 'Tax Man', 'Ularion', '4343434332');

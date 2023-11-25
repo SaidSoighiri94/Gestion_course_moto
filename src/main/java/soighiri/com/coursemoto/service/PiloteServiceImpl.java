@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import soighiri.com.coursemoto.dto.PiloteDto;
 import soighiri.com.coursemoto.model.Categorie;
+import soighiri.com.coursemoto.model.Ecurie;
 import soighiri.com.coursemoto.model.Pilote;
 import soighiri.com.coursemoto.repository.CategorieRepository;
+import soighiri.com.coursemoto.repository.EcurieRepository;
 import soighiri.com.coursemoto.repository.PiloteRepository;
 
 import java.util.List;
@@ -16,16 +18,20 @@ public class PiloteServiceImpl implements PiloteService {
     private final PiloteRepository piloteRepository;
 
     private final CategorieRepository categorieRepository;
+    private final EcurieRepository ecurieRepository;
 
     @Autowired
-    public PiloteServiceImpl(PiloteRepository piloteRepository, CategorieRepository categorieRepository) {
+    public PiloteServiceImpl(PiloteRepository piloteRepository, CategorieRepository categorieRepository, EcurieRepository ecurieRepository) {
         this.piloteRepository = piloteRepository;
         this.categorieRepository = categorieRepository;
+        this.ecurieRepository = ecurieRepository;
     }
 
     @Override
     public Pilote savePiloteFromPiloteDto(PiloteDto piloteDto) {
         Pilote pilote = convertDtoToEntity(piloteDto);
+        Ecurie ecurie = piloteDto.getEcurie();  // Assurez-vous que cette méthode existe dans PiloteDto
+        pilote.setEcurie(ecurie);
         return piloteRepository.save(pilote);
     }
 
@@ -37,6 +43,7 @@ public class PiloteServiceImpl implements PiloteService {
     @Override
     public Pilote updatePiloteFromPiloteDto(PiloteDto piloteDto) {
         Pilote pilote = convertDtoToEntity(piloteDto);
+       // pilote.setEcurie(piloteDto.getEcurie());
         return piloteRepository.save(pilote);
     }
 
@@ -63,6 +70,7 @@ public class PiloteServiceImpl implements PiloteService {
             piloteDto.setEmailPilote(pilote.getEmailPilote());
             piloteDto.setTelPilote(pilote.getTelPilote());
             piloteDto.setCategories(pilote.getCategories());
+
         }
         return piloteDto;
     }
@@ -82,11 +90,13 @@ public class PiloteServiceImpl implements PiloteService {
     }
 
     @Override
-    public void addCategorieToPilote(Long idPilote, Long idCategorie) {
+    public void addCategorieToPilote(Long idPilote, Long idCategorie,Long idEcurie) {
         Pilote pilote = piloteRepository.findById(idPilote).orElse(null);
         Categorie categorie = categorieRepository.findById(idCategorie).orElse(null);
-        if(pilote != null && categorie !=null) {
+        Ecurie ecurie = ecurieRepository.findById(idEcurie).orElse(null);
+        if (pilote != null && categorie != null && ecurie != null) {
             pilote.getCategories().add(categorie);
+            pilote.setEcurie(ecurie);  // Associer l'écurie au pilote
             piloteRepository.save(pilote);
         }
     }

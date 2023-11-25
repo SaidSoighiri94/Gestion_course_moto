@@ -10,8 +10,7 @@
         <!-- Liens vers Bootstrap 5 CSS via Webjars -->
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
         <link href="/webjars/font-awesome/css/all.min.css" th:href="@{/webjars/font-awesome/css/all.min.css}" rel="stylesheet">
-        <!-- Liens vers le CSS du projet -->
-        <!-- <link rel="stylesheet" th:href="@{/css/coursemoto.css}" /-->
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
     </th:block>
 </head>
 
@@ -29,30 +28,33 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0 d-flex ms-auto justify-content-between align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{/home}" th:classappend="${activeTab=='home'?'active':null}" aria-current="page" ><i class="fas fa-home"></i> Accueil</a>
+                        <a class="nav-link " href="#" th:href="@{/home}" th:classappend="${activeTab=='home'?'active':null}" aria-current="page" ><i class="fas fa-home"></i> Accueil</a>
                     </li>
-                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <li class="nav-item me-3" sec:authorize="isAuthenticated()">
                         <a class="nav-link" href="#" th:href="@{/admin/pilote/listePilotes}" th:classappend="${activeTab=='pilote'?'active':null}"><i class="fas fa-motorcycle"></i> Pilote</a>
                     </li>
-                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <li class="nav-item me-3" sec:authorize="isAuthenticated()">
                         <a class="nav-link" href="#" th:href="@{/admin/listeCircuits}" th:classappend="${activeTab=='circuit'?'active':null}"><i class="fas fa-map-marker"></i> Circuit</a>
                     </li>
-                    <li sec:authorize="isAnonymous()" class="nav-item mr-5">
+
+                    <li class="nav-item mr-5 me-3" sec:authorize="isAuthenticated()">
+                        <span class="text-light">Bienvenue</span> <span class="text-primary" sec:authentication="name"></span>
+                        (<span sec:authentication="authorities[0]"></span>)
+                    </li>
+
+                    <li sec:authorize="isAnonymous()" class="nav-item mr-2 me-3">
                         <a class="nav-link" href="/login">Connexion</a>
                     </li>
 
 
-                    <li sec:authorize="isAuthenticated()" class="nav-item mr-2">
+                    <li sec:authorize="isAuthenticated()" class="nav-item mr-2 ms-auto">
                         <form action="/logout" method="post">
                             <button class="btn btn-primary">Deconnexion</button>
                         </form>
                     </li>
-                    <li class="nav-item mr-5" sec:authorize="isAuthenticated()">
-                        <span class="text-light">Bienvenue</span> <span class="text-primary" sec:authentication="name"></span>
-                        (<span sec:authentication="authorities[0]"></span>)
-                    </li>
+
                 </ul>
             </div>
         </div>

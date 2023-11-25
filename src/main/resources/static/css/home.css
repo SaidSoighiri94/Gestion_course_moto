@@ -1,0 +1,55 @@
+/* Style pour le sidebar */
+/*.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #FF0000; /* Rouge vif */
+   /* padding-top: 20px;
+    transition: left 0.3s;
+}
+.sidebar.show {
+    left: 0;
+}
+/* Style pour le contenu principal */
+/*.main-content {
+    margin-left: 30px;
+    padding-top: 20px;
+}
+/* Style pour le formulaire */
+/*.add-course-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+ */
+
+/*#bloc_page {
+    margin-left:auto;
+
+    background-color: #B7B5B5;
+}
+/*.bienvenue {
+
+    /*background-color: #B7B5B5;
+    #BC060C;
+    #01AC3E;
+    #262626;
+    #B7B5B5
+    padding: 20px;
+    position:relative;*/
+/*}
+.bienvenue .row {
+    display: flex;
+    justify-content: space-between;
+}
+.bienvenue img {
+    /*position:relative;
+    top: 50%;
+    right:0;*/
+  /*  max-width: 80%;
+    height: auto;
+}*/
+
+/* home.css */

@@ -16,5 +16,5 @@ public interface PiloteService {
 
     List<Pilote> getAllPilotes();
     PiloteDto convertEntityToDto(Pilote pilote);
-    void addCategorieToPilote(Long idPilote, Long idCategorie);
+    void addCategorieToPilote(Long idPilote, Long idCategorie,Long idEcurie);
 }

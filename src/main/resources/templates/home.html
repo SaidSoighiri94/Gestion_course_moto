@@ -2,17 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
     <link th:replace="fragments/header :: header-css" />
+     <!--link rel="stylesheet" th:href="@{/css/home.css}" /-->
 </head>
 
 <body>
 
 <!-- Inclusion de la navigation qui se trouve dans le fichier header sous le sous-fragment navigation -->
 <header th:replace="~{fragments/header :: navigation(activeTab='home') }"></header>
+
 <!--div th:replace="~{fragments/sideBar :: sidebar}"></div-->
-<main class="ContenuPrincipale">
+<main id="bloc_page">
     <!-- Le contenu spécifique de la page ici -->
     <div class="container">
-        <div class="row mb-4">
+        <div class="row mb-4 ">
 
             <!-- Message de succès de l'inscription -->
             <div th:if="${successMessage}" class="alert alert-success">
@@ -20,7 +22,7 @@
             </div>
 
             <!-- Section de Bienvenue -->
-            <section>
+            <section class="bienvenue">
                 <div class="col">
                     <h1>Bienvenue sur Bike Racing</h1>
                     <p>Votre solution rapide pour la Gestion de course Moto.</p>
@@ -28,7 +30,7 @@
             </section>
 
             <!-- Section "Pourquoi Nous" avec des cartes -->
-            <section>
+            <section class="pourquoi_nous">
                 <div class="col">
                     <h2 class="text-center mt-4 mb-4">Pourquoi Bike Racing ?</h2>
                     <div class="row">
@@ -36,13 +38,13 @@
                         <!-- Carte 1 -->
                         <div class="col-12 col-lg-4">
                             <div class="card mb-4 mb-lg-0 border-light shadow-sm">
-                            <img th:src="@{/images/imgFont/Mv.jpg}" class="card-img-top" alt="Image 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Visibilité Complète</h5>
-                                <p class="card-text">Obtenez une vision détaillée de chaque course avec Visibilité Complète.</p>
-                                <a href="#" class="btn btn-primary stretched-link" role="button">En savoir plus</a>
+                                <img th:src="@{/images/imgFont/Mv.jpg}" class="card-img-top" alt="Image 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Visibilité Complète</h5>
+                                    <p class="card-text">Obtenez une vision détaillée de chaque course avec Visibilité Complète.</p>
+                                    <a href="#" class="btn btn-primary stretched-link" role="button">En savoir plus</a>
+                                </div>
                             </div>
-                        </div>
                         </div>
 
                         <!-- Carte 2 -->
@@ -70,13 +72,12 @@
                             </div>
                         </div>
 
-                </div>
+                    </div>
                 </div>
             </section>
 
-
             <!-- Section "Rejoignez-nous" avec un appel à l'action et un bouton d'inscription -->
-            <section th:unless="${#authorization.expression('isAuthenticated')}">
+            <section th:unless="${#authorization.expression('isAuthenticated')}" class="rejoignez_nous">
                 <div class="col">
                     <h3></h3>
                     <p>Rejoignez-nous dès Aujourd'hui !<a href="/inscription">
@@ -88,7 +89,6 @@
 
                 </div>
             </section>
-
 
         </div>
     </div>

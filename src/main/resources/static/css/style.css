@@ -1,0 +1,11 @@
+/*
+Style generale des pages
+ */
+body {
+    background-image: url('/images/imgFont/fond.png');
+    background-size: cover; /* Ajustez la taille de l'image selon la taille de la fenêtre */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+}
+h1,h2,h3,h4,h5,h6 {
+    color:gray;
+}

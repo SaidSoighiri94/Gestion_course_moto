@@ -20,37 +20,35 @@
                             <div class="mb-3">
                                 <label for="nomPilote" class="form-label">Nom :</label>
                                 <input type="text" class="form-control" id="nomPilote" name="nomPilote" th:field="*{nomPilote}" placeholder="Nom du pilote" aria-describedby="NomPilote">
+                                <div th:if="${#fields.hasErrors('nomPilote')}" th:errors="*{nomPilote}" class="alert alert-danger"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="numeroPilote" class="form-label">Numéro :</label>
+                                <input type="number" class="form-control" id="numeroPilote" name="numeroPilote" th:field="*{numeroPilote}" placeholder="Numéro pilote" aria-describedby="NumeroPilote">
+                                <div th:if="${#fields.hasErrors('numeroPilote')}" th:errors="*{numeroPilote}" class="alert alert-danger"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailPilote" class="form-label">Email :</label>
+                                <input type="email" name="emailPilote" id="emailPilote" th:field="*{emailPilote}" placeholder="email@exemple.com" class="form-control" aria-describedby="Emailpilote">
+                                <div th:if="${#fields.hasErrors('emailPilote')}" th:errors="*{emailPilote}" class="alert alert-danger"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="prenomPilote" class="form-label">Prénom :</label>
                                 <input type="text" class="form-control" id="prenomPilote" name="prenomPilote" th:field="*{prenomPilote}" placeholder="Prénom pilote" aria-describedby="PrenomPilote">
+                                <div th:if="${#fields.hasErrors('prenomPilote')}" th:errors="*{prenomPilote}" class="alert alert-danger"></div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="numeroPilote" class="form-label">Numéro :</label>
-                                <input type="number" class="form-control" id="numeroPilote" name="numeroPilote" th:field="*{numeroPilote}" placeholder="Numéro pilote" aria-describedby="NumeroPilote">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="dateNaissance" class="form-label">Date de naissance :</label>
                                 <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" th:field="*{dateNaissance}" placeholder="Date de naissance" aria-describedby="DateNaissance">
+                                <div th:if="${#fields.hasErrors('dateNaissance')}" th:errors="*{dateNaissance}" class="alert alert-danger"></div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="emailPilote" class="form-label">Email :</label>
-                            <input type="email" name="emailPilote" id="emailPilote" th:field="*{emailPilote}" placeholder="email@exemple.com" class="form-control" aria-describedby="Emailpilote">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="telPilote" class="form-label">Téléphone :</label>
-                            <input type="tel" id="telPilote" class="form-control" name="telPilote" th:field="*{telPilote}" placeholder="34XXXXXX" aria-describedby="TelPilote">
+                            <div class="mb-3">
+                                <label for="telPilote" class="form-label">Téléphone :</label>
+                                <input type="tel" id="telPilote" class="form-control" name="telPilote" th:field="*{telPilote}" placeholder="34XXXXXX" aria-describedby="TelPilote">
+                                <div th:if="${#fields.hasErrors('telPilote')}" th:errors="*{telPilote}" class="alert alert-danger"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -61,6 +59,7 @@
                                 <option selected>Selectionnez au moins une catégorie</option>
                                 <option th:text="${categorie.nomCategorie}" th:value="${categorie.idCategorie}" th:each="categorie:${categories}"></option>
                             </select>
+                            <div th:if="${#fields.hasErrors('categories')}" th:errors="*{categories}" class="alert alert-danger"></div>
                         </div>
 
                         <div class="col-md-6 mb-3">
@@ -69,16 +68,18 @@
                                 <option selected>Selectionnez au moins une écurie</option>
                                 <option th:text="${ecurie.nomEcurie}" th:value="${ecurie.idEcurie}" th:each="ecurie:${ecuries}"></option>
                             </select>
+                            <div th:if="${#fields.hasErrors('ecurie')}" th:errors="*{ecurie}" class="alert alert-danger"></div>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="adressePilote" class="form-label">Adresse :</label>
                         <textarea class="form-control" id="adressePilote" name="adressePilote" th:field="*{adressePilote}"  placeholder="L'adresse du pilote " aria-describedby="AdressePilote" rows="3"></textarea>
+                        <div th:if="${#fields.hasErrors('adressePilote')}" th:errors="*{adressePilote}" class="alert alert-danger"></div>
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Ajouter</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Enregistrer</button>
                     </div>
                 </form>
                 <a href="/admin/pilote/listePilotes" class="mt-3 btn btn-secondary"><i class="fas fa-arrow-left"></i> Retour</a>

@@ -30,10 +30,17 @@ public class PiloteDto {
     @Past(message ="La date de naissance doit etre au  passé")
     private Date dateNaissance;
 
+    @Email(message = "L'adresse e-mail doit être valide")
     private String emailPilote;
+
+    @NotBlank(message = "L'adresse du pilote est requise")
     private String adressePilote;
+
+    @Pattern(regexp = "\\d{10}", message = "Le numéro de téléphone doit contenir 10 chiffres")
     private String telPilote;
+    @NotNull(message = "La categorie  est requise")
     private Set<Categorie> categories;
+    @NotNull(message = "L'écurie est requise")
     private Ecurie ecurie;
 
 
