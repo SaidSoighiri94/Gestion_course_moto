@@ -56,7 +56,6 @@
                         <div class="col-md-6 mb-3">
                             <label for="categories" class="form-label">Liste Catégories :</label>
                             <select id="categories" name="categories" class="form-control" multiple aria-label="multipleSelect">
-                                <option selected>Selectionnez au moins une catégorie</option>
                                 <option th:text="${categorie.nomCategorie}" th:value="${categorie.idCategorie}" th:each="categorie:${categories}"></option>
                             </select>
                             <div th:if="${#fields.hasErrors('categories')}" th:errors="*{categories}" class="alert alert-danger"></div>
