@@ -2,51 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/header :: header-css"/>
-    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <!--link rel="stylesheet" th:href="@{/css/login.css}" /-->
 </head>
 <body>
 <header th:replace="fragments/header :: navigation"></header>
 <main class="container">
-    <div class="row">
-
-        <div class="card col-md-8 mx-auto mt-3">
-            <div class="card-header">
-                <h1>Login</h1>
-            </div>
-            <div class="card-body">
-                <form th:action="@{/login}" method="post">
-                    <div>
-
-                        <p class="alert alert-danger" th:if="${error}" th:text="${error}"><i class="fas fa-exclamation-circle"></i></p>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text"><i class="fas fa-envelope text-primary"></i></span>
-                        <div class="form-floating">
-                            <input required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control " name="username" id="email"
-                                   placeholder="exemple@email.com">
-                            <label for="email">Email</label>
-                        </div>
-
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                        <div class="form-floating">
-                            <input type="password" id="password" name="password" placeholder="Mot de passe"
-                                   class="form-control">
-                            <label for="password" class="form-label">Mot de passe</label>
-                        </div>
-                    </div>
-                    <div class="d-grid gap-2 mb-4">
-                        <button class="btn btn-primary col-4"><i class="fas fa-sign-in"></i>Se connecter</button>
-                        <a th:href="@{/visiteur/passwordReset}">Mot de passe oublié ? </a>
-                    </div>
-                </form>
-            </div>
+    <div class="card col-md-8 mx-auto mt-3">
+        <div class="card-header">
+            <i class="fas fa-lock  fa-fw me-2"></i>
+            <h4 class="d-inline text-dark">Login</h4>
         </div>
-
+        <div class="card-body">
+            <form th:action="@{/login}" method="post">
+                <div>
+                    <p class="alert alert-danger" th:if="${error}" th:text="${error}"><i class="fas fa-exclamation-circle"></i></p>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-envelope text-primary"></i></span>
+                    <div class="form-floating">
+                        <input required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control " name="username" id="email"
+                               placeholder="exemple@email.com">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <div class="form-floating">
+                        <input type="password" id="password" name="password" placeholder="Mot de passe" class="form-control">
+                        <label for="password" class="form-label">Mot de passe</label>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 mb-4">
+                    <button class="btn btn-primary"><i class="fas fa-sign-in"></i>Se connecter</button>
+                    <a th:href="@{/visiteur/passwordReset}">Mot de passe oublié ?</a>
+                </div>
+            </form>
+        </div>
     </div>
-
-
 </main>
 
 <footer th:replace="fragments/footer ::footer"></footer>

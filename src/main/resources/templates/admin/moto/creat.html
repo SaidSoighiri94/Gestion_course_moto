@@ -1,85 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header-css"></div>
+    <div th:replace="~{fragments/header :: header-css}" />
 </head>
 <body>
-<header th:replace="fragments/header :: navigation"></header>
-<main>
-    <div class="container">
 
-        <div class="row">
-            <div class="card mt-4">
-                <div class="card-header mt-4"><h3>Ajout d'une moto</h3></div>
-
-                <div class="card-body ">
-                    <form method="post" th:object="${motoDto}" th:action="@{/admin/moto/create}" enctype="multipart/form-data">
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <label for="fichierImage">Image Moto</label>
-                                <input type="file" id="fichierImage" name="fichierImage" th:field="*{fichierImage}"/>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <label for="marqueMoto" class="form-label"> Marque Moto</label>
-                                <div th:if="${#fields.hasErrors('marqueMoto')}" class="alert alert-danger">
-                                    <div th:each="err : ${#fields.errors('marqueMoto')}" th:text="${err}"></div>
-                                </div>
-                                <input type="text" id="marqueMoto" class="form-control" th:field="*{marqueMoto}"/>
-                            </div>
-
-                            <div class="col-6">
-                                <label for="versionMoto" class="form-label">Version:</label>
-                                <div th:if="${#fields.hasErrors('versionMoto')}" class="alert alert-danger">
-                                    <div th:each="err : ${#fields.errors('versionMoto')}" th:text="${err}"></div>
-                                </div>
-                                <input type="date" name="versionMoto" id="versionMoto" class="form-control"
-                                       th:field="*{versionMoto}" placeholder="version moto"/>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <label for="puissanceMoto" class="form-label">Puissance</label>
-                                <div th:if="${#fields.hasErrors('puissanceMoto')}" class="alert alert-danger">
-                                    <div th:each="err : ${#fields.errors('puissanceMoto')}" th:text="${err}"></div>
-                                </div>
-                                <input type="text" id="puissanceMoto" name="puissanceMoto" class="form-control"
-                                       th:field="*{puissanceMoto}"/>
-                            </div>
-
-                            <div class="col-6">
-                                <label for="modeleMoto" class="form-label">Modele</label>
-                                <div th:if="${#fields.hasErrors('modeleMoto')}" class="alert alert-danger">
-                                    <div th:each="err : ${#fields.errors('modeleMoto')}" th:text="${err}"></div>
-                                </div>
-                                <input type="text" name="modeleMoto" id="modeleMoto" class="form-control"
-                                       th:field="*{modeleMoto}"/>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <label for="ecurieId" class="form-label">Ecurie</label>
-                                <select class="form-select" id="ecurieId" name="ecurieId" th:field="*{ecurie.idEcurie}">
-                                    <option th:each="ecurie : ${ecuries}" th:value="${ecurie.idEcurie}" th:text="${ecurie.nomEcurie}"></option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="d-grid gap-2 mb-4">
-                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Ajouter</button>
-                        </div>
-                    </form>
-                    <a href="/admin/moto/listeMotos" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Retour</a>
+<div th:replace="~{fragments/header :: navigation}"></div>
+<div class="container">
+    <div class="card mt-4">
+        <div class="card-header text-center">
+            <h2>Ajouter Moto</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" th:object="${motoDto}" th:action="@{/admin/moto/create}" enctype="multipart/form-data">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="fichierImage">Image Moto:</label>
+                        <input type="file" id="fichierImage" name="fichierImage" th:field="*{fichierImage}" class="form-control" />
+                    </div>
                 </div>
 
-            </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="marqueMoto" class="form-label">Marque Moto:</label>
+                        <div th:if="${#fields.hasErrors('marqueMoto')}" class="alert alert-danger">
+                            <div th:each="err : ${#fields.errors('marqueMoto')}" th:text="${err}"></div>
+                        </div>
+                        <input type="text" id="marqueMoto" name="marqueMoto" th:field="*{marqueMoto}" class="form-control" />
+                    </div>
+                    <div class="col">
+                        <label for="versionMoto" class="form-label">Version Moto:</label>
+                        <div th:if="${#fields.hasErrors('versionMoto')}" class="alert alert-danger">
+                            <div th:each="err : ${#fields.errors('versionMoto')}" th:text="${err}"></div>
+                        </div>
+                        <input type="date" id="versionMoto" name="versionMoto" th:field="*{versionMoto}" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="puissanceMoto" class="form-label">Puissance Moto:</label>
+                        <div th:if="${#fields.hasErrors('puissanceMoto')}" class="alert alert-danger">
+                            <div th:each="err : ${#fields.errors('puissanceMoto')}" th:text="${err}"></div>
+                        </div>
+                        <input type="text" id="puissanceMoto" name="puissanceMoto" th:field="*{puissanceMoto}" class="form-control" />
+                    </div>
+                    <div class="col">
+                        <label for="modeleMoto" class="form-label">Modèle Moto:</label>
+                        <div th:if="${#fields.hasErrors('modeleMoto')}" class="alert alert-danger">
+                            <div th:each="err : ${#fields.errors('modeleMoto')}" th:text="${err}"></div>
+                        </div>
+                        <input type="text" id="modeleMoto" name="modeleMoto" th:field="*{modeleMoto}" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="ecurieId" class="form-label">Écurie:</label>
+                        <select class="form-select" id="ecurieId" name="ecurieId" th:field="*{ecurie.idEcurie}">
+                            <option th:each="ecurie : ${ecuries}" th:value="${ecurie.idEcurie}" th:text="${ecurie.nomEcurie}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 mb-4">
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Ajouter</button>
+                </div>
+            </form>
+            <a href="/admin/moto/listeMotos" class="mt-3 btn btn-secondary"><i class="fas fa-arrow-left"></i> Retour</a>
         </div>
     </div>
-</main>
-<footer th:replace="fragments/footer :: footer"></footer>
+</div>
+<div th:replace="~{fragments/footer.html :: footer}"/>
 </body>
 </html>
