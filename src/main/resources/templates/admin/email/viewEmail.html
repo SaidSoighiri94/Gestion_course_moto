@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css"></head>
+<body>
+
+<main class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="mt-4 text-center text-black">Détails de l'e-mail</h3>
+
+      <dl class="row">
+        <dt class="col-sm-3">Destinataire :</dt>
+        <dd class="col-sm-9" th:text="${email.recipient}"></dd>
+
+        <dt class="col-sm-3">Sujet :</dt>
+        <dd class="col-sm-9" th:text="${email.subject}"></dd>
+
+        <dt class="col-sm-3">Contenu :</dt>
+        <dd class="col-sm-9" th:text="${email.content}"></dd>
+      </dl>
+
+      <a href="/admin/email/listEmail" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Retour</a>
+    </div>
+  </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

@@ -47,5 +47,12 @@ public class EmailController {
         ///emailService.sendEmailAndArchive(email.getRecipient(), email.getSubject(), email.getContent()); // Nous utilisons le service pour l'envoie d'e-mail
         return "redirect:/admin/email/listEmail";
     }
-
+    // Pour consulter le contenu d'un e-mail
+    @GetMapping(value = "/email/viewEmail/{id}")
+    public ModelAndView viewEmail(@PathVariable(name = "id") Long idEmail) {
+        ModelAndView modelAndView = new ModelAndView("admin/email/viewEmail");
+        Email email = emailService.getEmail(idEmail);
+        modelAndView.addObject("email", email);
+        return modelAndView;
+    }
 }

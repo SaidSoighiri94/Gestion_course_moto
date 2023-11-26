@@ -6,6 +6,9 @@
 
 <div class="container">
         <h1 class="mx-auto text-center mt-4">Liste des e-mail archivés</h1>
+    <div class="text-end mt-3">
+        <a th:href="@{/admin/email/newEmail}" class="btn btn-success"><i class="fas fa-envelope"></i> Envoyer un e-mail</a>
+    </div>
             <div class="table-responsive-md mt-4">
 
                 <table class="table table-hover table-striped">
@@ -14,6 +17,7 @@
                         <th>ID</th>
                         <th>Destinataire</th>
                         <th>Sujet</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -23,8 +27,8 @@
                         <td th:text="${email.subject}"></td>
                         <!--Ajout des boutons avec icônes-->
                         <td>
-                            <a th:href="@{/admin/email/detail/__${email.idEmail}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Détails</a>
-                            <a th:href="@{/admin/email/edit/__${email.idEmail}__}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Modifier</a>
+                            <a th:href="@{/admin/email/viewEmail/__${email.idEmail}__}" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Détails</a>
+                            <!--a th:href="@{/admin/email/edit/__${email.idEmail}__}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Modifier</a-->
                             <a th:href="@{/admin/email/delete/__${email.idEmail}__}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Supprimer</a>
                         </td>
 
