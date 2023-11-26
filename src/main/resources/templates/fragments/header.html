@@ -33,15 +33,24 @@
                         <a class="nav-link " href="#" th:href="@{/home}" th:classappend="${activeTab=='home'?'active':null}" aria-current="page" ><i class="fas fa-home"></i> Accueil</a>
                     </li>
                     <li class="nav-item me-3" sec:authorize="isAuthenticated()">
-                        <a class="nav-link" href="#" th:href="@{/admin/pilote/listePilotes}" th:classappend="${activeTab=='pilote'?'active':null}"><i class="fas fa-motorcycle"></i> Pilote</a>
+                        <a class="nav-link" href="#" th:href="@{/admin/pilote/listePilotes}" th:classappend="${activeTab=='pilote'?'active':null}"><i class="fas fa-motorcycle-helmet"></i> Pilote</a>
                     </li>
                     <li class="nav-item me-3" sec:authorize="isAuthenticated()">
                         <a class="nav-link" href="#" th:href="@{/admin/listeCircuits}" th:classappend="${activeTab=='circuit'?'active':null}"><i class="fas fa-map-marker"></i> Circuit</a>
                     </li>
 
+                    <li class="nav-item me-3" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" href="#" th:href="@{/admin/ecurie/listeEcuries}" th:classappend="${activeTab=='ecurie'?'active':null}"><i class="fas fa-people-group"></i> Ecurie</a>
+                    </li>
+                    <li class="nav-item me-3" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" href="#" th:href="@{/admin/moto/listeMotos}" th:classappend="${activeTab=='moto'?'active':null}"><i class="fas fa-motorcycle"></i> Moto</a>
+                    </li>
+
+
+
                     <li class="nav-item mr-5 me-3" sec:authorize="isAuthenticated()">
-                        <span class="text-light">Bienvenue</span> <span class="text-primary" sec:authentication="name"></span>
-                        (<span sec:authentication="authorities[0]"></span>)
+                        <span class="text-light">Bienvenue</span> <span class="text-primary" th:text="${#authentication.name}"></span>
+                        (<span th:text="${#authentication.authorities[0]}"></span>)
                     </li>
 
                     <li sec:authorize="isAnonymous()" class="nav-item mr-2 me-3">

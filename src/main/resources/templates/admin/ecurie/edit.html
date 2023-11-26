@@ -10,10 +10,13 @@
 
         <div class="row">
             <div class="card mt-4">
-                <div class="card-header mt-4 text-black "><h3>Création d'une Écurie</h3></div>
+                <div class="card-header mt-4"><h3>Modification d'une Écurie</h3></div>
 
                 <div class="card-body ">
-                    <form method="post" th:object="${ecurieDto}" th:action="@{/admin/ecurie/create}">
+                    <form method="post" th:object="${ecurieDto}" th:action="@{/admin/ecurie/edit}">
+                        <!-- Ajoutez un champ caché pour l'ID de l'écurie -->
+                        <input type="hidden" th:field="*{idEcurie}" />
+
                         <div class="row mb-3">
                             <div class="col-6">
                                 <label for="nomEcurie" class="form-label">Nom de l'Écurie :</label>
@@ -65,11 +68,10 @@
                         </div>
 
                         <div class="d-grid gap-2 mb-4">
-                            <button type="submit" class="btn btn-primary">Créer l'Écurie</button>
+                            <button type="submit" class="btn btn-warning"><i class="fas fa-save"></i> Modifier l'Écurie</button>
                         </div>
                     </form>
-                    <a href="/admin/ecurie/listeEcuries" class="btn btn-secondary"><i
-                            class="fas fa-arrow-left"></i>Retour</a>
+                    <a href="/admin/ecurie/listeEcuries" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Retour</a>
                 </div>
 
             </div>

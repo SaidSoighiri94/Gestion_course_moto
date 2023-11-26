@@ -37,6 +37,7 @@ public class PiloteController {
 
     @GetMapping(value = "/pilote/listePilotes")
     public String index(Model model) {
+
         List<Pilote> pilotes = piloteService.getAllPilotes();
         model.addAttribute("lesPilotes", pilotes);
         return "admin/pilote/index";
@@ -44,11 +45,16 @@ public class PiloteController {
 
     @GetMapping(value = "/pilote/detail/{idPilote}")
     public String getPiloteById(@PathVariable Long idPilote, Model model) {
+        List<Categorie> categories = categorieService.getAllCategories();
         Pilote pilote = piloteService.getPiloteById(idPilote);
+        List<Ecurie> ecuries = ecurieService.getAllEcuries();
+
         if (pilote == null) {
             return "error/notFound";
         }
         model.addAttribute("pilote", pilote);
+        model.addAttribute("categories", categories);
+        model.addAttribute("ecuries", ecuries);
         return "admin/pilote/piloteDetail";
     }
 

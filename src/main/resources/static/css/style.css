@@ -7,5 +7,12 @@ body {
     background-repeat: no-repeat; /* Empêche la répétition de l'image */
 }
 h1,h2,h3,h4,h5,h6 {
-    color:gray;
+    color:silver;
 }
+.bienvenue p{
+    font-size: 30px;
+    margin-left: 20px;
+    color: antiquewhite;
+
+}
+

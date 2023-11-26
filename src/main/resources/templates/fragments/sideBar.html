@@ -6,28 +6,47 @@
 </head>
 
 <body>
-<!-- Inclure le fragment navigation ici -->
-<header th:replace="fragments/header :: navigation"></header>
-
-<aside th:fragment="sidebar">
-<!-- Sidebar -->
-<div  class="sidebar" id="sidebar">
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-home"></i> Accueil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-motorcycle"></i> Courses</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-user"></i> Profil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Connexion</a>
-        </li>
-    </ul>
-</div>
+<div th:replace="fragments/header :: navigation" />
+<main class="container-fluid">
+    <div class="row">
+        <!-- Aside avec le menu de navigation -->
+<aside th:fragment="sidebar" class="col-md-3 bg-light">
+    <nav class="navbar navbar-expand-md navbar-light flex-md-column">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav flex-md-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/home}" th:classappend="${activeTab=='home'?'active':null}"
+                       aria-current="page"><i class="fas fa-home"></i> Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/admin/pilote/listePilotes}"
+                       th:classappend="${activeTab=='pilote'?'active':null}"><i
+                            class="fas fa-motorcycle-helmet"></i> Pilote</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/admin/listeCircuits}"
+                       th:classappend="${activeTab=='circuit'?'active':null}"><i
+                            class="fas fa-map-marker"></i> Circuit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/admin/ecurie/listeEcuries}"
+                       th:classappend="${activeTab=='ecurie'?'active':null}"><i
+                            class="fas fa-people-group"></i> Ecurie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/admin/moto/listeMotos}"
+                       th:classappend="${activeTab=='moto'?'active':null}"><i class="fas fa-motorcycle"></i>
+                        Moto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </aside>
+
 
 <!-- Contenu principal -->
 <div class="main-content">

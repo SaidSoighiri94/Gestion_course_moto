@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="~{fragments/header :: header-css}"/>
+    <div th:replace="~{fragments/header :: header-css}" />
 </head>
 <body>
-<header th:replace="~{fragments/header :: navigation(activeTab='ecurie')}"></header>
-<main class="container">
+<header th:replace="~{fragments/header :: navigation(activeTab='ecurie')}" ></header>
+<main class="container mt-4">
+    <h1 class="text-center mb-4">Liste de toutes les écuries</h1>
 
-    <h1>Liste de toutes les écuries</h1>
-    <a class="btn btn-lg btn-primary" th:href="@{/admin/ecurie/create}" role="button"><i class="fas fa-add"></i>Ajouter une écurie</a>
+    <!-- Ajout du message de succès -->
+    <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show mt-4 mb-4" role="alert">
+        <strong th:text="${successMessage}"></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- Ajout du message de succès après la suppression -->
+    <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show mt-4 mb-4" role="alert">
+        <strong th:text="${param.success}"></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a th:href="@{/admin/ecurie/create}" class="btn btn-primary" role="button"><i class="fas fa-plus"></i> Ajouter une écurie</a>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" id="searchEcurie" class="form-control" placeholder="Rechercher une écurie">
+                <label for="searchEcurie" class="form-label"></label>
+                <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i> Rechercher</button>
+            </div>
+        </div>
+    </div>
 
     <table class="table table-hover table-striped">
         <thead>
         <tr>
             <th>ID</th>
             <th>Nom de l'écurie</th>
-            <!-- Ajoutez d'autres en-têtes de colonne selon vos besoins -->
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="ecurie : ${lesEcuries}">
             <td th:text="${ecurie.idEcurie}"></td>
             <td th:text="${ecurie.nomEcurie}"></td>
-            <!-- Ajoutez d'autres colonnes selon vos besoins -->
-
-            <!-- Ajout des liens et des icônes Bootstrap -->
             <td>
-                <a th:href="@{/admin/ecurie/details/__${ecurie.idEcurie}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i>Détails</a>
-                <a th:href="@{/admin/ecurie/edit/__${ecurie.idEcurie}__}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i>Modifier</a>
-                <a th:href="@{/admin/ecurie/delete/__${ecurie.idEcurie}__}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Supprimer</a>
+                <a th:href="@{/admin/ecurie/details/__${ecurie.idEcurie}__}" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Détails</a>
+                <a th:href="@{/admin/ecurie/edit/__${ecurie.idEcurie}__}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Modifier</a>
+                <a th:href="@{/admin/ecurie/delete/__${ecurie.idEcurie}__}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Supprimer</a>
             </td>
-
         </tr>
         </tbody>
     </table>

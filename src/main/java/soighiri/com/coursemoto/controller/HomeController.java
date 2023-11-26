@@ -71,13 +71,9 @@ public class HomeController {
     public String accueil() {
         return "home"; // le nom du fichier "home.html" sans l'extension html
     }
-    /**
-     * EXEMPLE DE PAGE CLIENT/ADMIN
-     * Dirige vers la page le dashboard du client ou admin (visible seulement si l'utilisateur est un client ou admin)
-     */
 
     @GetMapping("/pilote/listePilotes")
-    public String clientDash(){
+    public String piloteList(){
         return "admin/pilotes/index";
     }
 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import soighiri.com.coursemoto.dto.EcurieDto;
 import soighiri.com.coursemoto.model.Ecurie;
 import soighiri.com.coursemoto.service.EcurieService;
@@ -45,7 +46,7 @@ public class EcurieController {
     @GetMapping("/ecurie/delete/{idEcurie}")
     public String deleteEcurieById(@PathVariable Long idEcurie) {
         ecurieService.deleteEcurieById(idEcurie);
-        return "redirect:/admin/ecurie/listeEcuries";
+        return "redirect:/admin/ecurie/listeEcuries?success=La suppression a été effectuée avec succès";
     }
 
     // Méthode pour afficher le formulaire de création d'une écurie
@@ -57,11 +58,12 @@ public class EcurieController {
 
     // Méthode pour traiter la création d'une écurie
     @PostMapping("/ecurie/create")
-    public String store(@ModelAttribute("ecurieDto") @Valid EcurieDto ecurieDto, BindingResult bindingResult, Model model) {
+    public String store(@ModelAttribute("ecurieDto") @Valid EcurieDto ecurieDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "admin/ecurie/create";
         }
         ecurieService.saveEcurieFromEcurieDto(ecurieDto);
+        redirectAttributes.addFlashAttribute("successMessage", "L'ajout a été effectué avec succès");
         return "redirect:/admin/ecurie/listeEcuries";
     }
 
@@ -75,11 +77,13 @@ public class EcurieController {
 
     // Méthode pour traiter la mise à jour d'une écurie
     @PostMapping("/ecurie/edit")
-    public String updateEcurie(@ModelAttribute @Valid EcurieDto ecurieDto, BindingResult bindingResult, Model model) {
+    public String updateEcurie(@ModelAttribute @Valid EcurieDto ecurieDto, BindingResult bindingResult,RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "admin/ecurie/edit";
         }
         ecurieService.updateEcurieFromEcurieDto(ecurieDto);
+        redirectAttributes.addFlashAttribute("successMessage", "La modification a été effectuée avec succès");
+
         return "redirect:/admin/ecurie/listeEcuries";
     }
 }

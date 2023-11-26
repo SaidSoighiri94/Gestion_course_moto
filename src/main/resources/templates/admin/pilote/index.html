@@ -7,8 +7,8 @@
 <header th:replace="~{fragments/header :: navigation(activeTab='pilote')}"></header>
 <main class="container">
 
-<h1>Listes de tous les pilotes</h1>
-<a class="btn btn-lg btn-primary"  th:href="@{/admin/pilote/create}" role="button"><i class="fas fa-add"></i>Ajouter un pilote</a>
+<h1 class="text-center mt-4">Listes de tous les pilotes</h1>
+<a class="btn  btn-primary mt-4 mb-2"  th:href="@{/admin/pilote/create}" role="button"><i class="fas fa-add"></i>Ajouter un pilote</a>
 
     <!-- Section ajoutant  le message flash -->
     <div th:if="${successMessage}" class="alert alert-success mt-4 mb-3" role="alert">
@@ -34,8 +34,8 @@
 
         <!-- Ajout des liens et des icones Bootstrap-->
         <td>
-            <a th:href="@{/admin/pilote/detail/__${pilote.idPilote}__}" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i>Details</a>
-            <a th:href="@{/admin/pilote/edit/__${pilote.idPilote}__}"  class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i>Modifier</a>
+            <a th:href="@{/admin/pilote/detail/__${pilote.idPilote}__}" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i>Details</a>
+            <a th:href="@{/admin/pilote/edit/__${pilote.idPilote}__}"  class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Modifier</a>
             <a th:href="@{/admin/pilote/Supprimer/__${pilote.idPilote}__}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Supprimer</a>
         </td>
 

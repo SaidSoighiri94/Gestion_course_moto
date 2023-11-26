@@ -42,7 +42,7 @@ public class WebSecurityConfig {
                 // Configuration pour les autorisations d'accès aux différentes URL
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/home","/visiteur/**","/api/**","/inscription","/js/**", "/css/**", "/images/**", "/favicon.co","/webjars/**").permitAll()
-                        .requestMatchers(HttpMethod.POST,("/insciption")).permitAll()
+                        .requestMatchers(HttpMethod.POST,("/inscription")).permitAll()
                         .requestMatchers(HttpMethod.POST,("/api/**")).permitAll()
 
 
