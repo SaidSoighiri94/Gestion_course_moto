@@ -104,6 +104,15 @@ public class EcurieServiceImpl implements EcurieService {
         }
     }
 
+    @Override
+    public List<Ecurie> rechercherEcuries(String searchTerm) {
+        if (searchTerm == null || searchTerm.trim().isEmpty()) {
+            return getAllEcuries();
+        } else {
+            return ecurieRepository.findByNomEcurieContainsIgnoreCase(searchTerm);
+        }
+    }
+
     private Ecurie convertDtoToEntity(EcurieDto ecurieDto) {
         Ecurie ecurie = new Ecurie();
 
@@ -117,5 +126,6 @@ public class EcurieServiceImpl implements EcurieService {
         ecurie.setDescription(ecurieDto.getDescription());
         return ecurie;
     }
+
 
 }

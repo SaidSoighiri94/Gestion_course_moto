@@ -86,4 +86,14 @@ public class EcurieController {
 
         return "redirect:/admin/ecurie/listeEcuries";
     }
+    @GetMapping("/ecurie/rechercher")
+    public String rechercherEcurie(@RequestParam(name = "search", required = false) String searchTerm, Model model) {
+        // Effectuez la logique de recherche en utilisant le terme de recherche (searchTerm)
+        List<Ecurie> resultats = ecurieService.rechercherEcuries(searchTerm);
+
+        // Ajoutez les résultats au modèle pour les afficher dans la vue
+        model.addAttribute("lesEcuries", resultats);
+
+        return "admin/ecurie/index";
+    }
 }

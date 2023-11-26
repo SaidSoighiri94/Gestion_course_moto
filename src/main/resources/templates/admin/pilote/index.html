@@ -11,8 +11,16 @@
 <a class="btn  btn-primary mt-4 mb-2"  th:href="@{/admin/pilote/create}" role="button"><i class="fas fa-add"></i>Ajouter un pilote</a>
 
     <!-- Section ajoutant  le message flash -->
-    <div th:if="${successMessage}" class="alert alert-success mt-4 mb-3" role="alert">
+    <!-- Ajout du message de succès -->
+    <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show mt-4 mb-4" role="alert">
         <strong th:text="${successMessage}"></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- Ajout du message de succès après la suppression -->
+    <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show mt-4 mb-4" role="alert">
+        <strong th:text="${param.success}"></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
 <table class="table table-hover table-striped">

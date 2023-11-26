@@ -25,11 +25,11 @@
             <a th:href="@{/admin/ecurie/create}" class="btn btn-primary" role="button"><i class="fas fa-plus"></i> Ajouter une écurie</a>
         </div>
         <div class="col-md-6">
-            <div class="input-group">
-                <input type="text" id="searchEcurie" class="form-control" placeholder="Rechercher une écurie">
+            <form th:action="@{/admin/ecurie/rechercher}" method="get" class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Rechercher une écurie" id="searchEcurie">
                 <label for="searchEcurie" class="form-label"></label>
                 <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i> Rechercher</button>
-            </div>
+            </form>
         </div>
     </div>
 

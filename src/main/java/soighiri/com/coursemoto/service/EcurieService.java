@@ -29,5 +29,5 @@ public interface EcurieService {
     EcurieDto convertEntityToDto(Ecurie ecurie);
     void addPiloteToEcurie(Long idEcurie, PiloteDto piloteDto);
     void addMotoToEcurie(Long idEcurie, MotoDto motoDto);
-
+    List<Ecurie> rechercherEcuries(String searchTerm);
 }

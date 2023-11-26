@@ -61,7 +61,7 @@ public class PiloteController {
     @GetMapping(value = "/pilote/delete/{idPilote}")
     public String deletePiloteById(@PathVariable Long idPilote) {
         piloteService.deletePiloteById(idPilote);
-        return "redirect:/admin/pilote/listePilotes";
+        return "redirect:/admin/pilote/listePilotes?success=La suppression a été effectuée avec succès";
     }
 
     @GetMapping(value = "/pilote/create")
@@ -113,7 +113,7 @@ public class PiloteController {
     }
 
     @PostMapping(value = "/pilote/edit")
-    public String updatePilote(@ModelAttribute @Valid PiloteDto piloteDto, BindingResult bindingResult, Model model) {
+    public String updatePilote(@ModelAttribute @Valid PiloteDto piloteDto, BindingResult bindingResult, Model model,RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             List<Categorie> categories = categorieService.getAllCategories();
             List<Ecurie> ecuries = ecurieService.getAllEcuries();
@@ -122,7 +122,7 @@ public class PiloteController {
             return "admin/pilote/edit";
         }
         piloteService.updatePiloteFromPiloteDto(piloteDto);
-
+        redirectAttributes.addFlashAttribute("successMessage", "La modification a été effectuée avec succès");
         return "redirect:/admin/pilote/listePilotes";
     }
 }
