@@ -18,19 +18,22 @@ public class Course {
     @ManyToOne
     @JoinColumn(name = "circuit_id")
     private Circuit circuit;
+    @ManyToOne
+    @JoinColumn( name = "categorie_id")
+    private Categorie categorie;
     public Course() {
     }
 
-    public Course(Date dateCourse, String heureCourse, String nomCourse, int nombreTour, Circuit circuit) {
+    public Course(Date dateCourse, String heureCourse, String nomCourse, int nombreTour, Circuit circuit, Categorie categorie) {
         this.dateCourse = dateCourse;
         this.heureCourse = heureCourse;
         this.nomCourse = nomCourse;
         this.nombreTour = nombreTour;
         this.circuit = circuit;
+        this.categorie = categorie;
     }
+
 // Ajout les getters et setters appropriés
-
-
     public Long getIdCourse() {
         return idCourse;
     }

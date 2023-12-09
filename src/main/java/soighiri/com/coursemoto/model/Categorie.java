@@ -3,6 +3,7 @@ package soighiri.com.coursemoto.model;
 import jakarta.persistence.*;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 //@Data
@@ -19,13 +20,16 @@ public class Categorie {
     private String descriptionCategorie;
     @ManyToMany(mappedBy = "categories")
     private Set<Pilote> pilotes = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL)
+    private List<Course> courses;
 
     public Categorie() {
     }
-
-    public Categorie(String nomCategorie, String descriptionCategorie) {
+    public Categorie(String nomCategorie, String descriptionCategorie, Set<Pilote> pilotes, List<Course> courses) {
         this.nomCategorie = nomCategorie;
         this.descriptionCategorie = descriptionCategorie;
+        this.pilotes = pilotes;
+        this.courses = courses;
     }
 
     public Long getIdCategorie() {
@@ -58,6 +62,14 @@ public class Categorie {
 
     public void setDescriptionCategorie(String descriptionCategorie) {
         this.descriptionCategorie = descriptionCategorie;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     @Override
