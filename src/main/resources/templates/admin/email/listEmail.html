@@ -3,6 +3,8 @@
 <head th:replace="fragments/header :: header-css">
 
 <body>
+<header th:replace="fragments/header :: navigation">
+</header>
 
 <div class="container">
         <h1 class="mx-auto text-center mt-4">Liste des e-mail archivés</h1>
@@ -39,6 +41,6 @@
             </div>
 
 </div>
-
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
